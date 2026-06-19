@@ -1178,7 +1178,7 @@
     const { phase, inPhase, total } = getPhaseProgress(count);
 
     // Header chips
-    document.getElementById('workout-count-chip').textContent = 'Workout #' + count;
+    document.getElementById('workout-count-chip').textContent = count + (count === 1 ? ' Workout Completed' : ' Workouts Completed');
     document.getElementById('phase-chip').textContent = 'Phase ' + phase + ' of 4 · ' + PHASE_NAMES[phase];
 
     // Update each phase block on the schedule tab
