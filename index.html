@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lower Back Recovery Workout</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #0f172a;
+    color: #e2e8f0;
+    min-height: 100vh;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  header {
+    text-align: center;
+    padding: 28px 20px 18px;
+    background: linear-gradient(135deg, #1e3a5f, #1a4a3a);
+    border-radius: 16px;
+    margin-bottom: 18px;
+    border: 1px solid #334155;
+  }
+
+  header h1 { font-size: 1.8rem; font-weight: 700; color: #7dd3fc; margin-bottom: 4px; }
+  header p { color: #94a3b8; font-size: 0.9rem; }
+
+  /* ---- WORKOUT STATS ---- */
+  .workout-stats {
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .stats-chip {
+    background: rgba(0,0,0,0.3);
+    border: 1px solid #334155;
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #4ade80;
+    letter-spacing: 0.02em;
+  }
+  .stats-chip.phase-chip {
+    color: #7dd3fc;
+    border-color: #1e3a5f;
+  }
+
+  /* ---- TABS ---- */
+  .tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+
+  .tab-btn {
+    flex: 1;
+    padding: 12px;
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    color: #64748b;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .tab-btn.active {
+    background: #1e3a5f;
+    border-color: #3b82f6;
+    color: #7dd3fc;
+  }
+
+  .tab-pane { display: none; }
+  .tab-pane.active { display: block; }
+
+  /* ---- PROGRESS ---- */
+  .progress-bar-wrap {
+    background: #1e293b;
+    border-radius: 12px;
+    height: 12px;
+    margin: 14px 0 5px;
+    overflow: hidden;
+    border: 1px solid #334155;
+  }
+
+  .progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #22c55e, #4ade80);
+    border-radius: 12px;
+    transition: width 0.5s ease;
+    width: 0%;
+  }
+
+  .progress-label { font-size: 0.82rem; color: #64748b; text-align: center; }
+
+  .reset-btn {
+    display: block;
+    margin: 12px auto 0;
+    background: #1e293b;
+    color: #94a3b8;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    padding: 7px 18px;
+    cursor: pointer;
+    font-size: 0.82rem;
+    transition: all 0.2s;
+  }
+  .reset-btn:hover { background: #334155; color: #e2e8f0; }
+
+  .note-box {
+    background: #1c2d1c;
+    border: 1px solid #2d5a27;
+    border-left: 4px solid #22c55e;
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    font-size: 0.85rem;
+    color: #86efac;
+    line-height: 1.6;
+  }
+  .note-box strong { color: #4ade80; }
+
+  /* ---- EXERCISE CARDS ---- */
+  section { margin-bottom: 28px; }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #334155;
+  }
+
+  .section-icon { font-size: 1.3rem; }
+  .section-title { font-size: 1.05rem; font-weight: 700; color: #7dd3fc; }
+  .section-count {
+    margin-left: auto;
+    font-size: 0.78rem;
+    color: #64748b;
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 20px;
+    padding: 2px 10px;
+  }
+
+  .exercise-card {
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    transition: border-color 0.3s;
+  }
+
+  .exercise-card.done { border-color: #22c55e; opacity: 0.72; }
+
+  .card-top {
+    display: flex;
+    align-items: center;
+    padding: 13px 14px;
+    gap: 10px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .card-top:hover { background: #243348; }
+
+  .check-circle {
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    border: 2px solid #475569;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.3s;
+    font-size: 0.85rem;
+    cursor: pointer;
+    color: transparent;
+  }
+  .done .check-circle { background: #22c55e; border-color: #22c55e; color: #fff; }
+
+  .exercise-name { font-weight: 600; font-size: 0.97rem; color: #e2e8f0; flex: 1; }
+  .done .exercise-name { text-decoration: line-through; color: #64748b; }
+
+  .badge {
+    background: #0f172a;
+    border: 1px solid #475569;
+    border-radius: 20px;
+    padding: 2px 9px;
+    font-size: 0.75rem;
+    color: #94a3b8;
+    white-space: nowrap;
+  }
+
+  .expand-icon { color: #475569; font-size: 0.75rem; margin-left: 2px; transition: transform 0.3s; }
+  .expanded .expand-icon { transform: rotate(180deg); }
+
+  .card-body { display: none; padding: 0 14px 14px 50px; }
+  .card-body.open { display: block; }
+
+  .how-to {
+    font-size: 0.85rem; color: #94a3b8; line-height: 1.7; margin-bottom: 10px;
+  }
+  .how-to strong { color: #cbd5e1; display: block; margin-bottom: 4px; }
+  .how-to ol { padding-left: 16px; }
+
+  .tip-box {
+    background: #1a2a3a;
+    border: 1px solid #2563eb44;
+    border-left: 3px solid #3b82f6;
+    border-radius: 8px;
+    padding: 9px 11px;
+    font-size: 0.8rem;
+    color: #93c5fd;
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+  .tip-box::before { content: '💡 Tip: '; font-weight: 600; }
+
+  .video-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #7f1d1d;
+    color: #fca5a5;
+    border: 1px solid #991b1b;
+    border-radius: 8px;
+    padding: 6px 13px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .video-btn:hover { background: #991b1b; color: #fecaca; }
+
+  .complete-banner {
+    display: none;
+    text-align: center;
+    background: linear-gradient(135deg, #14532d, #1a4a3a);
+    border: 1px solid #22c55e;
+    border-radius: 16px;
+    padding: 28px;
+    margin-top: 20px;
+  }
+  .complete-banner.show { display: block; }
+  .complete-banner h2 { color: #4ade80; font-size: 1.4rem; margin-bottom: 6px; }
+  .complete-banner p { color: #86efac; font-size: 0.92rem; }
+
+  /* ---- SCHEDULE TAB ---- */
+  .phase {
+    border-radius: 14px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    border: 2px solid;
+    transition: box-shadow 0.3s;
+  }
+
+  .phase.current-phase {
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.25), 0 6px 24px rgba(0,0,0,0.5);
+  }
+
+  .phase-header {
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .phase-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  .phase-title { font-size: 1.05rem; font-weight: 700; }
+  .phase-sub { font-size: 0.82rem; margin-top: 2px; opacity: 0.75; }
+  .phase-days {
+    margin-left: auto;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-align: right;
+  }
+
+  /* ---- HERE BADGE ---- */
+  .here-badge {
+    display: none;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.18);
+    white-space: nowrap;
+    margin-bottom: 4px;
+  }
+
+  /* ---- PHASE TRACKER ---- */
+  .phase-tracker {
+    margin-bottom: 14px;
+    padding: 10px 12px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 9px;
+  }
+  .phase-tracker-bar-wrap {
+    background: rgba(255,255,255,0.1);
+    border-radius: 6px;
+    height: 7px;
+    overflow: hidden;
+    margin-bottom: 5px;
+  }
+  .phase-tracker-bar {
+    height: 100%;
+    border-radius: 6px;
+    transition: width 0.6s ease;
+    width: 0%;
+  }
+  .phase-tracker-label {
+    font-size: 0.76rem;
+    opacity: 0.8;
+  }
+  .phase-1 .phase-tracker-bar { background: #22c55e; }
+  .phase-2 .phase-tracker-bar { background: #3b82f6; }
+  .phase-3 .phase-tracker-bar { background: #f97316; }
+  .phase-4 .phase-tracker-bar { background: #8b5cf6; }
+
+  .phase-body { padding: 0 20px 18px; }
+
+  .ex-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+    margin-bottom: 12px;
+  }
+
+  @media (max-width: 500px) { .ex-list { grid-template-columns: 1fr; } }
+
+  .ex-list li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.83rem;
+    padding: 7px 10px;
+    border-radius: 8px;
+    background: rgba(0,0,0,0.25);
+  }
+
+  .ex-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .rule-box {
+    font-size: 0.82rem;
+    line-height: 1.7;
+    padding: 10px 14px;
+    border-radius: 9px;
+    background: rgba(0,0,0,0.2);
+  }
+  .rule-box strong { display: block; margin-bottom: 4px; font-size: 0.8rem; letter-spacing: 0.05em; text-transform: uppercase; }
+
+  /* Phase 1 — Green */
+  .phase-1 { border-color: #166534; background: #052e16; }
+  .phase-1 .phase-header { background: #14532d; }
+  .phase-1 .phase-label { background: #15803d; color: #bbf7d0; }
+  .phase-1 .phase-title { color: #4ade80; }
+  .phase-1 .phase-days { color: #86efac; }
+  .phase-1 .ex-dot { background: #22c55e; }
+  .phase-1 .ex-list li { color: #86efac; }
+  .phase-1 .rule-box { color: #86efac; }
+
+  /* Phase 2 — Blue */
+  .phase-2 { border-color: #1e3a8a; background: #0c1a3d; }
+  .phase-2 .phase-header { background: #1e3a8a; }
+  .phase-2 .phase-label { background: #2563eb; color: #bfdbfe; }
+  .phase-2 .phase-title { color: #60a5fa; }
+  .phase-2 .phase-days { color: #93c5fd; }
+  .phase-2 .ex-dot { background: #3b82f6; }
+  .phase-2 .ex-list li { color: #93c5fd; }
+  .phase-2 .rule-box { color: #93c5fd; }
+
+  /* Phase 3 — Orange */
+  .phase-3 { border-color: #7c2d12; background: #1c0a04; }
+  .phase-3 .phase-header { background: #7c2d12; }
+  .phase-3 .phase-label { background: #ea580c; color: #fed7aa; }
+  .phase-3 .phase-title { color: #fb923c; }
+  .phase-3 .phase-days { color: #fdba74; }
+  .phase-3 .ex-dot { background: #f97316; }
+  .phase-3 .ex-list li { color: #fdba74; }
+  .phase-3 .rule-box { color: #fdba74; }
+
+  /* Phase 4 — Purple */
+  .phase-4 { border-color: #4c1d95; background: #150b2e; }
+  .phase-4 .phase-header { background: #4c1d95; }
+  .phase-4 .phase-label { background: #7c3aed; color: #ede9fe; }
+  .phase-4 .phase-title { color: #a78bfa; }
+  .phase-4 .phase-days { color: #c4b5fd; }
+  .phase-4 .ex-dot { background: #8b5cf6; }
+  .phase-4 .ex-list li { color: #c4b5fd; }
+  .phase-4 .rule-box { color: #c4b5fd; }
+
+  /* Weekly calendar strip */
+  .week-strip {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 18px;
+  }
+
+  .day-chip {
+    flex: 1;
+    text-align: center;
+    padding: 10px 4px;
+    border-radius: 10px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    border: 1px solid #334155;
+    background: #1e293b;
+    color: #475569;
+  }
+
+  .day-chip.workout {
+    background: #1e3a5f;
+    border-color: #3b82f6;
+    color: #7dd3fc;
+  }
+
+  .day-chip .day-name { display: block; font-size: 0.65rem; margin-bottom: 3px; opacity: 0.8; }
+  .day-chip .day-icon { display: block; font-size: 1.1rem; }
+
+  .schedule-note {
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-left: 3px solid #f59e0b;
+    border-radius: 9px;
+    padding: 12px 15px;
+    font-size: 0.83rem;
+    color: #fcd34d;
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+  .schedule-note strong { color: #fbbf24; }
+
+  /* ---- PHASE-UP MODAL ---- */
+  .phaseup-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+  }
+  .phaseup-overlay.show { display: flex; }
+  .phaseup-modal {
+    background: linear-gradient(135deg, #14532d, #1a4a3a);
+    border: 2px solid #22c55e;
+    border-radius: 20px;
+    padding: 32px 28px;
+    max-width: 360px;
+    margin: 20px;
+    text-align: center;
+  }
+  .phaseup-modal h2 { color: #4ade80; font-size: 1.4rem; margin-bottom: 10px; }
+  .phaseup-modal p { color: #86efac; font-size: 0.9rem; line-height: 1.65; margin-bottom: 22px; }
+  .phaseup-close-btn {
+    background: #15803d;
+    color: #bbf7d0;
+    border: 1px solid #22c55e;
+    border-radius: 10px;
+    padding: 10px 26px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .phaseup-close-btn:hover { background: #166534; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🏋️ Lower Back Recovery Workout</h1>
+  <p>Designed for arthritis & bone spurs • Full gym access</p>
+  <div class="workout-stats">
+    <span class="stats-chip" id="workout-count-chip">Workout #1</span>
+    <span class="stats-chip phase-chip" id="phase-chip">Phase 1 of 4 · Foundation</span>
+  </div>
+</header>
+
+<!-- TABS -->
+<div class="tabs">
+  <button class="tab-btn active" onclick="switchTab('workout')">🏋️ Workout</button>
+  <button class="tab-btn" onclick="switchTab('schedule')">📅 Schedule</button>
+</div>
+
+<!-- ===================== WORKOUT TAB ===================== -->
+<div class="tab-pane active" id="tab-workout">
+
+  <div class="progress-bar-wrap">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+  <div class="progress-label" id="progressLabel">0 of 20 exercises complete</div>
+  <button class="reset-btn" onclick="resetAll()">↺ Reset Workout (counts as done)</button>
+
+  <br>
+
+  <div class="note-box">
+    <strong>⚠️ Important:</strong> Always warm up first. Stop if you feel sharp or shooting pain — mild stiffness is okay. Start with light weights and build up gradually. Consult your doctor before starting.
+  </div>
+
+  <!-- WARM-UP -->
+  <section>
+    <div class="section-header">
+      <span class="section-icon">🔥</span>
+      <span class="section-title">Warm-Up</span>
+      <span class="section-count" id="count-warmup">0/4</span>
+    </div>
+
+    <div class="exercise-card" id="ex-0" data-section="warmup">
+      <div class="card-top" onclick="toggleCard(0)">
+        <div class="check-circle" onclick="toggleDone(event,0)">✓</div>
+        <span class="exercise-name">Stationary Bike</span>
+        <span class="badge">10 min · Easy Pace</span>
+        <span class="expand-icon">▼</span>
+      </div>
+      <div class="card-body" id="body-0">
+        <div class="how-to"><strong>How to do it:</strong><ol>
+          <li>Adjust the seat so your knee has a slight bend at the bottom of each pedal stroke.</li>
+          <li>Set resistance to a light level — you should be able to hold a conversation.</li>
+          <li>Sit upright with a straight spine; avoid hunching forward.</li>
+          <li>Pedal at a comfortable, steady pace for 10 minutes.</li>
+        </ol></div>
+        <div class="tip-box">Loosens lower back joints, increases blood flow to the discs, and prepares your spine for movement without compression.</div>
+        <a class="video-btn" href="https://www.youtube.com/results?search_query=stationary+bike+proper+form+low+back+pain" target="_blank">▶ Watch Video</a>
+      </div>
+    </div>
+
+    <div class="exercise-card" id="ex-1" data-section="warmup">
+      <div class="card-top" onclick="toggleCard(1)">
+        <div class="check-circle" onclick="toggleDone(event,1)">✓</div>
+        <span class="exercise-name">Cat-Cow Stretch</span>
+        <span class="badge">2 sets · 10 reps</span>
+        <span class="expand-icon">▼</span>
+      </div>
+      <div class="card-body" id="body-1">
+        <div class="how-to"><strong>How to do it:</strong><ol>
+          <li>Get on all fours — hands under shoulders, knees under hips.</li>
+          <li><strong>Cat:</strong> Exhale and round your spine up toward the ceiling, tucking your chin and pelvis.</li>
+          <li><strong>Cow:</strong> Inhale and drop your belly toward the floor, lifting your head and tailbone.</li>
+          <li>Flow slowly between the two. Never force the range of motion.</li>
+        </ol></div>
+        <div class="tip-box">One of the best mobilizers for arthritic lumbar joints. Move only as far as is pain-free.</div>
+        <a class="video-btn" href="https://www.youtube.com/results?search_query=cat+cow+stretch+lower+back+arthritis" target="_blank">▶ Watch Video</a>
+      </div>
+    </div>
+
+    <div class="exercise-card" id="ex-2" data-section="warmup">
+      <div class="card-top" onclick="toggleCard(2)">
+        <div class="check-circle" onclick="toggleDone(event,2)">✓</div>
+        <span class="exercise-name">QL Ball Release</span>
+        <span class="badge">2–3 min · Each side</span>
+        <span class="expand-icon">▼</span>
+      </div>
+      <div class="card-body" id="body-2">
+        <div class="how-to"><strong>How to do it:</strong><ol>
+          <li>Place a tennis ball or lacrosse ball on the floor.</li>
+          <li>Lie on your back and position the ball just above your hip bone, slightly to one side of your spine — that is your QL muscle (Quadratus Lumborum).</li>
+          <li>Let your body weight slowly sink into the ball. Stay relaxed — do not tense up or fight it.</li>
+          <li>When you find a sore or tight spot, pause there for 20–30 seconds, breathing slowly and deeply.</li>
+          <li>Gently shift the ball to new spots along the muscle. Spend 2–3 minutes per side. More tender = more work needed there.</li>
+        </ol></div>
+        <div class="tip-box">The QL muscle connects your pelvis to your spine and is a hidden driver of lumbar arthritis pain. Tight QLs cause your back muscles to overwork and your spine to compress unevenly. Releasing them before exercise reduces baseline tightness and makes your Bird Dog, Dead Bug, and Side Plank far more effective. Always release before stretching — not after.</div>
+        <a class="video-btn" href="https://www.youtube.com/results?search_query=quadratus+lumborum+QL+release+tennis+ball+lower+back+pain+relief" target="_blank">▶ Watch Video</a>
+      </div>
+    </div>
+    <div class="exercise-card" id="ex-3" data-section="warmup">
+      <div class="card-top" onclick="toggleCard(3)">
+        <div class="check-circle" onclick="toggleDone(event,3)">✓</div>
+        <span class="exercise-name">Deep Core Activation</span>
+        <span class="badge">2 sets · 10 reps</span>
+        <span class="expand-icon">▼</span>
+      </div>
+      <div class="card-body" id="body-3">
+        <div class="how-to"><strong>How to do it:</strong><ol>
+          <li>Lie on your back, knees bent, feet flat on the floor. Place your fingertips just inside your hip bones (the bony bumps at the front of your pelvis).</li>
+          <li>Take a slow breath in through your nose.</li>
+          <li>As you exhale slowly, gently draw your lower abdomen inward — as if bracing for a light poke in the stomach. Do NOT suck your stomach in hard or hold your breath.</li>
+          <li>You should feel a subtle, deep tightening under your fingertips. That is your transverse abdominis — your deep core "corset" muscle — switching on.</li>
+          <li>Hold the gentle brace for 5–6 seconds while continuing to breathe normally. Release fully. That is one rep. Do 10 reps.</li>
+        </ol></div>
+        <div class="tip-box">Most back pain sufferers have a "turned off" deep core after months of guarding. This exercise wakes it back up. Your Bird Dog and Dead Bug only work properly if this foundation is already activated. Takes 2 minutes and pays dividends the entire workout. Focus on the internal sensation — this is quiet, internal work, not a visible movement.</div>
+        <a class="video-btn" href="https://www.youtube.com/results?search_query=transverse+abdominis+activation+deep+core+lower+back+pain+beginners" target="_blank">▶ Watch Video</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MOBILITY -->
+  <section>
+    <div class="section-header">
+      <span class="section-icon">🧘</span>
+      <span class="section-title">Mobility & Stretching</span>
+      <span class="section-count" id="count-stretch">0/3</span>
+    </div>
+
+    <div class="exercise-card" id="ex-4" data-section="stretch">
+      <div class="card-top" onclick="toggleCard(4)">
+        <div class="check-circle" onclick="toggleDone(event,4)">✓</div>
+        <span class="exercise-name">Knee-to-Chest Stretch</span>
+        <span class="badge">30 sec · Each leg</span>
+        <span class="expand-icon">▼</span>
+      </div>
+      <div class="card-body" id="body-4">
+        <div class="how-to"><strong>How to do it:</strong><ol>
+          <li>Lie on your back, knees bent.</li>
+          <li>Slowly pull one knee toward your chest, clasping your hands behind the thigh.</li>
+          <li>Hold 30 seconds — feel a gentle stretch in the lower back and glute.</li>
+          <li>Switch legs. Then pull both knees to chest for 30 more seconds.</li>
+        </ol></div>
+        <div class="tip-box">Gently opens the lumbar facet joints where arthritis and bone spurs develop, reducing morning stiffness.</div>
+        <a class="video-btn" href="https://www.youtube.com/results?search_query=knee+to+chest+stretch+lower+back+arthritis" target="_blank">▶ Watch Video</a>
+      </div>
+    </div>
+
+    <div class="exercise-card" id="ex-5" data-section="stretch">
+      <div class="card-top" onclick="toggleCard(5)">
+        <div class="check-circle" onclick="toggleDone(event,5)">✓</div>
+        <span class="exercise-name">Figure-4 Piriformis Stretch</span>
+        <span class="badge">30 sec · Each side</span>
+        <span class="expand-icon">▼</span>
+      </div>
+      <div class="card-body" id="body-5">
+        <div class="how-to"><strong>How to do it:</strong><ol>
+          <li>Lie on your back, knees bent.</li>
+          <li>Cross your right ankle over your left knee (figure-4 shape).</li>
+          <li>Reach through and pull your left thigh toward your chest until you feel a stretch in the right glute/hip.</li>
+          <li>Hold 30 seconds, switch sides.</li>
+        </ol></div>
+        <div class="tip-box">A tight piriformis can compress the sciatic nerve and worsen back pain. Often one of the most immediately relieving stretches.</div>
+        <a class="video-btn" href="https://www.youtube.com/results?search_query=figure+4+piriformis+stretch+lower+back+pain+sciatica" target="_blank">▶ Watch Video</a>
+      </div>
+    </div>
+
+    <div class="exercise-card" id="ex-6" data-section="stretch">
+      <div class="card-top" onclick="toggleCard(6)">
+        <div class="check-circle" onclick="toggleDone(event,6)">✓</div>
+        <span class="exercise-name">Hip Flexor Stretch (Kneeling)</span>
+        <span class="badge">30 sec · Each side</span>
+        <span class="expand-icon">▼</span>
+      </div>
+      <div class="card-body" id="body-6">
+        <div class="how-to"><strong>How to do it:</strong><ol>
+          <li>Kneel on one knee on a mat (folded towel under knee if needed).</li>
+          <li>Place other foot flat on floor in front, making a 90° angle.</li>
+          <li>Push hips forward gently until you feel a stretch in the front of the back hip.</li>
+          <li>Hold 30 seconds. Keep spine upright — don't arch your lower back. Switch sides.</li>
+        </ol></div>
+        <div class="tip-box">Tight hip flexors pull the pelvis forward and increase lumbar compression. Stretching them daily is one of the highest-impact things you can do.</div>
+        <a class="video-btn" href="https://www.youtube.com/results?search_query=kneeling+hip+flexor+stretch+lower+back+pain" target="_blank">▶ Watch Video</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CORE -->
+  <section>
+    <div class="section-header">
+      <span class="section-icon">💪</span>
+      <span class="section-title">Core & Stability</span>
+      <span class="section-count" id="count-core">0/5</span>
+    </div>
+
+    <div class="exercise-card" id="ex-7" data-section="core">
+      <div class="card-top" onclick="toggleCard(7)">
+        <div class="check-circle" onclick="toggleDone(event,7)">✓</div>
+        <span class="exercise-name">Bird Dog</span>
+        <span class="badge">3 sets · 10 reps each side</span>
+        <span class="expand-icon">▼</span>
+      </div>
+      <div class="card-body" id="body-7">
+        <div class="how-to"><strong>How to do it:</strong><ol>
+          <li>Start on all fours — hands under shoulders, knees under hips.</li>
+          <li>Brace your core gently (like you're about to be lightly poked in the stomach).</li>
+          <li>Slowly extend your right arm forward and left leg back simultaneously.</li>
+          <li>Hold 2–3 seconds. Keep hips level — don't rotate.</li>
+          <li>Return slowly, repeat on opposite side. That's one rep.</li>
+        </ol></div>
+        <div class="tip-box">Trains the muscles directly along your spine without loading it. One of the top physical therapy exercises for lumbar issues.</div>
+        <a class="video-btn" href="https://www.youtube.com/results?search_query=bird+dog+exercise+lower+back+pain+physical+therapy" target="_blank">▶ Watch Video</a>
+      </div>
+    </div>
+
+    <div class="exercise-card" id="ex-8" data-section="core">
+      <div class="card-top" onclick="toggleCard(8)">
+        <div class="check-circle" onclick="toggleDone(event,8)">✓</div>
+        <span class="exercise-name">Dead Bug</span>
+        <span class="badge">3 sets · 8 reps each side</span>
+        <span class="expand-icon">▼</span>
+      </div>
+      <div class="card-body" id="body-8">
+        <div class="how-to"><strong>How to do it:</strong><ol>
+          <li>Lie on your back. Lift both arms straight up. Lift both knees to 90°.</li>
+          <li>Press your lower back firmly into the floor — keep it there throughout.</li>
+          <li>Slowly lower right arm overhead and extend left leg toward floor simultaneously.</li>
+          <li>Stop before your back arches. Return to start. Repeat other side.</li>
+        </ol></div>
+        <div class="tip-box">Trains your core to resist movement — exactly what it needs to protect your lumbar spine. Go only as far as your back stays flat.</div>
+        <a class="video-btn" href="https://www.youtube.com/results?search_query=dead+bug+exercise+core+lower+back+pain" target="_blank">▶ Watch Video</a>
+      </div>
+    </div>
+
+    <div class="exercise-card" id="ex-9" data-section="core">
+      <div class="card-top" onclick="toggleCard(9)">
+        <div class="check-circle" onclick="toggleDone(event,9)">✓</div>
+        <span class="exercise-name">Glute Bridge</span>
+        <span class="badge">3 sets · 15 reps</span>
+        <span class="expand-icon">▼</span>
+      </div>
+      <div class="card-body" id="body-9">
+        <div class="how-to"><strong>How to do it:</strong><ol>
+          <li>Lie on your back, knees bent, feet flat hip-width apart.</li>
+          <li>Press through your heels and squeeze glutes to lift hips off the floor.</li>
+          <li>Body forms a straight line from shoulders to knees. Do NOT hyperextend lower back.</li>
+          <li>Hold 2 seconds at top, then slowly lower. Breathe normally.</li>
+        </ol></div>
+        <div class="tip-box">Weak glutes are a #1 cause of back pain — they make your back muscles overcompensate. Strong glutes = less load on your lumbar spine.</div>
+        <a class="video-btn" href="https://www.youtube.com/results?search_query=glute+bridge+lower+back+pain+physical+therapy" target="_blank">▶ Watch Video</a>
+      </div>
+    </div>
+
+    <div class="exercise-card" id="ex-10" data-section="core">
+      <div class="card-top" onclick="toggleCard(10)">
+        <div class="check-circle" onclick="toggleDone(event,10)">✓</div>
+        <span class="exercise-name">Side Plank</span>
+        <span class="badge">2–3 sets · 20–40 sec · Each side</span>
+        <span class="expand-icon">▼</span>
+      </div>
+      <div class="card-body" id="body-10">
+        <div class="how-to"><strong>How to do it:</strong><ol>
+          <li>Lie on your right side on a mat. Stack your feet or stagger them for balance.</li>
+          <li>Place your right forearm on the floor, elbow directly under your shoulder.</li>
+          <li>Brace your core gently, then lift your hips so your body forms a straight line from head to heels. Squeeze your glutes.</li>
+          <li>Hold 20–40 seconds, breathing normally. Do not let your hips sag or pike up.</li>
+          <li>Lower slowly with control. Switch to the left side and repeat.</li>
+          <li><strong>Easier version (start here):</strong> Keep your bottom knee on the floor — same line, just a shorter lever. Much more manageable for beginners.</li>
+        </ol></div>
+        <div class="tip-box">The Side Plank directly strengthens the QL muscle — the same one you released with the ball in warm-up. It builds lateral stability without compressing, flexing, or rotating the spine, which is critical for lumbar arthritis. Start on your knees and work up to the full version over several weeks. William Richards (Fitness 4 Back Pain) specifically recommends this for arthritis and disc patients.</div>
+        <a class="video-btn" href="https://www.youtube.com/results?search_query=side+plank+lower+back+pain+QL+muscle+beginners+modification" target="_blank">▶ Watch Video</a>
+      </div>
+    </div>
+    <div class="exercise-card" id="ex-11" data-section="core">
+      <div class="card-top" onclick="toggleCard(11)">
+        <div class="check-circle" onclick="toggleDone(event,11)">✓</div>
+        <span class="exercise-name">Paloff Press</span>
+        <span class="badge">Phase 3+ · 2–3 sets · 10–12 reps · Each side</span>
+        <span class="expand-icon">▼</span>
+      </div>
+      <div class="card-body" id="body-11">
+        <div class="how-to"><strong>How to do it:</strong><ol>
+          <li>At a cable machine, set a D-handle at chest height.</li>
+          <li>Stand sideways to the machine, feet shoulder-width apart. Grab the handle with both hands and hold it at your chest, close to your sternum.</li>
+          <li>Step far enough away from the machine that there is light tension on the cable.</li>
+          <li>Brace your deep core (like you practiced in Deep Core Activation). Keep your hips square — do not let the cable pull you sideways or rotate your torso.</li>
+          <li>Slowly press your hands straight out in front of you until your arms are fully extended. Pause 1–2 seconds — feel your core resisting the rotation.</li>
+          <li>Slowly return your hands to your chest. That is one rep. Complete all reps on one side, then turn around and repeat facing the other direction.</li>
+        </ol></div>
+        <div class="tip-box">The Paloff Press trains your core to resist rotation — completely different from planks and dead bugs. This protects your lumbar spine during everyday twisting (turning to reverse a car, reaching sideways, getting out of bed). You are already at the cable machine for Seated Cable Row, so this adds only 5–6 minutes. Introduced in Phase 3 once your deep core foundation is established. Start very light — the challenge is staying perfectly still, not the weight.</div>
+        <a class="video-btn" href="https://www.youtube.com/results?search_query=paloff+press+cable+anti+rotation+core+lower+back+pain+how+to" target="_blank">▶ Watch Video</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LOWER BODY -->
+  <section>
+    <div class="section-header">
+      <span class="section-icon">🦵</span>
+      <span class="section-title">Lower Body Strength (Spine-Friendly)</span>
+      <span class="section-count" id="count-lower">0/4</span>
+    </div>
+
+    <div class="exercise-card" id="ex-12" data-section="lower">
+      <div class="card-top" onclick="toggleCard(12)">
+        <div class="check-circle" onclick="toggleDone(event,12)">✓</div>
+        <span class="exercise-name">Leg Press Machine</span>
+        <span class="badge">3 sets · 12 reps · Light weight</span>
+        <span class="expand-icon">▼</span>
+      </div>
+      <div class="card-body" id="body-12">
+        <div class="how-to"><strong>How to do it:</strong><ol>
+          <li>Sit in the machine with back fully supported against the pad.</li>
+          <li>Place feet shoulder-width apart on the platform.</li>
+          <li>Lower platform until knees are around 90° — don't let knees cave inward.</li>
+          <li>Push through heels to extend (don't lock out knees at the top).</li>
+          <li>Start with very light weight — not a max-effort exercise.</li>
+        </ol></div>
+        <div class="tip-box">Builds quads, glutes, and hamstrings WITHOUT loading your spine — unlike squats or deadlifts. The safest lower body machine for back conditions.</div>
+        <a class="video-btn" href="https://www.youtube.com/results?search_query=leg+press+machine+proper+form+lower+back+pain" target="_blank">▶ Watch Video</a>
+      </div>
+    </div>
+
+    <div class="exercise-card" id="ex-13" data-section="lower">
+      <div class="card-top" onclick="toggleCard(13)">
+        <div class="check-circle" onclick="toggleDone(event,13)">✓</div>
+        <span class="exercise-name">Hip Abductor Machine</span>
+        <span class="badge">3 sets · 15 reps · Light weight</span>
+        <span class="expand-icon">▼</span>
+      </div>
+      <div class="card-body" id="body-13">
+        <div class="how-to"><strong>How to do it:</strong><ol>
+          <li>Sit in the machine with pads on the outside of your knees.</li>
+          <li>Sit tall, back against pad, core lightly braced.</li>
+          <li>Press knees outward against pads in a controlled motion.</li>
+          <li>Slowly return — don't let the weight slam back.</li>
+        </ol></div>
+        <div class="tip-box">Hip abductors stabilize your pelvis. Weak abductors cause the pelvis to drop when walking, transferring stress directly to the lower back.</div>
+        <a class="video-btn" href="https://www.youtube.com/results?search_query=hip+abductor+machine+proper+form+glutes" target="_blank">▶ Watch Video</a>
+      </div>
+    </div>
+
+    <div class="exercise-card" id="ex-14" data-section="lower">
+      <div class="card-top" onclick="toggleCard(14)">
+        <div class="check-circle" onclick="toggleDone(event,14)">✓</div>
+        <span class="exercise-name">Hip Adductor Machine</span>
+        <span class="badge">3 sets · 15 reps · Light weight</span>
+        <span class="expand-icon">▼</span>
+      </div>
+      <div class="card-body" id="body-14">
+        <div class="how-to"><strong>How to do it:</strong><ol>
+          <li>Sit in the adductor machine with pads on the inside of your knees.</li>
+          <li>Sit upright, back against pad, feet on footrests.</li>
+          <li>Squeeze knees inward together against the pads in a controlled motion.</li>
+          <li>Slowly return. Keep core gently engaged throughout.</li>
+        </ol></div>
+        <div class="tip-box">Inner thigh strength balances the hip abductors and keeps the pelvis properly aligned, reducing asymmetric loading on your lumbar spine.</div>
+        <a class="video-btn" href="https://www.youtube.com/results?search_query=hip+adductor+machine+proper+form+inner+thigh" target="_blank">▶ Watch Video</a>
+      </div>
+    </div>
+
+    <div class="exercise-card" id="ex-15" data-section="lower">
+      <div class="card-top" onclick="toggleCard(15)">
+        <div class="check-circle" onclick="toggleDone(event,15)">✓</div>
+        <span class="exercise-name">Seated Hamstring Curl Machine</span>
+        <span class="badge">3 sets · 12 reps · Light weight</span>
+        <span class="expand-icon">▼</span>
+      </div>
+      <div class="card-body" id="body-15">
+        <div class="how-to"><strong>How to do it:</strong><ol>
+          <li>Sit in the machine so the back of your ankles rest on the lower pad.</li>
+          <li>Sit tall with back against the support pad.</li>
+          <li>Curl your legs downward by bending at the knee.</li>
+          <li>Squeeze at the bottom, then slowly return. Don't let the weight drop.</li>
+        </ol></div>
+        <div class="tip-box">Tight, weak hamstrings rotate the pelvis and increase disc and facet joint stress. The seated version is spine-neutral unlike the lying version.</div>
+        <a class="video-btn" href="https://www.youtube.com/results?search_query=seated+hamstring+curl+machine+proper+form" target="_blank">▶ Watch Video</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- UPPER BODY -->
+  <section>
+    <div class="section-header">
+      <span class="section-icon">🏋️</span>
+      <span class="section-title">Upper Body (Spinal Decompression)</span>
+      <span class="section-count" id="count-upper">0/2</span>
+    </div>
+
+    <div class="exercise-card" id="ex-16" data-section="upper">
+      <div class="card-top" onclick="toggleCard(16)">
+        <div class="check-circle" onclick="toggleDone(event,16)">✓</div>
+        <span class="exercise-name">Lat Pulldown</span>
+        <span class="badge">3 sets · 12 reps · Moderate weight</span>
+        <span class="expand-icon">▼</span>
+      </div>
+      <div class="card-body" id="body-16">
+        <div class="how-to"><strong>How to do it:</strong><ol>
+          <li>Sit at the lat pulldown machine, thighs secured under pads.</li>
+          <li>Grip bar slightly wider than shoulder-width, palms facing away.</li>
+          <li>Lean back slightly (~15°) and pull bar down to upper chest.</li>
+          <li>Squeeze shoulder blades together at bottom. Slowly return to full arm extension.</li>
+          <li>Do NOT yank or use momentum — slow and controlled.</li>
+        </ol></div>
+        <div class="tip-box">Pulling exercises gently decompress the lumbar spine while building upper back muscles that support posture — a double benefit for back pain sufferers.</div>
+        <a class="video-btn" href="https://www.youtube.com/results?search_query=lat+pulldown+proper+form+lower+back+pain" target="_blank">▶ Watch Video</a>
+      </div>
+    </div>
+
+    <div class="exercise-card" id="ex-17" data-section="upper">
+      <div class="card-top" onclick="toggleCard(17)">
+        <div class="check-circle" onclick="toggleDone(event,17)">✓</div>
+        <span class="exercise-name">Seated Cable Row</span>
+        <span class="badge">3 sets · 12 reps · Moderate weight</span>
+        <span class="expand-icon">▼</span>
+      </div>
+      <div class="card-body" id="body-17">
+        <div class="how-to"><strong>How to do it:</strong><ol>
+          <li>Sit at cable row station with feet on footrests, knees slightly bent.</li>
+          <li>Sit tall — back upright, chest forward. Grip the handle.</li>
+          <li>Pull handle toward lower chest/belly button while squeezing shoulder blades together.</li>
+          <li>Hold 1 second. Slowly return to full arm extension without rounding your back.</li>
+          <li>Avoid rocking forward and back to generate momentum.</li>
+        </ol></div>
+        <div class="tip-box">Strengthens the mid-back which pulls shoulders back and reduces the forward-rounding posture that compresses lumbar discs all day.</div>
+        <a class="video-btn" href="https://www.youtube.com/results?search_query=seated+cable+row+proper+form+back+muscles" target="_blank">▶ Watch Video</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- COOL-DOWN -->
+  <section>
+    <div class="section-header">
+      <span class="section-icon">❄️</span>
+      <span class="section-title">Cool-Down</span>
+      <span class="section-count" id="count-cooldown">0/2</span>
+    </div>
+
+    <div class="exercise-card" id="ex-18" data-section="cooldown">
+      <div class="card-top" onclick="toggleCard(18)">
+        <div class="check-circle" onclick="toggleDone(event,18)">✓</div>
+        <span class="exercise-name">Seated Hamstring Stretch</span>
+        <span class="badge">30 sec · Each leg</span>
+        <span class="expand-icon">▼</span>
+      </div>
+      <div class="card-body" id="body-18">
+        <div class="how-to"><strong>How to do it:</strong><ol>
+          <li>Sit on the edge of a bench. Extend one leg straight in front.</li>
+          <li>Keeping back straight (don't round!), hinge forward at the hips until you feel a stretch in the back of the thigh.</li>
+          <li>Hold 30 seconds. Breathe deeply. Switch legs.</li>
+          <li>If too intense, bend the knee slightly.</li>
+        </ol></div>
+        <div class="tip-box">Stretching warm hamstrings after exercise is far more effective than cold stretching. Pays off in reduced back tightness the next day.</div>
+        <a class="video-btn" href="https://www.youtube.com/results?search_query=seated+hamstring+stretch+lower+back+pain+relief" target="_blank">▶ Watch Video</a>
+      </div>
+    </div>
+
+    <div class="exercise-card" id="ex-19" data-section="cooldown">
+      <div class="card-top" onclick="toggleCard(19)">
+        <div class="check-circle" onclick="toggleDone(event,19)">✓</div>
+        <span class="exercise-name">Child's Pose</span>
+        <span class="badge">2 sets · 60 sec</span>
+        <span class="expand-icon">▼</span>
+      </div>
+      <div class="card-body" id="body-19">
+        <div class="how-to"><strong>How to do it:</strong><ol>
+          <li>Kneel on a mat, big toes together, knees apart.</li>
+          <li>Sit hips back toward heels as far as comfortably possible.</li>
+          <li>Reach arms forward on the floor, let forehead rest on the mat.</li>
+          <li>Breathe deeply into your lower back. Feel the gentle stretch release with each breath.</li>
+          <li>If knees are uncomfortable, place a folded towel under them.</li>
+        </ol></div>
+        <div class="tip-box">Gently decompresses the lumbar vertebrae. One of the most universally relieving finishers for lower back conditions. Never skip this one.</div>
+        <a class="video-btn" href="https://www.youtube.com/results?search_query=child's+pose+lower+back+pain+relief+yoga" target="_blank">▶ Watch Video</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="complete-banner" id="completeBanner">
+    <h2>🎉 Workout Complete!</h2>
+    <p>Great work, John! Hit Reset when you're done to log this workout and update your progress.</p>
+  </div>
+
+</div><!-- end tab-workout -->
+
+
+<!-- ===================== SCHEDULE TAB ===================== -->
+<div class="tab-pane" id="tab-schedule">
+
+  <div class="schedule-note">
+    <strong>Your Weekly Plan: Mon · Wed · Fri</strong><br>
+    Rest days between sessions are essential — that's when your back muscles actually recover and get stronger. Walking on rest days is great.
+  </div>
+
+  <!-- Weekly strip -->
+  <div class="week-strip">
+    <div class="day-chip workout"><span class="day-name">MON</span><span class="day-icon">🏋️</span></div>
+    <div class="day-chip"><span class="day-name">TUE</span><span class="day-icon">🚶</span></div>
+    <div class="day-chip workout"><span class="day-name">WED</span><span class="day-icon">🏋️</span></div>
+    <div class="day-chip"><span class="day-name">THU</span><span class="day-icon">🚶</span></div>
+    <div class="day-chip workout"><span class="day-name">FRI</span><span class="day-icon">🏋️</span></div>
+    <div class="day-chip"><span class="day-name">SAT</span><span class="day-icon">😴</span></div>
+    <div class="day-chip"><span class="day-name">SUN</span><span class="day-icon">😴</span></div>
+  </div>
+
+  <!-- PHASE 1 -->
+  <div class="phase phase-1" id="phase-block-1">
+    <div class="phase-header">
+      <div>
+        <span class="phase-label">Phase 1</span>
+        <div class="phase-title">Foundation</div>
+        <div class="phase-sub">Workouts 1–6 &nbsp;·&nbsp; 1 set each &nbsp;·&nbsp; 3 days/week</div>
+      </div>
+      <div style="text-align:right; margin-left:auto;">
+        <div class="here-badge" id="here-badge-1">📍 You are here</div>
+        <div class="phase-days">~35–45<br>min/session</div>
+      </div>
+    </div>
+    <div class="phase-body">
+      <div class="phase-tracker" id="phase-tracker-1">
+        <div class="phase-tracker-bar-wrap"><div class="phase-tracker-bar" id="phase-bar-1"></div></div>
+        <div class="phase-tracker-label" id="phase-label-1">0 of 6 workouts complete</div>
+      </div>
+      <ul class="ex-list">
+        <li><span class="ex-dot"></span>Stationary Bike (10 min)</li>
+        <li><span class="ex-dot"></span>Cat-Cow Stretch</li>
+        <li><span class="ex-dot"></span>QL Ball Release</li>
+        <li><span class="ex-dot"></span>Deep Core Activation</li>
+        <li><span class="ex-dot"></span>Knee-to-Chest Stretch</li>
+        <li><span class="ex-dot"></span>Glute Bridge</li>
+        <li><span class="ex-dot"></span>Bird Dog</li>
+        <li><span class="ex-dot"></span>Child's Pose</li>
+      </ul>
+      <div class="rule-box">
+        <strong>🎯 Goal for these workouts</strong>
+        Learn the movements and see how your back feels the next morning. If you wake up noticeably more sore or stiff than usual, reduce reps and give yourself an extra rest day. Do NOT push through sharp pain.
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 2 -->
+  <div class="phase phase-2" id="phase-block-2">
+    <div class="phase-header">
+      <div>
+        <span class="phase-label">Phase 2</span>
+        <div class="phase-title">Add Mobility + Core</div>
+        <div class="phase-sub">Workouts 7–12 &nbsp;·&nbsp; 2 sets each &nbsp;·&nbsp; 3 days/week</div>
+      </div>
+      <div style="text-align:right; margin-left:auto;">
+        <div class="here-badge" id="here-badge-2">📍 You are here</div>
+        <div class="phase-days">~45–55<br>min/session</div>
+      </div>
+    </div>
+    <div class="phase-body">
+      <div class="phase-tracker" id="phase-tracker-2">
+        <div class="phase-tracker-bar-wrap"><div class="phase-tracker-bar" id="phase-bar-2"></div></div>
+        <div class="phase-tracker-label" id="phase-label-2">0 of 6 workouts complete</div>
+      </div>
+      <ul class="ex-list">
+        <li><span class="ex-dot"></span>Everything from Phase 1</li>
+        <li><span class="ex-dot"></span>Figure-4 Piriformis Stretch</li>
+        <li><span class="ex-dot"></span>Hip Flexor Stretch</li>
+        <li><span class="ex-dot"></span>Dead Bug</li>
+        <li><span class="ex-dot"></span>Side Plank</li>
+        <li><span class="ex-dot"></span>Seated Hamstring Stretch</li>
+      </ul>
+      <div class="rule-box">
+        <strong>🎯 Goal for these workouts</strong>
+        Bump Phase 1 exercises to 2 sets. Start adding the new ones at 1 set. You should begin noticing less morning stiffness and more confidence moving. Increase sets on new exercises only if they feel manageable.
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 3 -->
+  <div class="phase phase-3" id="phase-block-3">
+    <div class="phase-header">
+      <div>
+        <span class="phase-label">Phase 3</span>
+        <div class="phase-title">Add Gym Machines</div>
+        <div class="phase-sub">Workouts 13–18 &nbsp;·&nbsp; 2–3 sets each &nbsp;·&nbsp; 3 days/week</div>
+      </div>
+      <div style="text-align:right; margin-left:auto;">
+        <div class="here-badge" id="here-badge-3">📍 You are here</div>
+        <div class="phase-days">~55–65<br>min/session</div>
+      </div>
+    </div>
+    <div class="phase-body">
+      <div class="phase-tracker" id="phase-tracker-3">
+        <div class="phase-tracker-bar-wrap"><div class="phase-tracker-bar" id="phase-bar-3"></div></div>
+        <div class="phase-tracker-label" id="phase-label-3">0 of 6 workouts complete</div>
+      </div>
+      <ul class="ex-list">
+        <li><span class="ex-dot"></span>Everything from Phase 2</li>
+        <li><span class="ex-dot"></span>Leg Press Machine</li>
+        <li><span class="ex-dot"></span>Hip Abductor Machine</li>
+        <li><span class="ex-dot"></span>Hip Adductor Machine</li>
+        <li><span class="ex-dot"></span>Seated Hamstring Curl</li>
+        <li><span class="ex-dot"></span>Lat Pulldown</li>
+        <li><span class="ex-dot"></span>Seated Cable Row</li>
+        <li><span class="ex-dot"></span>Paloff Press (cable)</li>
+      </ul>
+      <div class="rule-box">
+        <strong>🎯 Goal for these workouts</strong>
+        Start all new machine exercises at the lightest weight that feels challenging — probably much lighter than you'd expect. You can always add weight; you can't un-injure your back. Focus on feeling the right muscles work, not how heavy you're lifting.
+      </div>
+    </div>
+  </div>
+
+  <!-- PHASE 4 -->
+  <div class="phase phase-4" id="phase-block-4">
+    <div class="phase-header">
+      <div>
+        <span class="phase-label">Phase 4</span>
+        <div class="phase-title">Full Routine</div>
+        <div class="phase-sub">Workout 19+ &nbsp;·&nbsp; 3 sets each &nbsp;·&nbsp; 3–4 days/week</div>
+      </div>
+      <div style="text-align:right; margin-left:auto;">
+        <div class="here-badge" id="here-badge-4">📍 You are here</div>
+        <div class="phase-days">~65–75<br>min/session</div>
+      </div>
+    </div>
+    <div class="phase-body">
+      <ul class="ex-list">
+        <li><span class="ex-dot"></span>All 20 exercises</li>
+        <li><span class="ex-dot"></span>3 full sets on all strength work</li>
+        <li><span class="ex-dot"></span>Gradually increase weights</li>
+        <li><span class="ex-dot"></span>Optional 4th day if feeling good</li>
+      </ul>
+      <div class="rule-box">
+        <strong>🎯 Goal from here on</strong>
+        This is your maintenance routine. Add a 4th day only if you consistently feel good and recover well. Continue increasing weights slowly over months. The goal is long-term pain reduction and spinal support — not a race.
+        <br><br><strong>⏱ Managing session time:</strong> To keep workouts under 70 min in Phase 4, alternate the Hip Abductor and Hip Adductor machines on different days — do Hip Abductor on Mon/Fri and Hip Adductor on Wed (or swap). They do not need to be done together every session.
+      </div>
+    </div>
+  </div>
+
+  <div class="note-box" style="margin-top:4px;">
+    <strong>The "Next Morning Test"</strong> — After every session, check how you feel the next morning. Mild muscle soreness = good, you worked something. Increased back pain or stiffness = you did too much. Scale back one phase and hold there another week before progressing.
+  </div>
+
+</div><!-- end tab-schedule -->
+
+<!-- ===================== PHASE-UP MODAL ===================== -->
+<div class="phaseup-overlay" id="phaseup-overlay">
+  <div class="phaseup-modal">
+    <h2 id="phaseup-title">🎉 Phase Unlocked!</h2>
+    <p id="phaseup-body">You've earned the next phase. Check the Schedule tab to see what's new.</p>
+    <button class="phaseup-close-btn" onclick="closePhaseUp()">Let's go! →</button>
+  </div>
+</div>
+
+<script>
+  // ─── WORKOUT COUNTER ─────────────────────────────────────────────────────────
+
+  // Phase thresholds: 6 workouts per phase
+  // Phase 1: workouts 1-6 | Phase 2: 7-12 | Phase 3: 13-18 | Phase 4: 19+
+  const PHASE_NAMES = ['', 'Foundation', 'Add Mobility + Core', 'Add Gym Machines', 'Full Routine'];
+
+  function getWorkoutCount() {
+    const stored = localStorage.getItem('workoutCount');
+    if (stored === null) {
+      // First load — John already completed workout #1 today
+      localStorage.setItem('workoutCount', '1');
+      return 1;
+    }
+    return parseInt(stored, 10);
+  }
+
+  function saveWorkoutCount(n) {
+    localStorage.setItem('workoutCount', String(n));
+  }
+
+  function getPhaseForCount(count) {
+    if (count >= 19) return 4;
+    if (count >= 13) return 3;
+    if (count >= 7)  return 2;
+    return 1;
+  }
+
+  // How many workouts into the current phase, and how many per phase
+  function getPhaseProgress(count) {
+    const phase = getPhaseForCount(count);
+    const phaseStart = [0, 0, 6, 12, 18]; // count at which each phase begins
+    const phaseTotal = [0, 6, 6, 6, null]; // null = open-ended
+    const inPhase = count - phaseStart[phase];
+    return { phase, inPhase, total: phaseTotal[phase] };
+  }
+
+  function updateWorkoutStats() {
+    const count  = getWorkoutCount();
+    const { phase, inPhase, total } = getPhaseProgress(count);
+
+    // Header chips
+    document.getElementById('workout-count-chip').textContent = 'Workout #' + count;
+    document.getElementById('phase-chip').textContent = 'Phase ' + phase + ' of 4 · ' + PHASE_NAMES[phase];
+
+    // Update each phase block on the schedule tab
+    for (let p = 1; p <= 4; p++) {
+      const badge   = document.getElementById('here-badge-' + p);
+      const block   = document.getElementById('phase-block-' + p);
+      const tracker = document.getElementById('phase-tracker-' + p);
+      const bar     = document.getElementById('phase-bar-' + p);
+      const label   = document.getElementById('phase-label-' + p);
+
+      const isCurrent  = (p === phase);
+      const isComplete = (p < phase);
+
+      // Show/hide "You are here" badge
+      badge.style.display = isCurrent ? 'block' : 'none';
+
+      // Glow on current phase
+      block.classList.toggle('current-phase', isCurrent);
+
+      // Phase tracker bars (phases 1–3 only)
+      if (tracker) {
+        if (p < phase) {
+          // Fully completed phase
+          bar.style.width = '100%';
+          label.textContent = '✓ Completed (6/6 workouts)';
+        } else if (p === phase && total !== null) {
+          // Current phase with a total
+          const pct = Math.min(Math.round((inPhase / total) * 100), 100);
+          bar.style.width = pct + '%';
+          label.textContent = inPhase + ' of ' + total + ' workouts complete in this phase';
+        } else if (p === phase && total === null) {
+          // Phase 4 — open-ended, just show count
+          bar.style.width = '100%';
+          label.textContent = 'Workout #' + count + ' — keep it going!';
+        } else {
+          // Future phase
+          bar.style.width = '0%';
+          label.textContent = 'Starts after workout ' + ([0,6,12,18][p]);
+        }
+      }
+    }
+  }
+
+  function showPhaseUp(newPhase) {
+    const phaseColors = ['', '#4ade80', '#60a5fa', '#fb923c', '#a78bfa'];
+    const modal = document.querySelector('.phaseup-modal');
+    modal.style.borderColor = phaseColors[newPhase] || '#22c55e';
+    document.getElementById('phaseup-title').textContent = '🎉 Phase ' + newPhase + ' Unlocked!';
+    document.getElementById('phaseup-body').innerHTML =
+      '<strong>' + PHASE_NAMES[newPhase] + '</strong><br><br>' +
+      'You\'ve completed 6 workouts — time to level up! Tap the Schedule tab to see what\'s new this phase.';
+    document.getElementById('phaseup-overlay').classList.add('show');
+  }
+
+  function closePhaseUp() {
+    document.getElementById('phaseup-overlay').classList.remove('show');
+  }
+
+  // ─── EXERCISE LOGIC ──────────────────────────────────────────────────────────
+
+  const total    = 20;
+  const done     = new Array(total).fill(false);
+  const expanded = new Array(total).fill(false);
+
+  const sections = {
+    warmup:   [0,1,2,3],
+    stretch:  [4,5,6],
+    core:     [7,8,9,10,11],
+    lower:    [12,13,14,15],
+    upper:    [16,17],
+    cooldown: [18,19]
+  };
+
+  function switchTab(name) {
+    document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + name).classList.add('active');
+    event.target.classList.add('active');
+  }
+
+  function toggleDone(e, idx) {
+    e.stopPropagation();
+    done[idx] = !done[idx];
+    document.getElementById('ex-' + idx).classList.toggle('done', done[idx]);
+    updateProgress();
+    updateSectionCounts();
+  }
+
+  function toggleCard(idx) {
+    expanded[idx] = !expanded[idx];
+    document.getElementById('body-' + idx).classList.toggle('open', expanded[idx]);
+    document.querySelector('#ex-' + idx + ' .card-top').classList.toggle('expanded', expanded[idx]);
+  }
+
+  function updateProgress() {
+    const count = done.filter(Boolean).length;
+    const pct   = Math.round((count / total) * 100);
+    document.getElementById('progressBar').style.width = pct + '%';
+    document.getElementById('progressLabel').textContent = count + ' of ' + total + ' exercises complete';
+    document.getElementById('completeBanner').classList.toggle('show', count === total);
+  }
+
+  function updateSectionCounts() {
+    for (const [sec, idxs] of Object.entries(sections)) {
+      const c = idxs.filter(i => done[i]).length;
+      document.getElementById('count-' + sec).textContent = c + '/' + idxs.length;
+    }
+  }
+
+  function resetAll() {
+    // ── Count this workout ──
+    const oldCount = getWorkoutCount();
+    const newCount = oldCount + 1;
+    saveWorkoutCount(newCount);
+    const oldPhase = getPhaseForCount(oldCount);
+    const newPhase = getPhaseForCount(newCount);
+
+    // ── Clear checkboxes ──
+    done.fill(false);
+    expanded.fill(false);
+    for (let i = 0; i < total; i++) {
+      const card = document.getElementById('ex-' + i);
+      if (card) {
+        card.classList.remove('done');
+        const body = document.getElementById('body-' + i);
+        if (body) body.classList.remove('open');
+        const top = card.querySelector('.card-top');
+        if (top) top.classList.remove('expanded');
+      }
+    }
+    updateProgress();
+    updateSectionCounts();
+    updateWorkoutStats();
+
+    // ── Phase-up celebration ──
+    if (newPhase > oldPhase) {
+      showPhaseUp(newPhase);
+    }
+  }
+
+  // ─── INIT ────────────────────────────────────────────────────────────────────
+  updateWorkoutStats();
+</script>
+
+</body>
+</html>
