@@ -25,7 +25,7 @@ Railway watches the GitHub repo. To update the live app:
 ## The App Structure
 Two tabs:
 - **Workout tab**: 24 exercises total (exercise IDs 0–23) with checkboxes, instructions, tips, per-exercise weight tracking, and YouTube video links. Progress bar tracks the session and only counts exercises visible for that day's Workout A/B variant. Reset button clears checkboxes, advances the workout counter, and bumps weight streaks.
-- **Schedule tab**: Color-coded 4-phase progression plan with a Mon/Wed/Fri weekly calendar, plus an A/B explainer card.
+- **Schedule tab**: Mon/Wed/Fri weekly calendar, an A/B explainer card, and a single "Your Routine" info box (full 3-set routine every session, no phases).
 
 ### 6 Exercise Sections (as of 2026-07-06 redesign)
 1. Warm-Up (4 staple + 1 rotating) — Stationary Bike, Cat-Cow, QL Ball Release, Deep Core Activation, + Rowing Machine (Workout A) / Ski Erg (Workout B)
@@ -37,11 +37,7 @@ Two tabs:
 
 **Redesigned 2026-07-06**: Removed Bird Dog, Dead Bug, Glute Bridge, and Side Plank (floor/kneeling work aggravated John's knees; Side Plank also loaded his arthritic shoulder). Replaced with machine-based core work. Added Workout A/B rotation (derived from `workoutCount` parity — odd = A, even = B) so session length stays ~20 exercises while still cycling through more machine variety across the week. Added a "last weight used" input per strength exercise (`localStorage.weightData`, keyed by exercise id) with a streak counter that surfaces an "⬆️ Try adding weight" badge once the same weight has been logged 6 workouts in a row.
 
-## The 4-Phase Schedule
-- Phase 1 (Weeks 1-2): Foundation exercises, 1 set, ~35-45 min
-- Phase 2 (Weeks 3-4): Add mobility + machine core, 2 sets, ~45-55 min
-- Phase 3 (Weeks 5-6): Add remaining gym machines, 2-3 sets, ~55-65 min
-- Phase 4 (Week 7+): Full A/B routine, 3 sets, 3-4 days/week, ~55-65 min (kept in check by the A/B rotation instead of manual alternating)
+**Phases removed 2026-07-06**: John was 12+ days in and wanted to skip straight to the full routine. Removed the 4-phase progression system entirely (phase chip, phase blocks on the Schedule tab, phase-up modal, and all phase JS logic). The app now always runs the full 3-set A/B routine — no more Phase 1-4 unlocking. A one-time migration flag (`localStorage.phasesRemovedV1`) resets `workoutCount` to 1 the first time the updated app loads, so the A/B rotation restarts fresh at Workout 1/A instead of picking up mid-phase.
 
 Workout days: Monday / Wednesday / Friday
 
