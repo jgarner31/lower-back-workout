@@ -52,6 +52,10 @@
     color: #7dd3fc;
     border-color: #1e3a5f;
   }
+  .stats-chip.variant-chip {
+    color: #fbbf24;
+    border-color: #78350f;
+  }
 
   /* ---- TABS ---- */
   .tabs {
@@ -200,6 +204,17 @@
     white-space: nowrap;
   }
 
+  .variant-tag {
+    background: #78350f;
+    border: 1px solid #d97706;
+    color: #fde68a;
+    border-radius: 20px;
+    padding: 2px 9px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
   .expand-icon { color: #475569; font-size: 0.75rem; margin-left: 2px; transition: transform 0.3s; }
   .expanded .expand-icon { transform: rotate(180deg); }
 
@@ -224,6 +239,45 @@
     line-height: 1.5;
   }
   .tip-box::before { content: '💡 Tip: '; font-weight: 600; }
+
+  .weight-track {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0,0,0,0.25);
+    border: 1px solid #334155;
+    border-radius: 8px;
+    padding: 8px 11px;
+    margin-bottom: 10px;
+    font-size: 0.8rem;
+    color: #94a3b8;
+    flex-wrap: wrap;
+  }
+  .weight-track label { color: #cbd5e1; }
+  .weight-input {
+    width: 70px;
+    background: #0f172a;
+    border: 1px solid #475569;
+    border-radius: 6px;
+    color: #e2e8f0;
+    padding: 4px 8px;
+    font-size: 0.85rem;
+  }
+  .weight-input:focus { outline: none; border-color: #3b82f6; }
+  .weight-unit { color: #64748b; }
+  .weight-badge {
+    display: none;
+    align-items: center;
+    gap: 4px;
+    background: #78350f;
+    border: 1px solid #d97706;
+    color: #fde68a;
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-left: auto;
+  }
 
   .video-btn {
     display: inline-flex;
@@ -452,6 +506,24 @@
   }
   .schedule-note strong { color: #fbbf24; }
 
+  .ab-explainer {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .ab-card {
+    flex: 1;
+    border-radius: 12px;
+    padding: 14px 16px;
+    border: 1px solid #334155;
+    background: #1e293b;
+  }
+  .ab-card h3 { font-size: 0.95rem; margin-bottom: 6px; }
+  .ab-card.a-card h3 { color: #fbbf24; }
+  .ab-card.b-card h3 { color: #38bdf8; }
+  .ab-card p { font-size: 0.8rem; color: #94a3b8; line-height: 1.6; }
+  @media (max-width: 500px) { .ab-explainer { flex-direction: column; } }
+
   /* ---- PHASE-UP MODAL ---- */
   .phaseup-overlay {
     display: none;
@@ -496,6 +568,7 @@
   <div class="workout-stats">
     <span class="stats-chip" id="workout-count-chip">Workout #1</span>
     <span class="stats-chip phase-chip" id="phase-chip">Phase 1 of 4 · Foundation</span>
+    <span class="stats-chip variant-chip" id="variant-chip">Workout A</span>
   </div>
 </header>
 
@@ -525,7 +598,7 @@
     <div class="section-header">
       <span class="section-icon">🔥</span>
       <span class="section-title">Warm-Up</span>
-      <span class="section-count" id="count-warmup">0/4</span>
+      <span class="section-count" id="count-warmup">0/5</span>
     </div>
 
     <div class="exercise-card" id="ex-0" data-section="warmup">
@@ -559,7 +632,7 @@
           <li>Get on all fours — hands under shoulders, knees under hips.</li>
           <li><strong>Cat:</strong> Exhale and round your spine up toward the ceiling, tucking your chin and pelvis.</li>
           <li><strong>Cow:</strong> Inhale and drop your belly toward the floor, lifting your head and tailbone.</li>
-          <li>Flow slowly between the two. Never force the range of motion.</li>
+          <li>Flow slowly between the two. Never force the range of motion. If kneeling bothers your knees, place a folded towel or mat pad under them.</li>
         </ol></div>
         <div class="tip-box">One of the best mobilizers for arthritic lumbar joints. Move only as far as is pain-free.</div>
         <a class="video-btn" href="https://www.youtube.com/results?search_query=cat+cow+stretch+lower+back+arthritis" target="_blank">▶ Watch Video</a>
@@ -581,7 +654,7 @@
           <li>When you find a sore or tight spot, pause there for 20–30 seconds, breathing slowly and deeply.</li>
           <li>Gently shift the ball to new spots along the muscle. Spend 2–3 minutes per side. More tender = more work needed there.</li>
         </ol></div>
-        <div class="tip-box">The QL muscle connects your pelvis to your spine and is a hidden driver of lumbar arthritis pain. Tight QLs cause your back muscles to overwork and your spine to compress unevenly. Releasing them before exercise reduces baseline tightness and makes your Bird Dog, Dead Bug, and Side Plank far more effective. Always release before stretching — not after.</div>
+        <div class="tip-box">The QL muscle connects your pelvis to your spine and is a hidden driver of lumbar arthritis pain. Tight QLs cause your back muscles to overwork and your spine to compress unevenly. Releasing them before exercise reduces baseline tightness and makes your Pallof Press and core work far more effective. Always release before stretching — not after.</div>
         <a class="video-btn" href="https://www.youtube.com/results?search_query=quadratus+lumborum+QL+release+tennis+ball+lower+back+pain+relief" target="_blank">▶ Watch Video</a>
       </div>
     </div>
@@ -600,8 +673,50 @@
           <li>You should feel a subtle, deep tightening under your fingertips. That is your transverse abdominis — your deep core "corset" muscle — switching on.</li>
           <li>Hold the gentle brace for 5–6 seconds while continuing to breathe normally. Release fully. That is one rep. Do 10 reps.</li>
         </ol></div>
-        <div class="tip-box">Most back pain sufferers have a "turned off" deep core after months of guarding. This exercise wakes it back up. Your Bird Dog and Dead Bug only work properly if this foundation is already activated. Takes 2 minutes and pays dividends the entire workout. Focus on the internal sensation — this is quiet, internal work, not a visible movement.</div>
+        <div class="tip-box">Most back pain sufferers have a "turned off" deep core after months of guarding. This exercise wakes it back up. Your machine core work only works properly if this foundation is already activated. Takes 2 minutes and pays dividends the entire workout. Focus on the internal sensation — this is quiet, internal work, not a visible movement.</div>
         <a class="video-btn" href="https://www.youtube.com/results?search_query=transverse+abdominis+activation+deep+core+lower+back+pain+beginners" target="_blank">▶ Watch Video</a>
+      </div>
+    </div>
+
+    <div class="exercise-card" id="ex-4" data-section="warmup" data-variant="A">
+      <div class="card-top" onclick="toggleCard(4)">
+        <div class="check-circle" onclick="toggleDone(event,4)">✓</div>
+        <span class="exercise-name">Rowing Machine</span>
+        <span class="variant-tag">Workout A</span>
+        <span class="badge">5 min · Easy Pace</span>
+        <span class="expand-icon">▼</span>
+      </div>
+      <div class="card-body" id="body-4">
+        <div class="how-to"><strong>How to do it:</strong><ol>
+          <li>Sit tall on the rower with feet strapped in and a light damper/resistance setting.</li>
+          <li>Drive first with your legs, then lean back slightly and pull the handle to your lower ribs.</li>
+          <li>Reverse the order on the way back: arms out, lean forward from the hips, then bend your knees.</li>
+          <li>Keep your back straight the whole stroke — the power comes from your legs, not from yanking with your lower back.</li>
+          <li>Row at an easy, conversational pace for 5 minutes.</li>
+        </ol></div>
+        <div class="tip-box">A seated, low-impact full-body warm-up alternative to the bike that also primes your back and lats. Just be sure the drive comes from your legs and hips, not a rounded lower back.</div>
+        <a class="video-btn" href="https://www.youtube.com/results?search_query=rowing+machine+proper+form+lower+back+safe" target="_blank">▶ Watch Video</a>
+      </div>
+    </div>
+
+    <div class="exercise-card" id="ex-5" data-section="warmup" data-variant="B">
+      <div class="card-top" onclick="toggleCard(5)">
+        <div class="check-circle" onclick="toggleDone(event,5)">✓</div>
+        <span class="exercise-name">Ski Erg</span>
+        <span class="variant-tag">Workout B</span>
+        <span class="badge">5 min · Easy Pace</span>
+        <span class="expand-icon">▼</span>
+      </div>
+      <div class="card-body" id="body-5">
+        <div class="how-to"><strong>How to do it:</strong><ol>
+          <li>Stand facing the machine, feet shoulder-width apart, holding a handle in each hand at a comfortable overhead height — don't force a full overhead reach if your shoulder feels tight.</li>
+          <li>Hinge gently at the hips and pull both handles down and back past your hips, like a poling motion in cross-country skiing.</li>
+          <li>Let the handles return smoothly overhead and repeat.</li>
+          <li>Keep the hip hinge light and your lower back neutral — don't round at the bottom of each pull.</li>
+          <li>Work at an easy pace for 5 minutes.</li>
+        </ol></div>
+        <div class="tip-box">Standing, low-impact, and works your lats, core, and legs together with zero floor work or spinal compression. Keep the overhead reach comfortable and the hip hinge gentle.</div>
+        <a class="video-btn" href="https://www.youtube.com/results?search_query=ski+erg+proper+form+low+back+beginners" target="_blank">▶ Watch Video</a>
       </div>
     </div>
   </section>
@@ -614,14 +729,14 @@
       <span class="section-count" id="count-stretch">0/3</span>
     </div>
 
-    <div class="exercise-card" id="ex-4" data-section="stretch">
-      <div class="card-top" onclick="toggleCard(4)">
-        <div class="check-circle" onclick="toggleDone(event,4)">✓</div>
+    <div class="exercise-card" id="ex-6" data-section="stretch">
+      <div class="card-top" onclick="toggleCard(6)">
+        <div class="check-circle" onclick="toggleDone(event,6)">✓</div>
         <span class="exercise-name">Knee-to-Chest Stretch</span>
         <span class="badge">30 sec · Each leg</span>
         <span class="expand-icon">▼</span>
       </div>
-      <div class="card-body" id="body-4">
+      <div class="card-body" id="body-6">
         <div class="how-to"><strong>How to do it:</strong><ol>
           <li>Lie on your back, knees bent.</li>
           <li>Slowly pull one knee toward your chest, clasping your hands behind the thigh.</li>
@@ -633,14 +748,14 @@
       </div>
     </div>
 
-    <div class="exercise-card" id="ex-5" data-section="stretch">
-      <div class="card-top" onclick="toggleCard(5)">
-        <div class="check-circle" onclick="toggleDone(event,5)">✓</div>
+    <div class="exercise-card" id="ex-7" data-section="stretch">
+      <div class="card-top" onclick="toggleCard(7)">
+        <div class="check-circle" onclick="toggleDone(event,7)">✓</div>
         <span class="exercise-name">Figure-4 Piriformis Stretch</span>
         <span class="badge">30 sec · Each side</span>
         <span class="expand-icon">▼</span>
       </div>
-      <div class="card-body" id="body-5">
+      <div class="card-body" id="body-7">
         <div class="how-to"><strong>How to do it:</strong><ol>
           <li>Lie on your back, knees bent.</li>
           <li>Cross your right ankle over your left knee (figure-4 shape).</li>
@@ -652,21 +767,22 @@
       </div>
     </div>
 
-    <div class="exercise-card" id="ex-6" data-section="stretch">
-      <div class="card-top" onclick="toggleCard(6)">
-        <div class="check-circle" onclick="toggleDone(event,6)">✓</div>
+    <div class="exercise-card" id="ex-8" data-section="stretch">
+      <div class="card-top" onclick="toggleCard(8)">
+        <div class="check-circle" onclick="toggleDone(event,8)">✓</div>
         <span class="exercise-name">Hip Flexor Stretch (Kneeling)</span>
         <span class="badge">30 sec · Each side</span>
         <span class="expand-icon">▼</span>
       </div>
-      <div class="card-body" id="body-6">
+      <div class="card-body" id="body-8">
         <div class="how-to"><strong>How to do it:</strong><ol>
-          <li>Kneel on one knee on a mat (folded towel under knee if needed).</li>
+          <li>Kneel on one knee on a mat (folded towel under knee — use extra padding if your knees are sensitive).</li>
           <li>Place other foot flat on floor in front, making a 90° angle.</li>
           <li>Push hips forward gently until you feel a stretch in the front of the back hip.</li>
           <li>Hold 30 seconds. Keep spine upright — don't arch your lower back. Switch sides.</li>
+          <li><strong>Knee-friendly alternative:</strong> Stand and place your back foot up on a bench behind you instead of kneeling, then gently press hips forward.</li>
         </ol></div>
-        <div class="tip-box">Tight hip flexors pull the pelvis forward and increase lumbar compression. Stretching them daily is one of the highest-impact things you can do.</div>
+        <div class="tip-box">Tight hip flexors pull the pelvis forward and increase lumbar compression. Stretching them daily is one of the highest-impact things you can do. Use the standing version if kneeling irritates your knees.</div>
         <a class="video-btn" href="https://www.youtube.com/results?search_query=kneeling+hip+flexor+stretch+lower+back+pain" target="_blank">▶ Watch Video</a>
       </div>
     </div>
@@ -676,93 +792,67 @@
   <section>
     <div class="section-header">
       <span class="section-icon">💪</span>
-      <span class="section-title">Core & Stability</span>
-      <span class="section-count" id="count-core">0/5</span>
-    </div>
-
-    <div class="exercise-card" id="ex-7" data-section="core">
-      <div class="card-top" onclick="toggleCard(7)">
-        <div class="check-circle" onclick="toggleDone(event,7)">✓</div>
-        <span class="exercise-name">Bird Dog</span>
-        <span class="badge">3 sets · 10 reps each side</span>
-        <span class="expand-icon">▼</span>
-      </div>
-      <div class="card-body" id="body-7">
-        <div class="how-to"><strong>How to do it:</strong><ol>
-          <li>Start on all fours — hands under shoulders, knees under hips.</li>
-          <li>Brace your core gently (like you're about to be lightly poked in the stomach).</li>
-          <li>Slowly extend your right arm forward and left leg back simultaneously.</li>
-          <li>Hold 2–3 seconds. Keep hips level — don't rotate.</li>
-          <li>Return slowly, repeat on opposite side. That's one rep.</li>
-        </ol></div>
-        <div class="tip-box">Trains the muscles directly along your spine without loading it. One of the top physical therapy exercises for lumbar issues.</div>
-        <a class="video-btn" href="https://www.youtube.com/results?search_query=bird+dog+exercise+lower+back+pain+physical+therapy" target="_blank">▶ Watch Video</a>
-      </div>
-    </div>
-
-    <div class="exercise-card" id="ex-8" data-section="core">
-      <div class="card-top" onclick="toggleCard(8)">
-        <div class="check-circle" onclick="toggleDone(event,8)">✓</div>
-        <span class="exercise-name">Dead Bug</span>
-        <span class="badge">3 sets · 8 reps each side</span>
-        <span class="expand-icon">▼</span>
-      </div>
-      <div class="card-body" id="body-8">
-        <div class="how-to"><strong>How to do it:</strong><ol>
-          <li>Lie on your back. Lift both arms straight up. Lift both knees to 90°.</li>
-          <li>Press your lower back firmly into the floor — keep it there throughout.</li>
-          <li>Slowly lower right arm overhead and extend left leg toward floor simultaneously.</li>
-          <li>Stop before your back arches. Return to start. Repeat other side.</li>
-        </ol></div>
-        <div class="tip-box">Trains your core to resist movement — exactly what it needs to protect your lumbar spine. Go only as far as your back stays flat.</div>
-        <a class="video-btn" href="https://www.youtube.com/results?search_query=dead+bug+exercise+core+lower+back+pain" target="_blank">▶ Watch Video</a>
-      </div>
+      <span class="section-title">Core & Stability (Machine-Based)</span>
+      <span class="section-count" id="count-core">0/3</span>
     </div>
 
     <div class="exercise-card" id="ex-9" data-section="core">
       <div class="card-top" onclick="toggleCard(9)">
         <div class="check-circle" onclick="toggleDone(event,9)">✓</div>
-        <span class="exercise-name">Glute Bridge</span>
-        <span class="badge">3 sets · 15 reps</span>
+        <span class="exercise-name">Seated Ab Crunch Machine</span>
+        <span class="badge">3 sets · 12–15 reps · Light-moderate</span>
         <span class="expand-icon">▼</span>
       </div>
       <div class="card-body" id="body-9">
         <div class="how-to"><strong>How to do it:</strong><ol>
-          <li>Lie on your back, knees bent, feet flat hip-width apart.</li>
-          <li>Press through your heels and squeeze glutes to lift hips off the floor.</li>
-          <li>Body forms a straight line from shoulders to knees. Do NOT hyperextend lower back.</li>
-          <li>Hold 2 seconds at top, then slowly lower. Breathe normally.</li>
+          <li>Sit in the machine with the pad against your upper chest/shoulders and feet flat on the floor or footrests.</li>
+          <li>Set a light-to-moderate weight — this is about controlled range of motion, not maxing out.</li>
+          <li>Exhale and curl your torso forward against the pad, contracting your abs.</li>
+          <li>Slowly return to the start position without letting the weight stack slam down.</li>
+          <li>Keep the motion smooth and controlled — no jerking or bouncing.</li>
         </ol></div>
-        <div class="tip-box">Weak glutes are a #1 cause of back pain — they make your back muscles overcompensate. Strong glutes = less load on your lumbar spine.</div>
-        <a class="video-btn" href="https://www.youtube.com/results?search_query=glute+bridge+lower+back+pain+physical+therapy" target="_blank">▶ Watch Video</a>
+        <div class="tip-box">Gives you the crunch stimulus without kneeling on the floor or straining your neck like a floor crunch. The seat supports your spine so the movement stays controlled and safe for an arthritic back.</div>
+        <div class="weight-track">
+          <label for="weight-9">Last weight used:</label>
+          <input type="number" id="weight-9" class="weight-input" min="0" step="5" placeholder="lbs">
+          <span class="weight-unit">lbs</span>
+          <span class="weight-badge" id="weight-badge-9">⬆️ Try adding weight</span>
+        </div>
+        <a class="video-btn" href="https://www.youtube.com/results?search_query=seated+ab+crunch+machine+proper+form+lower+back+safe" target="_blank">▶ Watch Video</a>
       </div>
     </div>
 
     <div class="exercise-card" id="ex-10" data-section="core">
       <div class="card-top" onclick="toggleCard(10)">
         <div class="check-circle" onclick="toggleDone(event,10)">✓</div>
-        <span class="exercise-name">Side Plank</span>
-        <span class="badge">2–3 sets · 20–40 sec · Each side</span>
+        <span class="exercise-name">Machine Back Extension</span>
+        <span class="badge">3 sets · 12 reps · Light weight</span>
         <span class="expand-icon">▼</span>
       </div>
       <div class="card-body" id="body-10">
         <div class="how-to"><strong>How to do it:</strong><ol>
-          <li>Lie on your right side on a mat. Stack your feet or stagger them for balance.</li>
-          <li>Place your right forearm on the floor, elbow directly under your shoulder.</li>
-          <li>Brace your core gently, then lift your hips so your body forms a straight line from head to heels. Squeeze your glutes.</li>
-          <li>Hold 20–40 seconds, breathing normally. Do not let your hips sag or pike up.</li>
-          <li>Lower slowly with control. Switch to the left side and repeat.</li>
-          <li><strong>Easier version (start here):</strong> Keep your bottom knee on the floor — same line, just a shorter lever. Much more manageable for beginners.</li>
+          <li>Sit in the machine with your lower back against the pad, thighs secured under the leg pads.</li>
+          <li>Set a light weight to start.</li>
+          <li>Slowly lean back, extending through your hips and lower back within a comfortable, pain-free range.</li>
+          <li>Squeeze gently at the end range — do NOT hyperextend or arch aggressively.</li>
+          <li>Return slowly and under control to the start position.</li>
         </ol></div>
-        <div class="tip-box">The Side Plank directly strengthens the QL muscle — the same one you released with the ball in warm-up. It builds lateral stability without compressing, flexing, or rotating the spine, which is critical for lumbar arthritis. Start on your knees and work up to the full version over several weeks. William Richards (Fitness 4 Back Pain) specifically recommends this for arthritis and disc patients.</div>
-        <a class="video-btn" href="https://www.youtube.com/results?search_query=side+plank+lower+back+pain+QL+muscle+beginners+modification" target="_blank">▶ Watch Video</a>
+        <div class="tip-box">Strengthens the erector spinae (the muscles supporting your lumbar spine) in a fully supported, seated position — no floor hyperextension bench required, and the machine limits the range so you can't overarch.</div>
+        <div class="weight-track">
+          <label for="weight-10">Last weight used:</label>
+          <input type="number" id="weight-10" class="weight-input" min="0" step="5" placeholder="lbs">
+          <span class="weight-unit">lbs</span>
+          <span class="weight-badge" id="weight-badge-10">⬆️ Try adding weight</span>
+        </div>
+        <a class="video-btn" href="https://www.youtube.com/results?search_query=seated+machine+back+extension+proper+form+lower+back+pain" target="_blank">▶ Watch Video</a>
       </div>
     </div>
+
     <div class="exercise-card" id="ex-11" data-section="core">
       <div class="card-top" onclick="toggleCard(11)">
         <div class="check-circle" onclick="toggleDone(event,11)">✓</div>
-        <span class="exercise-name">Paloff Press</span>
-        <span class="badge">Phase 3+ · 2–3 sets · 10–12 reps · Each side</span>
+        <span class="exercise-name">Pallof Press</span>
+        <span class="badge">2–3 sets · 10–12 reps · Each side</span>
         <span class="expand-icon">▼</span>
       </div>
       <div class="card-body" id="body-11">
@@ -774,7 +864,13 @@
           <li>Slowly press your hands straight out in front of you until your arms are fully extended. Pause 1–2 seconds — feel your core resisting the rotation.</li>
           <li>Slowly return your hands to your chest. That is one rep. Complete all reps on one side, then turn around and repeat facing the other direction.</li>
         </ol></div>
-        <div class="tip-box">The Paloff Press trains your core to resist rotation — completely different from planks and dead bugs. This protects your lumbar spine during everyday twisting (turning to reverse a car, reaching sideways, getting out of bed). You are already at the cable machine for Seated Cable Row, so this adds only 5–6 minutes. Introduced in Phase 3 once your deep core foundation is established. Start very light — the challenge is staying perfectly still, not the weight.</div>
+        <div class="tip-box">Trains your core to resist rotation, standing, with no floor and no shoulder overhead loading — ideal given your shoulder arthritis. Protects your lumbar spine during everyday twisting (turning to reverse a car, reaching sideways, getting out of bed). Start very light — the challenge is staying perfectly still, not the weight.</div>
+        <div class="weight-track">
+          <label for="weight-11">Last weight used:</label>
+          <input type="number" id="weight-11" class="weight-input" min="0" step="5" placeholder="lbs">
+          <span class="weight-unit">lbs</span>
+          <span class="weight-badge" id="weight-badge-11">⬆️ Try adding weight</span>
+        </div>
         <a class="video-btn" href="https://www.youtube.com/results?search_query=paloff+press+cable+anti+rotation+core+lower+back+pain+how+to" target="_blank">▶ Watch Video</a>
       </div>
     </div>
@@ -804,6 +900,12 @@
           <li>Start with very light weight — not a max-effort exercise.</li>
         </ol></div>
         <div class="tip-box">Builds quads, glutes, and hamstrings WITHOUT loading your spine — unlike squats or deadlifts. The safest lower body machine for back conditions.</div>
+        <div class="weight-track">
+          <label for="weight-12">Last weight used:</label>
+          <input type="number" id="weight-12" class="weight-input" min="0" step="5" placeholder="lbs">
+          <span class="weight-unit">lbs</span>
+          <span class="weight-badge" id="weight-badge-12">⬆️ Try adding weight</span>
+        </div>
         <a class="video-btn" href="https://www.youtube.com/results?search_query=leg+press+machine+proper+form+lower+back+pain" target="_blank">▶ Watch Video</a>
       </div>
     </div>
@@ -811,49 +913,11 @@
     <div class="exercise-card" id="ex-13" data-section="lower">
       <div class="card-top" onclick="toggleCard(13)">
         <div class="check-circle" onclick="toggleDone(event,13)">✓</div>
-        <span class="exercise-name">Hip Abductor Machine</span>
-        <span class="badge">3 sets · 15 reps · Light weight</span>
-        <span class="expand-icon">▼</span>
-      </div>
-      <div class="card-body" id="body-13">
-        <div class="how-to"><strong>How to do it:</strong><ol>
-          <li>Sit in the machine with pads on the outside of your knees.</li>
-          <li>Sit tall, back against pad, core lightly braced.</li>
-          <li>Press knees outward against pads in a controlled motion.</li>
-          <li>Slowly return — don't let the weight slam back.</li>
-        </ol></div>
-        <div class="tip-box">Hip abductors stabilize your pelvis. Weak abductors cause the pelvis to drop when walking, transferring stress directly to the lower back.</div>
-        <a class="video-btn" href="https://www.youtube.com/results?search_query=hip+abductor+machine+proper+form+glutes" target="_blank">▶ Watch Video</a>
-      </div>
-    </div>
-
-    <div class="exercise-card" id="ex-14" data-section="lower">
-      <div class="card-top" onclick="toggleCard(14)">
-        <div class="check-circle" onclick="toggleDone(event,14)">✓</div>
-        <span class="exercise-name">Hip Adductor Machine</span>
-        <span class="badge">3 sets · 15 reps · Light weight</span>
-        <span class="expand-icon">▼</span>
-      </div>
-      <div class="card-body" id="body-14">
-        <div class="how-to"><strong>How to do it:</strong><ol>
-          <li>Sit in the adductor machine with pads on the inside of your knees.</li>
-          <li>Sit upright, back against pad, feet on footrests.</li>
-          <li>Squeeze knees inward together against the pads in a controlled motion.</li>
-          <li>Slowly return. Keep core gently engaged throughout.</li>
-        </ol></div>
-        <div class="tip-box">Inner thigh strength balances the hip abductors and keeps the pelvis properly aligned, reducing asymmetric loading on your lumbar spine.</div>
-        <a class="video-btn" href="https://www.youtube.com/results?search_query=hip+adductor+machine+proper+form+inner+thigh" target="_blank">▶ Watch Video</a>
-      </div>
-    </div>
-
-    <div class="exercise-card" id="ex-15" data-section="lower">
-      <div class="card-top" onclick="toggleCard(15)">
-        <div class="check-circle" onclick="toggleDone(event,15)">✓</div>
         <span class="exercise-name">Seated Hamstring Curl Machine</span>
         <span class="badge">3 sets · 12 reps · Light weight</span>
         <span class="expand-icon">▼</span>
       </div>
-      <div class="card-body" id="body-15">
+      <div class="card-body" id="body-13">
         <div class="how-to"><strong>How to do it:</strong><ol>
           <li>Sit in the machine so the back of your ankles rest on the lower pad.</li>
           <li>Sit tall with back against the support pad.</li>
@@ -861,7 +925,117 @@
           <li>Squeeze at the bottom, then slowly return. Don't let the weight drop.</li>
         </ol></div>
         <div class="tip-box">Tight, weak hamstrings rotate the pelvis and increase disc and facet joint stress. The seated version is spine-neutral unlike the lying version.</div>
+        <div class="weight-track">
+          <label for="weight-13">Last weight used:</label>
+          <input type="number" id="weight-13" class="weight-input" min="0" step="5" placeholder="lbs">
+          <span class="weight-unit">lbs</span>
+          <span class="weight-badge" id="weight-badge-13">⬆️ Try adding weight</span>
+        </div>
         <a class="video-btn" href="https://www.youtube.com/results?search_query=seated+hamstring+curl+machine+proper+form" target="_blank">▶ Watch Video</a>
+      </div>
+    </div>
+
+    <div class="exercise-card" id="ex-14" data-section="lower" data-variant="A">
+      <div class="card-top" onclick="toggleCard(14)">
+        <div class="check-circle" onclick="toggleDone(event,14)">✓</div>
+        <span class="exercise-name">Hip Abductor Machine</span>
+        <span class="variant-tag">Workout A</span>
+        <span class="badge">3 sets · 15 reps · Light weight</span>
+        <span class="expand-icon">▼</span>
+      </div>
+      <div class="card-body" id="body-14">
+        <div class="how-to"><strong>How to do it:</strong><ol>
+          <li>Sit in the machine with pads on the outside of your knees.</li>
+          <li>Sit tall, back against pad, core lightly braced.</li>
+          <li>Press knees outward against pads in a controlled motion.</li>
+          <li>Slowly return — don't let the weight slam back.</li>
+        </ol></div>
+        <div class="tip-box">Hip abductors stabilize your pelvis. Weak abductors cause the pelvis to drop when walking, transferring stress directly to the lower back.</div>
+        <div class="weight-track">
+          <label for="weight-14">Last weight used:</label>
+          <input type="number" id="weight-14" class="weight-input" min="0" step="5" placeholder="lbs">
+          <span class="weight-unit">lbs</span>
+          <span class="weight-badge" id="weight-badge-14">⬆️ Try adding weight</span>
+        </div>
+        <a class="video-btn" href="https://www.youtube.com/results?search_query=hip+abductor+machine+proper+form+glutes" target="_blank">▶ Watch Video</a>
+      </div>
+    </div>
+
+    <div class="exercise-card" id="ex-15" data-section="lower" data-variant="A">
+      <div class="card-top" onclick="toggleCard(15)">
+        <div class="check-circle" onclick="toggleDone(event,15)">✓</div>
+        <span class="exercise-name">Leg Extension Machine</span>
+        <span class="variant-tag">Workout A</span>
+        <span class="badge">3 sets · 12 reps · Light-moderate</span>
+        <span class="expand-icon">▼</span>
+      </div>
+      <div class="card-body" id="body-15">
+        <div class="how-to"><strong>How to do it:</strong><ol>
+          <li>Sit in the machine with your knees aligned to the machine's pivot point and shins behind the lower pad.</li>
+          <li>Adjust the back pad so your knees sit right at the edge of the seat.</li>
+          <li>Extend your legs to lift the pad until legs are nearly straight — don't violently lock out.</li>
+          <li>Pause briefly at the top, then lower slowly and under control.</li>
+        </ol></div>
+        <div class="tip-box">Isolates the quads with zero spinal loading — fully seated and supported. Pairs well with Leg Press. Keep the weight light-moderate and ease off the top range if you feel any knee discomfort.</div>
+        <div class="weight-track">
+          <label for="weight-15">Last weight used:</label>
+          <input type="number" id="weight-15" class="weight-input" min="0" step="5" placeholder="lbs">
+          <span class="weight-unit">lbs</span>
+          <span class="weight-badge" id="weight-badge-15">⬆️ Try adding weight</span>
+        </div>
+        <a class="video-btn" href="https://www.youtube.com/results?search_query=leg+extension+machine+proper+form+knee+friendly" target="_blank">▶ Watch Video</a>
+      </div>
+    </div>
+
+    <div class="exercise-card" id="ex-16" data-section="lower" data-variant="B">
+      <div class="card-top" onclick="toggleCard(16)">
+        <div class="check-circle" onclick="toggleDone(event,16)">✓</div>
+        <span class="exercise-name">Hip Adductor Machine</span>
+        <span class="variant-tag">Workout B</span>
+        <span class="badge">3 sets · 15 reps · Light weight</span>
+        <span class="expand-icon">▼</span>
+      </div>
+      <div class="card-body" id="body-16">
+        <div class="how-to"><strong>How to do it:</strong><ol>
+          <li>Sit in the adductor machine with pads on the inside of your knees.</li>
+          <li>Sit upright, back against pad, feet on footrests.</li>
+          <li>Squeeze knees inward together against the pads in a controlled motion.</li>
+          <li>Slowly return. Keep core gently engaged throughout.</li>
+        </ol></div>
+        <div class="tip-box">Inner thigh strength balances the hip abductors and keeps the pelvis properly aligned, reducing asymmetric loading on your lumbar spine.</div>
+        <div class="weight-track">
+          <label for="weight-16">Last weight used:</label>
+          <input type="number" id="weight-16" class="weight-input" min="0" step="5" placeholder="lbs">
+          <span class="weight-unit">lbs</span>
+          <span class="weight-badge" id="weight-badge-16">⬆️ Try adding weight</span>
+        </div>
+        <a class="video-btn" href="https://www.youtube.com/results?search_query=hip+adductor+machine+proper+form+inner+thigh" target="_blank">▶ Watch Video</a>
+      </div>
+    </div>
+
+    <div class="exercise-card" id="ex-17" data-section="lower" data-variant="B">
+      <div class="card-top" onclick="toggleCard(17)">
+        <div class="check-circle" onclick="toggleDone(event,17)">✓</div>
+        <span class="exercise-name">Suitcase Carry</span>
+        <span class="variant-tag">Workout B</span>
+        <span class="badge">3 sets · 30–40 sec · Each side</span>
+        <span class="expand-icon">▼</span>
+      </div>
+      <div class="card-body" id="body-17">
+        <div class="how-to"><strong>How to do it:</strong><ol>
+          <li>Hold a single dumbbell or kettlebell at your side, like a suitcase, feet hip-width apart.</li>
+          <li>Gently brace your core and stand tall — do not lean or side-bend toward the weight.</li>
+          <li>Walk 20–30 steps (about 30–40 seconds), keeping your torso upright and level the whole time.</li>
+          <li>Switch the weight to your other hand and repeat.</li>
+        </ol></div>
+        <div class="tip-box">An excellent anti-lateral-flexion core exercise — your obliques and deep trunk muscles work hard to keep you upright while you walk, with zero spinal flexion, rotation, or floor work. Start light; the goal is a level torso, not how much weight you can carry.</div>
+        <div class="weight-track">
+          <label for="weight-17">Last weight used (per hand):</label>
+          <input type="number" id="weight-17" class="weight-input" min="0" step="5" placeholder="lbs">
+          <span class="weight-unit">lbs</span>
+          <span class="weight-badge" id="weight-badge-17">⬆️ Try adding weight</span>
+        </div>
+        <a class="video-btn" href="https://www.youtube.com/results?search_query=suitcase+carry+core+exercise+lower+back+safe" target="_blank">▶ Watch Video</a>
       </div>
     </div>
   </section>
@@ -871,37 +1045,43 @@
     <div class="section-header">
       <span class="section-icon">🏋️</span>
       <span class="section-title">Upper Body (Spinal Decompression)</span>
-      <span class="section-count" id="count-upper">0/2</span>
+      <span class="section-count" id="count-upper">0/3</span>
     </div>
 
-    <div class="exercise-card" id="ex-16" data-section="upper">
-      <div class="card-top" onclick="toggleCard(16)">
-        <div class="check-circle" onclick="toggleDone(event,16)">✓</div>
+    <div class="exercise-card" id="ex-18" data-section="upper">
+      <div class="card-top" onclick="toggleCard(18)">
+        <div class="check-circle" onclick="toggleDone(event,18)">✓</div>
         <span class="exercise-name">Lat Pulldown</span>
         <span class="badge">3 sets · 12 reps · Moderate weight</span>
         <span class="expand-icon">▼</span>
       </div>
-      <div class="card-body" id="body-16">
+      <div class="card-body" id="body-18">
         <div class="how-to"><strong>How to do it:</strong><ol>
           <li>Sit at the lat pulldown machine, thighs secured under pads.</li>
           <li>Grip bar slightly wider than shoulder-width, palms facing away.</li>
           <li>Lean back slightly (~15°) and pull bar down to upper chest.</li>
           <li>Squeeze shoulder blades together at bottom. Slowly return to full arm extension.</li>
-          <li>Do NOT yank or use momentum — slow and controlled.</li>
+          <li>Do NOT yank or use momentum — slow and controlled. Stop short of full stretch if your shoulder feels any pinching.</li>
         </ol></div>
         <div class="tip-box">Pulling exercises gently decompress the lumbar spine while building upper back muscles that support posture — a double benefit for back pain sufferers.</div>
+        <div class="weight-track">
+          <label for="weight-18">Last weight used:</label>
+          <input type="number" id="weight-18" class="weight-input" min="0" step="5" placeholder="lbs">
+          <span class="weight-unit">lbs</span>
+          <span class="weight-badge" id="weight-badge-18">⬆️ Try adding weight</span>
+        </div>
         <a class="video-btn" href="https://www.youtube.com/results?search_query=lat+pulldown+proper+form+lower+back+pain" target="_blank">▶ Watch Video</a>
       </div>
     </div>
 
-    <div class="exercise-card" id="ex-17" data-section="upper">
-      <div class="card-top" onclick="toggleCard(17)">
-        <div class="check-circle" onclick="toggleDone(event,17)">✓</div>
+    <div class="exercise-card" id="ex-19" data-section="upper">
+      <div class="card-top" onclick="toggleCard(19)">
+        <div class="check-circle" onclick="toggleDone(event,19)">✓</div>
         <span class="exercise-name">Seated Cable Row</span>
         <span class="badge">3 sets · 12 reps · Moderate weight</span>
         <span class="expand-icon">▼</span>
       </div>
-      <div class="card-body" id="body-17">
+      <div class="card-body" id="body-19">
         <div class="how-to"><strong>How to do it:</strong><ol>
           <li>Sit at cable row station with feet on footrests, knees slightly bent.</li>
           <li>Sit tall — back upright, chest forward. Grip the handle.</li>
@@ -910,7 +1090,68 @@
           <li>Avoid rocking forward and back to generate momentum.</li>
         </ol></div>
         <div class="tip-box">Strengthens the mid-back which pulls shoulders back and reduces the forward-rounding posture that compresses lumbar discs all day.</div>
+        <div class="weight-track">
+          <label for="weight-19">Last weight used:</label>
+          <input type="number" id="weight-19" class="weight-input" min="0" step="5" placeholder="lbs">
+          <span class="weight-unit">lbs</span>
+          <span class="weight-badge" id="weight-badge-19">⬆️ Try adding weight</span>
+        </div>
         <a class="video-btn" href="https://www.youtube.com/results?search_query=seated+cable+row+proper+form+back+muscles" target="_blank">▶ Watch Video</a>
+      </div>
+    </div>
+
+    <div class="exercise-card" id="ex-20" data-section="upper" data-variant="A">
+      <div class="card-top" onclick="toggleCard(20)">
+        <div class="check-circle" onclick="toggleDone(event,20)">✓</div>
+        <span class="exercise-name">Chest Press Machine</span>
+        <span class="variant-tag">Workout A</span>
+        <span class="badge">3 sets · 12 reps · Light-moderate</span>
+        <span class="expand-icon">▼</span>
+      </div>
+      <div class="card-body" id="body-20">
+        <div class="how-to"><strong>How to do it:</strong><ol>
+          <li>Sit with your back flat against the pad, handles at chest height.</li>
+          <li>Set a light-moderate weight.</li>
+          <li>Press the handles forward until your arms are extended but not locked out.</li>
+          <li>Slowly return to start, keeping shoulder blades lightly retracted — don't let shoulders roll forward at the bottom.</li>
+          <li>Stop the movement early if you feel any shoulder pinching.</li>
+        </ol></div>
+        <div class="tip-box">A machine chest press keeps the movement path fixed and supported, unlike a free-weight bench press — much easier on an arthritic shoulder since there's nothing to stabilize. Keep the weight light and stop the range before any pinch or ache.</div>
+        <div class="weight-track">
+          <label for="weight-20">Last weight used:</label>
+          <input type="number" id="weight-20" class="weight-input" min="0" step="5" placeholder="lbs">
+          <span class="weight-unit">lbs</span>
+          <span class="weight-badge" id="weight-badge-20">⬆️ Try adding weight</span>
+        </div>
+        <a class="video-btn" href="https://www.youtube.com/results?search_query=chest+press+machine+proper+form+shoulder+friendly" target="_blank">▶ Watch Video</a>
+      </div>
+    </div>
+
+    <div class="exercise-card" id="ex-21" data-section="upper" data-variant="B">
+      <div class="card-top" onclick="toggleCard(21)">
+        <div class="check-circle" onclick="toggleDone(event,21)">✓</div>
+        <span class="exercise-name">Standing Single-Arm Cable Row</span>
+        <span class="variant-tag">Workout B</span>
+        <span class="badge">3 sets · 10–12 reps · Each side</span>
+        <span class="expand-icon">▼</span>
+      </div>
+      <div class="card-body" id="body-21">
+        <div class="how-to"><strong>How to do it:</strong><ol>
+          <li>Set a D-handle at chest height on a cable stack.</li>
+          <li>Stand side-on to the machine, feet shoulder-width apart, knees soft.</li>
+          <li>Grab the handle with the arm farther from the machine.</li>
+          <li>Brace your core — resist the urge to let the cable rotate your torso.</li>
+          <li>Pull the handle to your ribs, squeezing your shoulder blade back, then slowly extend back out while staying square.</li>
+          <li>Complete all reps, then turn around and repeat with the other arm.</li>
+        </ol></div>
+        <div class="tip-box">Does double duty — a back/pulling exercise AND an anti-rotation core exercise, since you have to actively resist the cable twisting your spine. Great way to get back strength and core stability together without extra floor work.</div>
+        <div class="weight-track">
+          <label for="weight-21">Last weight used:</label>
+          <input type="number" id="weight-21" class="weight-input" min="0" step="5" placeholder="lbs">
+          <span class="weight-unit">lbs</span>
+          <span class="weight-badge" id="weight-badge-21">⬆️ Try adding weight</span>
+        </div>
+        <a class="video-btn" href="https://www.youtube.com/results?search_query=standing+single+arm+cable+row+anti+rotation+core" target="_blank">▶ Watch Video</a>
       </div>
     </div>
   </section>
@@ -923,14 +1164,14 @@
       <span class="section-count" id="count-cooldown">0/2</span>
     </div>
 
-    <div class="exercise-card" id="ex-18" data-section="cooldown">
-      <div class="card-top" onclick="toggleCard(18)">
-        <div class="check-circle" onclick="toggleDone(event,18)">✓</div>
+    <div class="exercise-card" id="ex-22" data-section="cooldown">
+      <div class="card-top" onclick="toggleCard(22)">
+        <div class="check-circle" onclick="toggleDone(event,22)">✓</div>
         <span class="exercise-name">Seated Hamstring Stretch</span>
         <span class="badge">30 sec · Each leg</span>
         <span class="expand-icon">▼</span>
       </div>
-      <div class="card-body" id="body-18">
+      <div class="card-body" id="body-22">
         <div class="how-to"><strong>How to do it:</strong><ol>
           <li>Sit on the edge of a bench. Extend one leg straight in front.</li>
           <li>Keeping back straight (don't round!), hinge forward at the hips until you feel a stretch in the back of the thigh.</li>
@@ -942,22 +1183,22 @@
       </div>
     </div>
 
-    <div class="exercise-card" id="ex-19" data-section="cooldown">
-      <div class="card-top" onclick="toggleCard(19)">
-        <div class="check-circle" onclick="toggleDone(event,19)">✓</div>
+    <div class="exercise-card" id="ex-23" data-section="cooldown">
+      <div class="card-top" onclick="toggleCard(23)">
+        <div class="check-circle" onclick="toggleDone(event,23)">✓</div>
         <span class="exercise-name">Child's Pose</span>
         <span class="badge">2 sets · 60 sec</span>
         <span class="expand-icon">▼</span>
       </div>
-      <div class="card-body" id="body-19">
+      <div class="card-body" id="body-23">
         <div class="how-to"><strong>How to do it:</strong><ol>
-          <li>Kneel on a mat, big toes together, knees apart.</li>
+          <li>Kneel on a mat, big toes together, knees apart (use a folded towel under the knees if needed).</li>
           <li>Sit hips back toward heels as far as comfortably possible.</li>
           <li>Reach arms forward on the floor, let forehead rest on the mat.</li>
           <li>Breathe deeply into your lower back. Feel the gentle stretch release with each breath.</li>
-          <li>If knees are uncomfortable, place a folded towel under them.</li>
+          <li>If knees are uncomfortable even with padding, do a seated forward fold in a chair instead: sit tall, then hinge forward reaching toward your shins.</li>
         </ol></div>
-        <div class="tip-box">Gently decompresses the lumbar vertebrae. One of the most universally relieving finishers for lower back conditions. Never skip this one.</div>
+        <div class="tip-box">Gently decompresses the lumbar vertebrae. One of the most universally relieving finishers for lower back conditions. Never skip this one — use the seated alternative if your knees need it.</div>
         <a class="video-btn" href="https://www.youtube.com/results?search_query=child's+pose+lower+back+pain+relief+yoga" target="_blank">▶ Watch Video</a>
       </div>
     </div>
@@ -990,6 +1231,21 @@
     <div class="day-chip"><span class="day-name">SUN</span><span class="day-icon">😴</span></div>
   </div>
 
+  <!-- A/B EXPLAINER -->
+  <div class="ab-explainer">
+    <div class="ab-card a-card">
+      <h3>Workout A</h3>
+      <p>Rowing Machine warm-up · Hip Abductor · Leg Extension · Chest Press</p>
+    </div>
+    <div class="ab-card b-card">
+      <h3>Workout B</h3>
+      <p>Ski Erg warm-up · Hip Adductor · Suitcase Carry · Standing Single-Arm Row</p>
+    </div>
+  </div>
+  <div class="note-box" style="margin-top:-8px;">
+    <strong>How A/B works:</strong> Warm-up, Stretching, Core, Lower Body/Upper Body staples (Leg Press, Hamstring Curl, Lat Pulldown, Seated Cable Row), and Cool-Down are done every session — that consistency is what protects your back. Only a few "bonus" machine exercises rotate between A and B automatically based on your workout count, so each muscle group still gets trained ~3x/week while sessions stay a similar length and you get more variety.
+  </div>
+
   <!-- PHASE 1 -->
   <div class="phase phase-1" id="phase-block-1">
     <div class="phase-header">
@@ -1014,8 +1270,8 @@
         <li><span class="ex-dot"></span>QL Ball Release</li>
         <li><span class="ex-dot"></span>Deep Core Activation</li>
         <li><span class="ex-dot"></span>Knee-to-Chest Stretch</li>
-        <li><span class="ex-dot"></span>Glute Bridge</li>
-        <li><span class="ex-dot"></span>Bird Dog</li>
+        <li><span class="ex-dot"></span>Seated Ab Crunch Machine</li>
+        <li><span class="ex-dot"></span>Leg Press Machine</li>
         <li><span class="ex-dot"></span>Child's Pose</li>
       </ul>
       <div class="rule-box">
@@ -1047,8 +1303,8 @@
         <li><span class="ex-dot"></span>Everything from Phase 1</li>
         <li><span class="ex-dot"></span>Figure-4 Piriformis Stretch</li>
         <li><span class="ex-dot"></span>Hip Flexor Stretch</li>
-        <li><span class="ex-dot"></span>Dead Bug</li>
-        <li><span class="ex-dot"></span>Side Plank</li>
+        <li><span class="ex-dot"></span>Machine Back Extension</li>
+        <li><span class="ex-dot"></span>Pallof Press</li>
         <li><span class="ex-dot"></span>Seated Hamstring Stretch</li>
       </ul>
       <div class="rule-box">
@@ -1078,13 +1334,13 @@
       </div>
       <ul class="ex-list">
         <li><span class="ex-dot"></span>Everything from Phase 2</li>
-        <li><span class="ex-dot"></span>Leg Press Machine</li>
-        <li><span class="ex-dot"></span>Hip Abductor Machine</li>
-        <li><span class="ex-dot"></span>Hip Adductor Machine</li>
+        <li><span class="ex-dot"></span>Hip Abductor / Hip Adductor (rotating)</li>
         <li><span class="ex-dot"></span>Seated Hamstring Curl</li>
+        <li><span class="ex-dot"></span>Leg Extension Machine</li>
+        <li><span class="ex-dot"></span>Suitcase Carry</li>
         <li><span class="ex-dot"></span>Lat Pulldown</li>
         <li><span class="ex-dot"></span>Seated Cable Row</li>
-        <li><span class="ex-dot"></span>Paloff Press (cable)</li>
+        <li><span class="ex-dot"></span>Rowing Machine / Ski Erg (rotating)</li>
       </ul>
       <div class="rule-box">
         <strong>🎯 Goal for these workouts</strong>
@@ -1103,12 +1359,12 @@
       </div>
       <div style="text-align:right; margin-left:auto;">
         <div class="here-badge" id="here-badge-4">📍 You are here</div>
-        <div class="phase-days">~65–75<br>min/session</div>
+        <div class="phase-days">~55–65<br>min/session</div>
       </div>
     </div>
     <div class="phase-body">
       <ul class="ex-list">
-        <li><span class="ex-dot"></span>All 20 exercises</li>
+        <li><span class="ex-dot"></span>All exercises for that day's Workout A or B</li>
         <li><span class="ex-dot"></span>3 full sets on all strength work</li>
         <li><span class="ex-dot"></span>Gradually increase weights</li>
         <li><span class="ex-dot"></span>Optional 4th day if feeling good</li>
@@ -1116,7 +1372,8 @@
       <div class="rule-box">
         <strong>🎯 Goal from here on</strong>
         This is your maintenance routine. Add a 4th day only if you consistently feel good and recover well. Continue increasing weights slowly over months. The goal is long-term pain reduction and spinal support — not a race.
-        <br><br><strong>⏱ Managing session time:</strong> To keep workouts under 70 min in Phase 4, alternate the Hip Abductor and Hip Adductor machines on different days — do Hip Abductor on Mon/Fri and Hip Adductor on Wed (or swap). They do not need to be done together every session.
+        <br><br><strong>⏱ Session length is already managed for you:</strong> The Workout A / Workout B rotation automatically alternates Hip Abductor vs. Hip Adductor, Leg Extension vs. Suitcase Carry, and Chest Press vs. Standing Single-Arm Row — so you never have to do everything in one session. Just follow whichever workout the app shows you that day.
+        <br><br><strong>💪 Weight reminders:</strong> Enter the weight you use on each machine/free-weight exercise. Once you've logged the same weight for 6 workouts in a row, the app will flag it with an "⬆️ Try adding weight" badge.
       </div>
     </div>
   </div>
@@ -1173,13 +1430,21 @@
     return { phase, inPhase, total: phaseTotal[phase] };
   }
 
+  // ─── WORKOUT A/B VARIANT ─────────────────────────────────────────────────────
+
+  function getVariant(count) {
+    return (count % 2 === 1) ? 'A' : 'B';
+  }
+
   function updateWorkoutStats() {
     const count  = getWorkoutCount();
     const { phase, inPhase, total } = getPhaseProgress(count);
+    const variant = getVariant(count);
 
     // Header chips
     document.getElementById('workout-count-chip').textContent = count + (count === 1 ? ' Workout Completed' : ' Workouts Completed');
     document.getElementById('phase-chip').textContent = 'Phase ' + phase + ' of 4 · ' + PHASE_NAMES[phase];
+    document.getElementById('variant-chip').textContent = 'Workout ' + variant;
 
     // Update each phase block on the schedule tab
     for (let p = 1; p <= 4; p++) {
@@ -1239,18 +1504,59 @@
 
   // ─── EXERCISE LOGIC ──────────────────────────────────────────────────────────
 
-  const total    = 20;
-  const done     = new Array(total).fill(false);
-  const expanded = new Array(total).fill(false);
+  const MAX_ID  = 24;
+  const done     = new Array(MAX_ID).fill(false);
+  const expanded = new Array(MAX_ID).fill(false);
 
-  const sections = {
-    warmup:   [0,1,2,3],
-    stretch:  [4,5,6],
-    core:     [7,8,9,10,11],
-    lower:    [12,13,14,15],
-    upper:    [16,17],
-    cooldown: [18,19]
-  };
+  // Each exercise's section, and which Workout variant it belongs to (null = every session)
+  const EXERCISES = [
+    {id:0,  section:'warmup',   variant:null},
+    {id:1,  section:'warmup',   variant:null},
+    {id:2,  section:'warmup',   variant:null},
+    {id:3,  section:'warmup',   variant:null},
+    {id:4,  section:'warmup',   variant:'A'},
+    {id:5,  section:'warmup',   variant:'B'},
+    {id:6,  section:'stretch',  variant:null},
+    {id:7,  section:'stretch',  variant:null},
+    {id:8,  section:'stretch',  variant:null},
+    {id:9,  section:'core',     variant:null},
+    {id:10, section:'core',     variant:null},
+    {id:11, section:'core',     variant:null},
+    {id:12, section:'lower',    variant:null},
+    {id:13, section:'lower',    variant:null},
+    {id:14, section:'lower',    variant:'A'},
+    {id:15, section:'lower',    variant:'A'},
+    {id:16, section:'lower',    variant:'B'},
+    {id:17, section:'lower',    variant:'B'},
+    {id:18, section:'upper',    variant:null},
+    {id:19, section:'upper',    variant:null},
+    {id:20, section:'upper',    variant:'A'},
+    {id:21, section:'upper',    variant:'B'},
+    {id:22, section:'cooldown', variant:null},
+    {id:23, section:'cooldown', variant:null},
+  ];
+
+  // Exercises that carry a weight/pin-number tracker
+  const WEIGHT_IDS = [9,10,11,12,13,14,15,16,17,18,19,20,21];
+
+  function applyVariantVisibility() {
+    const variant = getVariant(getWorkoutCount());
+    EXERCISES.forEach(ex => {
+      const card = document.getElementById('ex-' + ex.id);
+      if (!card) return;
+      const visible = (ex.variant === null || ex.variant === variant);
+      card.style.display = visible ? '' : 'none';
+    });
+  }
+
+  function getVisibleIds() {
+    return EXERCISES
+      .filter(ex => {
+        const card = document.getElementById('ex-' + ex.id);
+        return card && card.style.display !== 'none';
+      })
+      .map(ex => ex.id);
+  }
 
   function switchTab(name) {
     document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
@@ -1274,21 +1580,87 @@
   }
 
   function updateProgress() {
-    const count = done.filter(Boolean).length;
-    const pct   = Math.round((count / total) * 100);
+    const visible = getVisibleIds();
+    const count = visible.filter(id => done[id]).length;
+    const total = visible.length;
+    const pct   = total ? Math.round((count / total) * 100) : 0;
     document.getElementById('progressBar').style.width = pct + '%';
     document.getElementById('progressLabel').textContent = count + ' of ' + total + ' exercises complete';
-    document.getElementById('completeBanner').classList.toggle('show', count === total);
+    document.getElementById('completeBanner').classList.toggle('show', total > 0 && count === total);
   }
 
   function updateSectionCounts() {
-    for (const [sec, idxs] of Object.entries(sections)) {
+    const visible = new Set(getVisibleIds());
+    const bySection = {};
+    EXERCISES.forEach(ex => {
+      if (!visible.has(ex.id)) return;
+      (bySection[ex.section] = bySection[ex.section] || []).push(ex.id);
+    });
+    for (const [sec, idxs] of Object.entries(bySection)) {
       const c = idxs.filter(i => done[i]).length;
-      document.getElementById('count-' + sec).textContent = c + '/' + idxs.length;
+      const el = document.getElementById('count-' + sec);
+      if (el) el.textContent = c + '/' + idxs.length;
     }
   }
 
+  // ─── WEIGHT TRACKING ─────────────────────────────────────────────────────────
+
+  function loadWeightData() {
+    try { return JSON.parse(localStorage.getItem('weightData') || '{}'); }
+    catch (e) { return {}; }
+  }
+
+  function saveWeightData(data) {
+    localStorage.setItem('weightData', JSON.stringify(data));
+  }
+
+  let weightData = loadWeightData();
+
+  function updateWeightBadge(id) {
+    const badge = document.getElementById('weight-badge-' + id);
+    if (!badge) return;
+    const rec = weightData[id] || { streak: 0 };
+    badge.style.display = (rec.streak || 0) >= 6 ? 'inline-flex' : 'none';
+  }
+
+  function initWeightInputs() {
+    WEIGHT_IDS.forEach(id => {
+      const input = document.getElementById('weight-' + id);
+      if (!input) return;
+      const rec = weightData[id] || { weight: '', streak: 0 };
+      input.value = rec.weight || '';
+      updateWeightBadge(id);
+      input.addEventListener('change', () => {
+        const rec = weightData[id] || { weight: '', streak: 0 };
+        if (String(input.value) !== String(rec.weight)) {
+          rec.streak = 0; // new weight — restart the streak toward the next reminder
+        }
+        rec.weight = input.value;
+        weightData[id] = rec;
+        saveWeightData(weightData);
+        updateWeightBadge(id);
+      });
+    });
+  }
+
+  function bumpWeightStreaks() {
+    WEIGHT_IDS.forEach(id => {
+      if (done[id]) {
+        const rec = weightData[id] || { weight: '', streak: 0 };
+        rec.streak = (rec.streak || 0) + 1;
+        weightData[id] = rec;
+      }
+    });
+    saveWeightData(weightData);
+    WEIGHT_IDS.forEach(id => updateWeightBadge(id));
+  }
+
+  // ─── RESET / LOG WORKOUT ─────────────────────────────────────────────────────
+
   function resetAll() {
+    // ── Weight streaks — count this session's completed exercises first ──
+    bumpWeightStreaks();
+
     // ── Count this workout ──
     const oldCount = getWorkoutCount();
     const newCount = oldCount + 1;
@@ -1299,7 +1671,7 @@
     // ── Clear checkboxes ──
     done.fill(false);
     expanded.fill(false);
-    for (let i = 0; i < total; i++) {
+    for (let i = 0; i < MAX_ID; i++) {
       const card = document.getElementById('ex-' + i);
       if (card) {
         card.classList.remove('done');
@@ -1309,6 +1681,8 @@
         if (top) top.classList.remove('expanded');
       }
     }
+
+    applyVariantVisibility();
     updateProgress();
     updateSectionCounts();
     updateWorkoutStats();
@@ -1320,7 +1694,11 @@
   }
 
   // ─── INIT ────────────────────────────────────────────────────────────────────
+  applyVariantVisibility();
   updateWorkoutStats();
+  updateProgress();
+  updateSectionCounts();
+  initWeightInputs();
 </script>
 
 </body>
