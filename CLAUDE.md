@@ -24,13 +24,13 @@ Railway watches the GitHub repo. To update the live app:
 
 ## The App Structure
 Two tabs:
-- **Workout tab**: 24 exercises total (exercise IDs 0–23) with checkboxes, instructions, tips, per-exercise weight tracking, and YouTube video links. Progress bar tracks the session and only counts exercises visible for that day's Workout A/B variant. Reset button clears checkboxes, advances the workout counter, and bumps weight streaks.
+- **Workout tab**: 22 exercises total (exercise IDs 0–23, with 2 and 10 retired/unused — see MRI update below), checkboxes, instructions, tips, per-exercise weight tracking, and YouTube video links. Progress bar tracks the session and only counts exercises visible for that day's Workout A/B variant (18 per session as of the 2026-07-07 MRI update). Reset button clears checkboxes, advances the workout counter, and bumps weight streaks.
 - **Schedule tab**: Mon/Wed/Fri weekly calendar, an A/B explainer card, and a single "Your Routine" info box (full 3-set routine every session, no phases).
 
-### 6 Exercise Sections (as of 2026-07-06 redesign)
-1. Warm-Up (4 staple + 1 rotating) — Stationary Bike, Cat-Cow, QL Ball Release, Deep Core Activation, + Rowing Machine (Workout A) / Ski Erg (Workout B)
+### 6 Exercise Sections (as of 2026-07-07 MRI update)
+1. Warm-Up (3 staple + 1 rotating) — Stationary Bike, Cat-Cow, Deep Core Activation, + Rowing Machine (Workout A) / Ski Erg (Workout B)
 2. Mobility & Stretching (3, unchanged) — Knee-to-Chest, Figure-4, Hip Flexor
-3. Core & Stability — Machine-Based (3, unchanged from redesign) — Seated Ab Crunch Machine, Machine Back Extension, Pallof Press
+3. Core & Stability — Machine-Based (2) — Seated Ab Crunch Machine, Pallof Press
 4. Lower Body (2 staple + 2 rotating) — Leg Press, Seated Hamstring Curl, + Hip Abductor/Leg Extension (A) or Hip Adductor/Suitcase Carry (B)
 5. Upper Body (2 staple + 1 rotating) — Lat Pulldown, Seated Cable Row, + Chest Press Machine (A) or Standing Single-Arm Cable Row (B)
 6. Cool-Down (2, unchanged) — Seated Hamstring Stretch, Child's Pose
@@ -38,6 +38,8 @@ Two tabs:
 **Redesigned 2026-07-06**: Removed Bird Dog, Dead Bug, Glute Bridge, and Side Plank (floor/kneeling work aggravated John's knees; Side Plank also loaded his arthritic shoulder). Replaced with machine-based core work. Added Workout A/B rotation (derived from `workoutCount` parity — odd = A, even = B) so session length stays ~20 exercises while still cycling through more machine variety across the week. Added a "last weight used" input per strength exercise (`localStorage.weightData`, keyed by exercise id) with a streak counter that surfaces an "⬆️ Try adding weight" badge once the same weight has been logged 6 workouts in a row.
 
 **Phases removed 2026-07-06**: John was 12+ days in and wanted to skip straight to the full routine. Removed the 4-phase progression system entirely (phase chip, phase blocks on the Schedule tab, phase-up modal, and all phase JS logic). The app now always runs the full 3-set A/B routine — no more Phase 1-4 unlocking. A one-time migration flag (`localStorage.phasesRemovedV1`) resets `workoutCount` to 1 the first time the updated app loads, so the A/B rotation restarts fresh at Workout 1/A instead of picking up mid-phase.
+
+**MRI-driven update 2026-07-07**: John shared his lumbar MRI findings — multilevel DDD worst at L3-L4/L4-L5, mild bilateral foraminal/canal narrowing at L4-L5 (right side crowding the right L5 nerve root, no confirmed contact), facet arthritis at L3-L4 and L5-S1, and a history of deep tissue massage triggering radiating leg pain and foot numbness (a nerve-irritation flag). Based on this, removed **QL Ball Release** (sustained direct pressure right next to the spine at the affected levels — too close to the same kind of stimulus that triggered nerve symptoms during massage) and **Machine Back Extension** (spinal extension narrows foramina and loads facet joints, both already compromised) from the routine — exercise IDs 2 and 10 are retired/unused in the code rather than renumbered, to preserve existing weight-tracking data for the remaining exercises. Kept **Seated Ab Crunch Machine** since John already uses light weight and partial range of motion. Also updated the workout tab's warning note to say to stop for radiating leg pain, tingling, or numbness (not just sharp/shooting pain), since that's the specific red flag from his MRI/symptom history. John has not yet run these changes by his doctor/PT — worth flagging if this comes up again.
 
 Workout days: Monday / Wednesday / Friday
 

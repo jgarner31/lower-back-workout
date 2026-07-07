@@ -583,13 +583,13 @@
   <div class="progress-bar-wrap">
     <div class="progress-bar" id="progressBar"></div>
   </div>
-  <div class="progress-label" id="progressLabel">0 of 20 exercises complete</div>
+  <div class="progress-label" id="progressLabel">0 of 18 exercises complete</div>
   <button class="reset-btn" onclick="resetAll()">↺ Reset Workout (counts as done)</button>
 
   <br>
 
   <div class="note-box">
-    <strong>⚠️ Important:</strong> Always warm up first. Stop if you feel sharp or shooting pain — mild stiffness is okay. Start with light weights and build up gradually. Consult your doctor before starting.
+    <strong>⚠️ Important:</strong> Always warm up first. Stop if you feel sharp or shooting pain, or any radiating pain, tingling, or numbness down the leg — mild stiffness is okay. Start with light weights and build up gradually. Consult your doctor before starting.
   </div>
 
   <!-- WARM-UP -->
@@ -597,7 +597,7 @@
     <div class="section-header">
       <span class="section-icon">🔥</span>
       <span class="section-title">Warm-Up</span>
-      <span class="section-count" id="count-warmup">0/5</span>
+      <span class="section-count" id="count-warmup">0/4</span>
     </div>
 
     <div class="exercise-card" id="ex-0" data-section="warmup">
@@ -638,25 +638,6 @@
       </div>
     </div>
 
-    <div class="exercise-card" id="ex-2" data-section="warmup">
-      <div class="card-top" onclick="toggleCard(2)">
-        <div class="check-circle" onclick="toggleDone(event,2)">✓</div>
-        <span class="exercise-name">QL Ball Release</span>
-        <span class="badge">2–3 min · Each side</span>
-        <span class="expand-icon">▼</span>
-      </div>
-      <div class="card-body" id="body-2">
-        <div class="how-to"><strong>How to do it:</strong><ol>
-          <li>Place a tennis ball or lacrosse ball on the floor.</li>
-          <li>Lie on your back and position the ball just above your hip bone, slightly to one side of your spine — that is your QL muscle (Quadratus Lumborum).</li>
-          <li>Let your body weight slowly sink into the ball. Stay relaxed — do not tense up or fight it.</li>
-          <li>When you find a sore or tight spot, pause there for 20–30 seconds, breathing slowly and deeply.</li>
-          <li>Gently shift the ball to new spots along the muscle. Spend 2–3 minutes per side. More tender = more work needed there.</li>
-        </ol></div>
-        <div class="tip-box">The QL muscle connects your pelvis to your spine and is a hidden driver of lumbar arthritis pain. Tight QLs cause your back muscles to overwork and your spine to compress unevenly. Releasing them before exercise reduces baseline tightness and makes your Pallof Press and core work far more effective. Always release before stretching — not after.</div>
-        <a class="video-btn" href="https://www.youtube.com/results?search_query=quadratus+lumborum+QL+release+tennis+ball+lower+back+pain+relief" target="_blank">▶ Watch Video</a>
-      </div>
-    </div>
     <div class="exercise-card" id="ex-3" data-section="warmup">
       <div class="card-top" onclick="toggleCard(3)">
         <div class="check-circle" onclick="toggleDone(event,3)">✓</div>
@@ -792,7 +773,7 @@
     <div class="section-header">
       <span class="section-icon">💪</span>
       <span class="section-title">Core & Stability (Machine-Based)</span>
-      <span class="section-count" id="count-core">0/3</span>
+      <span class="section-count" id="count-core">0/2</span>
     </div>
 
     <div class="exercise-card" id="ex-9" data-section="core">
@@ -818,32 +799,6 @@
           <span class="weight-badge" id="weight-badge-9">⬆️ Try adding weight</span>
         </div>
         <a class="video-btn" href="https://www.youtube.com/results?search_query=seated+ab+crunch+machine+proper+form+lower+back+safe" target="_blank">▶ Watch Video</a>
-      </div>
-    </div>
-
-    <div class="exercise-card" id="ex-10" data-section="core">
-      <div class="card-top" onclick="toggleCard(10)">
-        <div class="check-circle" onclick="toggleDone(event,10)">✓</div>
-        <span class="exercise-name">Machine Back Extension</span>
-        <span class="badge">3 sets · 12 reps · Light weight</span>
-        <span class="expand-icon">▼</span>
-      </div>
-      <div class="card-body" id="body-10">
-        <div class="how-to"><strong>How to do it:</strong><ol>
-          <li>Sit in the machine with your lower back against the pad, thighs secured under the leg pads.</li>
-          <li>Set a light weight to start.</li>
-          <li>Slowly lean back, extending through your hips and lower back within a comfortable, pain-free range.</li>
-          <li>Squeeze gently at the end range — do NOT hyperextend or arch aggressively.</li>
-          <li>Return slowly and under control to the start position.</li>
-        </ol></div>
-        <div class="tip-box">Strengthens the erector spinae (the muscles supporting your lumbar spine) in a fully supported, seated position — no floor hyperextension bench required, and the machine limits the range so you can't overarch.</div>
-        <div class="weight-track">
-          <label for="weight-10">Last weight used:</label>
-          <input type="number" id="weight-10" class="weight-input" min="0" step="5" placeholder="lbs">
-          <span class="weight-unit">lbs</span>
-          <span class="weight-badge" id="weight-badge-10">⬆️ Try adding weight</span>
-        </div>
-        <a class="video-btn" href="https://www.youtube.com/results?search_query=seated+machine+back+extension+proper+form+lower+back+pain" target="_blank">▶ Watch Video</a>
       </div>
     </div>
 
@@ -1305,7 +1260,6 @@
   const EXERCISES = [
     {id:0,  section:'warmup',   variant:null},
     {id:1,  section:'warmup',   variant:null},
-    {id:2,  section:'warmup',   variant:null},
     {id:3,  section:'warmup',   variant:null},
     {id:4,  section:'warmup',   variant:'A'},
     {id:5,  section:'warmup',   variant:'B'},
@@ -1313,7 +1267,6 @@
     {id:7,  section:'stretch',  variant:null},
     {id:8,  section:'stretch',  variant:null},
     {id:9,  section:'core',     variant:null},
-    {id:10, section:'core',     variant:null},
     {id:11, section:'core',     variant:null},
     {id:12, section:'lower',    variant:null},
     {id:13, section:'lower',    variant:null},
@@ -1330,7 +1283,7 @@
   ];
 
   // Exercises that carry a weight/pin-number tracker
-  const WEIGHT_IDS = [9,10,11,12,13,14,15,16,17,18,19,20,21];
+  const WEIGHT_IDS = [9,11,12,13,14,15,16,17,18,19,20,21];
 
   function applyVariantVisibility() {
     const variant = getVariant(getWorkoutCount());
