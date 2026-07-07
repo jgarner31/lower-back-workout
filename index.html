@@ -583,7 +583,7 @@
   <div class="progress-bar-wrap">
     <div class="progress-bar" id="progressBar"></div>
   </div>
-  <div class="progress-label" id="progressLabel">0 of 18 exercises complete</div>
+  <div class="progress-label" id="progressLabel">0 of 19 exercises complete</div>
   <button class="reset-btn" onclick="resetAll()">↺ Reset Workout (counts as done)</button>
 
   <br>
@@ -1115,7 +1115,7 @@
     <div class="section-header">
       <span class="section-icon">❄️</span>
       <span class="section-title">Cool-Down</span>
-      <span class="section-count" id="count-cooldown">0/2</span>
+      <span class="section-count" id="count-cooldown">0/3</span>
     </div>
 
     <div class="exercise-card" id="ex-22" data-section="cooldown">
@@ -1154,6 +1154,26 @@
         </ol></div>
         <div class="tip-box">Gently decompresses the lumbar vertebrae. One of the most universally relieving finishers for lower back conditions. Never skip this one — use the seated alternative if your knees need it.</div>
         <a class="video-btn" href="https://www.youtube.com/results?search_query=child's+pose+lower+back+pain+relief+yoga" target="_blank">▶ Watch Video</a>
+      </div>
+    </div>
+
+    <div class="exercise-card" id="ex-24" data-section="cooldown">
+      <div class="card-top" onclick="toggleCard(24)">
+        <div class="check-circle" onclick="toggleDone(event,24)">✓</div>
+        <span class="exercise-name">90/90 Decompression</span>
+        <span class="badge">5–10 min</span>
+        <span class="expand-icon">▼</span>
+      </div>
+      <div class="card-body" id="body-24">
+        <div class="how-to"><strong>How to do it:</strong><ol>
+          <li>Lie on your back on the floor or a mat near a chair, bench, or your couch.</li>
+          <li>Rest your calves up on the chair/bench so your hips and knees are both bent to roughly 90°.</li>
+          <li>Let your lower back relax and flatten toward the floor — don't force it, just let gravity settle you into it.</li>
+          <li>Arms can rest out to the sides or on your stomach. Breathe slowly and deeply.</li>
+          <li>Stay here for 5–10 minutes, fully relaxed.</li>
+        </ol></div>
+        <div class="tip-box">Unloads pressure off the discs and nerve roots without arching your back — the opposite motion of walking and standing, which compress the spine. A gentler, flexion-based alternative to devices like inversion tables, which tend to arch the lower back and can aggravate facet joints and narrowed nerve openings. Great to end on since you're already lying down.</div>
+        <a class="video-btn" href="https://www.youtube.com/results?search_query=90+90+position+lower+back+decompression+stretch" target="_blank">▶ Watch Video</a>
       </div>
     </div>
   </section>
@@ -1252,7 +1272,7 @@
 
   // ─── EXERCISE LOGIC ──────────────────────────────────────────────────────────
 
-  const MAX_ID  = 24;
+  const MAX_ID  = 25;
   const done     = new Array(MAX_ID).fill(false);
   const expanded = new Array(MAX_ID).fill(false);
 
@@ -1280,6 +1300,7 @@
     {id:21, section:'upper',    variant:'B'},
     {id:22, section:'cooldown', variant:null},
     {id:23, section:'cooldown', variant:null},
+    {id:24, section:'cooldown', variant:null},
   ];
 
   // Exercises that carry a weight/pin-number tracker
