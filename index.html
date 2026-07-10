@@ -583,7 +583,7 @@
   <div class="progress-bar-wrap">
     <div class="progress-bar" id="progressBar"></div>
   </div>
-  <div class="progress-label" id="progressLabel">0 of 19 exercises complete</div>
+  <div class="progress-label" id="progressLabel">0 of 20 exercises complete</div>
   <button class="reset-btn" onclick="resetAll()">↺ Reset Workout (counts as done)</button>
 
   <br>
@@ -622,19 +622,19 @@
     <div class="exercise-card" id="ex-1" data-section="warmup">
       <div class="card-top" onclick="toggleCard(1)">
         <div class="check-circle" onclick="toggleDone(event,1)">✓</div>
-        <span class="exercise-name">Cat-Cow Stretch</span>
+        <span class="exercise-name">Cat Stretch</span>
         <span class="badge">2 sets · 10 reps</span>
         <span class="expand-icon">▼</span>
       </div>
       <div class="card-body" id="body-1">
         <div class="how-to"><strong>How to do it:</strong><ol>
-          <li>Get on all fours — hands under shoulders, knees under hips.</li>
-          <li><strong>Cat:</strong> Exhale and round your spine up toward the ceiling, tucking your chin and pelvis.</li>
-          <li><strong>Cow:</strong> Inhale and drop your belly toward the floor, lifting your head and tailbone.</li>
-          <li>Flow slowly between the two. Never force the range of motion. If kneeling bothers your knees, place a folded towel or mat pad under them.</li>
+          <li>Get on all fours — hands under shoulders, knees under hips. If kneeling bothers your knees, place a folded towel or mat pad under them.</li>
+          <li>Exhale and round your spine up toward the ceiling, tucking your chin and pelvis — this is the "Cat" portion.</li>
+          <li>Slowly return to a flat, neutral back. Do NOT drop your belly or arch your lower back into extension (the "Cow" portion) — stop at neutral.</li>
+          <li>Repeat for 10 slow reps, moving only between rounded and neutral. Never force the range of motion.</li>
         </ol></div>
-        <div class="tip-box">One of the best mobilizers for arthritic lumbar joints. Move only as far as is pain-free.</div>
-        <a class="video-btn" href="https://www.youtube.com/results?search_query=cat+cow+stretch+lower+back+arthritis" target="_blank">▶ Watch Video</a>
+        <div class="tip-box">We dropped the Cow (extension/arching) half since it reproduced your pain — that motion narrows the same facet joints and nerve openings your MRI already flagged as tight (facet arthritis, foraminal narrowing). The Cat (rounding/flexion) half alone still safely mobilizes the arthritic joints.</div>
+        <a class="video-btn" href="https://www.youtube.com/results?search_query=cat+stretch+spine+flexion+lower+back+arthritis" target="_blank">▶ Watch Video</a>
       </div>
     </div>
 
@@ -835,7 +835,7 @@
     <div class="section-header">
       <span class="section-icon">🦵</span>
       <span class="section-title">Lower Body Strength (Spine-Friendly)</span>
-      <span class="section-count" id="count-lower">0/4</span>
+      <span class="section-count" id="count-lower">0/5</span>
     </div>
 
     <div class="exercise-card" id="ex-12" data-section="lower">
@@ -886,6 +886,25 @@
           <span class="weight-badge" id="weight-badge-13">⬆️ Try adding weight</span>
         </div>
         <a class="video-btn" href="https://www.youtube.com/results?search_query=seated+hamstring+curl+machine+proper+form" target="_blank">▶ Watch Video</a>
+      </div>
+    </div>
+
+    <div class="exercise-card" id="ex-25" data-section="lower">
+      <div class="card-top" onclick="toggleCard(25)">
+        <div class="check-circle" onclick="toggleDone(event,25)">✓</div>
+        <span class="exercise-name">Glute Bridge</span>
+        <span class="badge">3 sets · 12–15 reps</span>
+        <span class="expand-icon">▼</span>
+      </div>
+      <div class="card-body" id="body-25">
+        <div class="how-to"><strong>How to do it:</strong><ol>
+          <li>Lie on your back on a mat, knees bent, feet flat on the floor about hip-width apart, arms relaxed at your sides.</li>
+          <li>Gently brace your core (like Deep Core Activation), then squeeze your glutes to lift your hips off the floor.</li>
+          <li>Lift only until your body forms a straight line from shoulders to knees — do NOT arch or overextend your lower back at the top. Think "tuck," not "arch."</li>
+          <li>Squeeze at the top for 1–2 seconds, then lower slowly and under control.</li>
+        </ol></div>
+        <div class="tip-box">Builds the glutes, which are a key stabilizer for the pelvis and take load off the lower back. Keep the lift driven by your glutes, not by arching your spine — stop the range right where your body is level, since going higher extends the lower back the same way the retired back extension machine did.</div>
+        <a class="video-btn" href="https://www.youtube.com/results?search_query=glute+bridge+proper+form+lower+back+safe" target="_blank">▶ Watch Video</a>
       </div>
     </div>
 
@@ -1272,7 +1291,7 @@
 
   // ─── EXERCISE LOGIC ──────────────────────────────────────────────────────────
 
-  const MAX_ID  = 25;
+  const MAX_ID  = 26;
   const done     = new Array(MAX_ID).fill(false);
   const expanded = new Array(MAX_ID).fill(false);
 
@@ -1290,6 +1309,7 @@
     {id:11, section:'core',     variant:null},
     {id:12, section:'lower',    variant:null},
     {id:13, section:'lower',    variant:null},
+    {id:25, section:'lower',    variant:null},
     {id:14, section:'lower',    variant:'A'},
     {id:15, section:'lower',    variant:'A'},
     {id:16, section:'lower',    variant:'B'},

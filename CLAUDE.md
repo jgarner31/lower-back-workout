@@ -28,10 +28,10 @@ Two tabs:
 - **Schedule tab**: Mon/Wed/Fri weekly calendar, an A/B explainer card, and a single "Your Routine" info box (full 3-set routine every session, no phases).
 
 ### 6 Exercise Sections (as of 2026-07-07 MRI update)
-1. Warm-Up (3 staple + 1 rotating) — Stationary Bike, Cat-Cow, Deep Core Activation, + Rowing Machine (Workout A) / Ski Erg (Workout B)
+1. Warm-Up (3 staple + 1 rotating) — Stationary Bike, Cat Stretch, Deep Core Activation, + Rowing Machine (Workout A) / Ski Erg (Workout B)
 2. Mobility & Stretching (3, unchanged) — Knee-to-Chest, Figure-4, Hip Flexor
 3. Core & Stability — Machine-Based (2) — Seated Ab Crunch Machine, Pallof Press
-4. Lower Body (2 staple + 2 rotating) — Leg Press, Seated Hamstring Curl, + Hip Abductor/Leg Extension (A) or Hip Adductor/Suitcase Carry (B)
+4. Lower Body (3 staple + 2 rotating) — Leg Press, Seated Hamstring Curl, Glute Bridge, + Hip Abductor/Leg Extension (A) or Hip Adductor/Suitcase Carry (B)
 5. Upper Body (2 staple + 1 rotating) — Lat Pulldown, Seated Cable Row, + Chest Press Machine (A) or Standing Single-Arm Cable Row (B)
 6. Cool-Down (3, as of 2026-07-07 decompression addition) — Seated Hamstring Stretch, Child's Pose, 90/90 Decompression
 
@@ -42,6 +42,8 @@ Two tabs:
 **MRI-driven update 2026-07-07**: John shared his lumbar MRI findings — multilevel DDD worst at L3-L4/L4-L5, mild bilateral foraminal/canal narrowing at L4-L5 (right side crowding the right L5 nerve root, no confirmed contact), facet arthritis at L3-L4 and L5-S1, and a history of deep tissue massage triggering radiating leg pain and foot numbness (a nerve-irritation flag). Based on this, removed **QL Ball Release** (sustained direct pressure right next to the spine at the affected levels — too close to the same kind of stimulus that triggered nerve symptoms during massage) and **Machine Back Extension** (spinal extension narrows foramina and loads facet joints, both already compromised) from the routine — exercise IDs 2 and 10 are retired/unused in the code rather than renumbered, to preserve existing weight-tracking data for the remaining exercises. Kept **Seated Ab Crunch Machine** since John already uses light weight and partial range of motion. Also updated the workout tab's warning note to say to stop for radiating leg pain, tingling, or numbness (not just sharp/shooting pain), since that's the specific red flag from his MRI/symptom history. John has not yet run these changes by his doctor/PT — worth flagging if this comes up again.
 
 **Decompression addition 2026-07-07**: John asked about spinal decompression since compression (walking, stairs) is his main pain trigger. Added **90/90 Decompression** (exercise ID 24) to Cool-Down: lying on back with calves on a chair/bench, hips/knees at 90°, 5-10 min. Chosen over an inversion table because inversion increases lumbar lordosis (extension), which narrows the same foramina/facet joints already compromised in his MRI — the 90/90 position unloads the discs via flexion instead, with no shoulder or knee involvement. Also discussed his Chirp Halo TENS/EMS device for muscle guarding: recommended the device's "Pain Relief" preset (mixed TENS+EMS, 20 min) placed via the lower back pad, since pure TENS (via endorphin release) is what interrupts the guarding/spasm cycle, while EMS adds blood flow. Advised against placing it directly over the most symptomatic right-sided L4-L5 area at high intensity given his nerve sensitivity.
+
+**Cat-Cow modified, Glute Bridge restored 2026-07-10**: John reported the Cow (extension) half of Cat-Cow reproduces his pain — consistent with the facet arthritis/foraminal narrowing already driving the QL Ball Release and Back Extension removals. Renamed the exercise to **Cat Stretch** (exercise ID 1, unchanged) and rewrote the instructions to stop at neutral spine instead of arching into extension. Also restored **Glute Bridge** (new exercise ID 25) into Lower Body as a staple every session, per John's request — cued to lift only to a straight shoulders-to-knees line and avoid arching the lower back at the top, for the same extension-avoidance reason as the Cat Stretch change.
 
 Workout days: Monday / Wednesday / Friday
 
