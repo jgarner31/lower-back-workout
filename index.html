@@ -583,7 +583,7 @@
   <div class="progress-bar-wrap">
     <div class="progress-bar" id="progressBar"></div>
   </div>
-  <div class="progress-label" id="progressLabel">0 of 21 exercises complete</div>
+  <div class="progress-label" id="progressLabel">0 of 20 exercises complete</div>
   <button class="reset-btn" onclick="resetAll()">↺ Reset Workout (counts as done)</button>
 
   <br>
@@ -597,7 +597,7 @@
     <div class="section-header">
       <span class="section-icon">🔥</span>
       <span class="section-title">Warm-Up</span>
-      <span class="section-count" id="count-warmup">0/4</span>
+      <span class="section-count" id="count-warmup">0/3</span>
     </div>
 
     <div class="exercise-card" id="ex-0" data-section="warmup">
@@ -658,33 +658,73 @@
       </div>
     </div>
 
-    <div class="exercise-card" id="ex-5" data-section="warmup">
-      <div class="card-top" onclick="toggleCard(5)">
-        <div class="check-circle" onclick="toggleDone(event,5)">✓</div>
-        <span class="exercise-name">Ski Erg</span>
-        <span class="badge">5 min · Easy Pace</span>
-        <span class="expand-icon">▼</span>
-      </div>
-      <div class="card-body" id="body-5">
-        <div class="how-to"><strong>How to do it:</strong><ol>
-          <li>Stand facing the machine, feet shoulder-width apart, holding a handle in each hand at a comfortable overhead height — don't force a full overhead reach if your shoulder feels tight.</li>
-          <li>Hinge gently at the hips and pull both handles down and back past your hips, like a poling motion in cross-country skiing.</li>
-          <li>Let the handles return smoothly overhead and repeat.</li>
-          <li>Keep the hip hinge light and your lower back neutral — don't round at the bottom of each pull.</li>
-          <li>Work at an easy pace for 5 minutes.</li>
-        </ol></div>
-        <div class="tip-box">Standing, low-impact, and works your lats, core, and legs together with zero floor work or spinal compression. Keep the overhead reach comfortable and the hip hinge gentle.</div>
-        <a class="video-btn" href="https://www.youtube.com/results?search_query=ski+erg+proper+form+low+back+beginners" target="_blank">▶ Watch Video</a>
-      </div>
-    </div>
   </section>
 
-  <!-- MOBILITY -->
+  <!-- MOBILITY / FLOOR WORK -->
   <section>
     <div class="section-header">
       <span class="section-icon">🧘</span>
-      <span class="section-title">Mobility & Stretching</span>
-      <span class="section-count" id="count-stretch">0/3</span>
+      <span class="section-title">Mobility & Floor Work</span>
+      <span class="section-count" id="count-stretch">0/6</span>
+    </div>
+
+    <div class="exercise-card" id="ex-25" data-section="stretch">
+      <div class="card-top" onclick="toggleCard(25)">
+        <div class="check-circle" onclick="toggleDone(event,25)">✓</div>
+        <span class="exercise-name">Glute Bridge</span>
+        <span class="badge">3 sets · 12–15 reps</span>
+        <span class="expand-icon">▼</span>
+      </div>
+      <div class="card-body" id="body-25">
+        <div class="how-to"><strong>How to do it:</strong><ol>
+          <li>Lie on your back on a mat, knees bent, feet flat on the floor about hip-width apart, arms relaxed at your sides.</li>
+          <li>Gently brace your core (like Deep Core Activation), then squeeze your glutes to lift your hips off the floor.</li>
+          <li>Lift only until your body forms a straight line from shoulders to knees — do NOT arch or overextend your lower back at the top. Think "tuck," not "arch."</li>
+          <li>Squeeze at the top for 1–2 seconds, then lower slowly and under control.</li>
+        </ol></div>
+        <div class="tip-box">Builds the glutes, which are a key stabilizer for the pelvis and take load off the lower back. Keep the lift driven by your glutes, not by arching your spine — stop the range right where your body is level, since going higher extends the lower back the same way the retired back extension machine did.</div>
+        <a class="video-btn" href="https://www.youtube.com/results?search_query=glute+bridge+proper+form+lower+back+safe" target="_blank">▶ Watch Video</a>
+      </div>
+    </div>
+
+    <div class="exercise-card" id="ex-26" data-section="stretch">
+      <div class="card-top" onclick="toggleCard(26)">
+        <div class="check-circle" onclick="toggleDone(event,26)">✓</div>
+        <span class="exercise-name">Opposition Crunch</span>
+        <span class="badge">10 slow exhales</span>
+        <span class="expand-icon">▼</span>
+      </div>
+      <div class="card-body" id="body-26">
+        <div class="how-to"><strong>How to do it:</strong><ol>
+          <li>Lie on your back, knees bent. Hold a stability ball (or a firm pillow) between your hands and your knees, arms and thighs pressing toward each other around it.</li>
+          <li>Take a deep breath in.</li>
+          <li>As you exhale slowly through pursed lips, push your knees and hands into the ball at the same time — this creates tension through your core without moving your spine.</li>
+          <li>While exhaling, curl your shoulders just slightly up toward the ball and hold until your exhale is complete.</li>
+          <li>Rest, take a couple of relaxed breaths, and repeat for 10 total exhales.</li>
+        </ol></div>
+        <div class="tip-box">Your PT's replacement for the crunch machine — same "ab-engaging" feeling, but the ball creates the tension so your spine barely moves, instead of loading it with resisted flexion.</div>
+        <a class="video-btn" href="https://www.youtube.com/results?search_query=fitness+4+back+pain+opposition+crunch" target="_blank">▶ Watch Video</a>
+      </div>
+    </div>
+
+    <div class="exercise-card" id="ex-27" data-section="stretch">
+      <div class="card-top" onclick="toggleCard(27)">
+        <div class="check-circle" onclick="toggleDone(event,27)">✓</div>
+        <span class="exercise-name">Dead Bug</span>
+        <span class="badge">2–3 sets · 8 reps · Each side</span>
+        <span class="expand-icon">▼</span>
+      </div>
+      <div class="card-body" id="body-27">
+        <div class="how-to"><strong>How to do it:</strong><ol>
+          <li>Lie on your back, arms reaching straight up toward the ceiling, knees bent to 90° directly over your hips (tabletop position).</li>
+          <li>Gently brace your core (like Deep Core Activation) and press your lower back lightly into the floor — hold that the whole set.</li>
+          <li>Slowly lower your right arm overhead and your left leg straight out toward the floor at the same time, only as far as you can go without your lower back arching up off the floor.</li>
+          <li>Pause, then slowly return to the starting position under control.</li>
+          <li>Repeat with the opposite arm and leg. That's one rep per side — continue alternating for 8 reps each side.</li>
+        </ol></div>
+        <div class="tip-box">Trains your core to keep your spine still while your limbs move — the same coordination that protects your back during everyday activities. If your lower back arches off the floor, that's the signal to shorten the range until it stays flat.</div>
+        <a class="video-btn" href="https://www.youtube.com/results?search_query=fitness+4+back+pain+dead+bug+tutorial" target="_blank">▶ Watch Video</a>
+      </div>
     </div>
 
     <div class="exercise-card" id="ex-28" data-section="stretch">
@@ -753,27 +793,7 @@
     <div class="section-header">
       <span class="section-icon">💪</span>
       <span class="section-title">Core & Stability (Machine-Based)</span>
-      <span class="section-count" id="count-core">0/4</span>
-    </div>
-
-    <div class="exercise-card" id="ex-26" data-section="core">
-      <div class="card-top" onclick="toggleCard(26)">
-        <div class="check-circle" onclick="toggleDone(event,26)">✓</div>
-        <span class="exercise-name">Opposition Crunch</span>
-        <span class="badge">10 slow exhales</span>
-        <span class="expand-icon">▼</span>
-      </div>
-      <div class="card-body" id="body-26">
-        <div class="how-to"><strong>How to do it:</strong><ol>
-          <li>Lie on your back, knees bent. Hold a stability ball (or a firm pillow) between your hands and your knees, arms and thighs pressing toward each other around it.</li>
-          <li>Take a deep breath in.</li>
-          <li>As you exhale slowly through pursed lips, push your knees and hands into the ball at the same time — this creates tension through your core without moving your spine.</li>
-          <li>While exhaling, curl your shoulders just slightly up toward the ball and hold until your exhale is complete.</li>
-          <li>Rest, take a couple of relaxed breaths, and repeat for 10 total exhales.</li>
-        </ol></div>
-        <div class="tip-box">Your PT's replacement for the crunch machine — same "ab-engaging" feeling, but the ball creates the tension so your spine barely moves, instead of loading it with resisted flexion.</div>
-        <a class="video-btn" href="https://www.youtube.com/results?search_query=fitness+4+back+pain+opposition+crunch" target="_blank">▶ Watch Video</a>
-      </div>
+      <span class="section-count" id="count-core">0/2</span>
     </div>
 
     <div class="exercise-card" id="ex-11" data-section="core">
@@ -830,25 +850,6 @@
       </div>
     </div>
 
-    <div class="exercise-card" id="ex-27" data-section="core">
-      <div class="card-top" onclick="toggleCard(27)">
-        <div class="check-circle" onclick="toggleDone(event,27)">✓</div>
-        <span class="exercise-name">Dead Bug</span>
-        <span class="badge">2–3 sets · 8 reps · Each side</span>
-        <span class="expand-icon">▼</span>
-      </div>
-      <div class="card-body" id="body-27">
-        <div class="how-to"><strong>How to do it:</strong><ol>
-          <li>Lie on your back, arms reaching straight up toward the ceiling, knees bent to 90° directly over your hips (tabletop position).</li>
-          <li>Gently brace your core (like Deep Core Activation) and press your lower back lightly into the floor — hold that the whole set.</li>
-          <li>Slowly lower your right arm overhead and your left leg straight out toward the floor at the same time, only as far as you can go without your lower back arching up off the floor.</li>
-          <li>Pause, then slowly return to the starting position under control.</li>
-          <li>Repeat with the opposite arm and leg. That's one rep per side — continue alternating for 8 reps each side.</li>
-        </ol></div>
-        <div class="tip-box">Trains your core to keep your spine still while your limbs move — the same coordination that protects your back during everyday activities. If your lower back arches off the floor, that's the signal to shorten the range until it stays flat.</div>
-        <a class="video-btn" href="https://www.youtube.com/results?search_query=fitness+4+back+pain+dead+bug+tutorial" target="_blank">▶ Watch Video</a>
-      </div>
-    </div>
   </section>
 
   <!-- LOWER BODY -->
@@ -856,7 +857,7 @@
     <div class="section-header">
       <span class="section-icon">🦵</span>
       <span class="section-title">Lower Body Strength (Spine-Friendly)</span>
-      <span class="section-count" id="count-lower">0/5</span>
+      <span class="section-count" id="count-lower">0/4</span>
     </div>
 
     <div class="exercise-card" id="ex-12" data-section="lower">
@@ -907,25 +908,6 @@
           <span class="weight-badge" id="weight-badge-13">⬆️ Try adding weight</span>
         </div>
         <a class="video-btn" href="https://www.youtube.com/results?search_query=seated+hamstring+curl+machine+proper+form" target="_blank">▶ Watch Video</a>
-      </div>
-    </div>
-
-    <div class="exercise-card" id="ex-25" data-section="lower">
-      <div class="card-top" onclick="toggleCard(25)">
-        <div class="check-circle" onclick="toggleDone(event,25)">✓</div>
-        <span class="exercise-name">Glute Bridge</span>
-        <span class="badge">3 sets · 12–15 reps</span>
-        <span class="expand-icon">▼</span>
-      </div>
-      <div class="card-body" id="body-25">
-        <div class="how-to"><strong>How to do it:</strong><ol>
-          <li>Lie on your back on a mat, knees bent, feet flat on the floor about hip-width apart, arms relaxed at your sides.</li>
-          <li>Gently brace your core (like Deep Core Activation), then squeeze your glutes to lift your hips off the floor.</li>
-          <li>Lift only until your body forms a straight line from shoulders to knees — do NOT arch or overextend your lower back at the top. Think "tuck," not "arch."</li>
-          <li>Squeeze at the top for 1–2 seconds, then lower slowly and under control.</li>
-        </ol></div>
-        <div class="tip-box">Builds the glutes, which are a key stabilizer for the pelvis and take load off the lower back. Keep the lift driven by your glutes, not by arching your spine — stop the range right where your body is level, since going higher extends the lower back the same way the retired back extension machine did.</div>
-        <a class="video-btn" href="https://www.youtube.com/results?search_query=glute+bridge+proper+form+lower+back+safe" target="_blank">▶ Watch Video</a>
       </div>
     </div>
 
@@ -1267,17 +1249,16 @@
     {id:0,  section:'warmup',   variant:null},
     {id:1,  section:'warmup',   variant:null},
     {id:3,  section:'warmup',   variant:null},
-    {id:5,  section:'warmup',   variant:null},
+    {id:25, section:'stretch',  variant:null},
+    {id:26, section:'stretch',  variant:null},
+    {id:27, section:'stretch',  variant:null},
     {id:7,  section:'stretch',  variant:null},
     {id:8,  section:'stretch',  variant:null},
     {id:28, section:'stretch',  variant:null},
-    {id:26, section:'core',     variant:null},
     {id:11, section:'core',     variant:null},
     {id:30, section:'core',     variant:null},
-    {id:27, section:'core',     variant:null},
     {id:12, section:'lower',    variant:null},
     {id:13, section:'lower',    variant:null},
-    {id:25, section:'lower',    variant:null},
     {id:14, section:'lower',    variant:'A'},
     {id:15, section:'lower',    variant:'A'},
     {id:16, section:'lower',    variant:'B'},

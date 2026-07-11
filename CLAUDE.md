@@ -24,14 +24,14 @@ Railway watches the GitHub repo. To update the live app:
 
 ## The App Structure
 Two tabs:
-- **Workout tab**: 23 exercises total (exercise IDs 0–31, with 2, 4, 6, 9, 10, 18, 19, 21, 23 retired/unused — see updates below), checkboxes, instructions, tips, per-exercise weight tracking, and YouTube video links. Progress bar tracks the session and only counts exercises visible for that day's Workout A/B variant (21 per session as of the 2026-07-10 second PT-driven update). Reset button clears checkboxes, advances the workout counter, and bumps weight streaks.
+- **Workout tab**: 22 exercises total (exercise IDs 0–31, with 2, 4, 5, 6, 9, 10, 18, 19, 21, 23 retired/unused — see updates below), checkboxes, instructions, tips, per-exercise weight tracking, and YouTube video links. Progress bar tracks the session and only counts exercises visible for that day's Workout A/B variant (20 per session as of the 2026-07-10 gym-layout reorganization). Reset button clears checkboxes, advances the workout counter, and bumps weight streaks.
 - **Schedule tab**: Mon/Wed/Fri weekly calendar, an A/B explainer card, and a single "Your Routine" info box (full 3-set routine every session, no phases).
 
-### 6 Exercise Sections (as of 2026-07-10 second PT-driven update)
-1. Warm-Up (4, all staple) — Stationary Bike, Cat Stretch, Deep Core Activation, Ski Erg
-2. Mobility & Stretching (3) — Figure-4, Hip Flexor Stretch (Kneeling), Couch Stretch
-3. Core & Stability (4) — Opposition Crunch, Pallof Press, Pallof to Warrior Press, Dead Bug
-4. Lower Body (3 staple + 2 rotating) — Leg Press, Seated Hamstring Curl, Glute Bridge, + Hip Abductor/Leg Extension (A) or Hip Adductor/Suitcase Carry (B)
+### 6 Exercise Sections (as of 2026-07-10 gym-layout reorganization)
+1. Warm-Up (3, all staple) — Stationary Bike, Cat Stretch, Deep Core Activation
+2. Mobility & Floor Work (6) — Glute Bridge, Opposition Crunch, Dead Bug, Figure-4, Hip Flexor Stretch (Kneeling), Couch Stretch
+3. Core & Stability — Machine-Based (2) — Pallof Press, Pallof to Warrior Press
+4. Lower Body (2 staple + 2 rotating) — Leg Press, Seated Hamstring Curl, + Hip Abductor/Leg Extension (A) or Hip Adductor/Suitcase Carry (B)
 5. Upper Body (2, all staple) — Chest Press Machine, Chest Fly Machine
 6. Cool-Down (3) — Seated Hamstring Stretch, Somatic Forward Fold, 90/90 Decompression
 
@@ -55,6 +55,8 @@ Two tabs:
 I could not independently verify the exact 2 YouTube videos John watched (Claude in Chrome wasn't connected in this session), so the exercise instructions above are built from Fitness 4 Back Pain's published site content for Opposition Crunch and their general Pallof Press / Dead Bug material, plus standard technique sources for Couch Stretch and Somatic Forward Fold. Video links in the app use search queries rather than direct video IDs (consistent with every other exercise in the app) so John can confirm against the actual PT-referenced video.
 
 **Pallof split + upper body gap filled 2026-07-10**: John asked to un-merge Pallof Press and Pallof to Warrior Press back into two separate exercises, since he sees them as training different things — Pallof Press resists side rotation, Pallof to Warrior Press (the overhead reach add-on) resists extension. Restored **Pallof Press** (id 11) to its original anti-rotation-only version and added **Pallof to Warrior Press** as a new separate card (id 30), reframed around resisting the lower back arching as the arms go overhead. Also addressed the thin Upper Body section flagged above: removed **Standing Single-Arm Cable Row** (id 21, retired/unused) and promoted **Chest Press Machine** (id 20) from a Workout-A-only exercise to an every-session staple, and added **Chest Fly Machine** (id 31) as a second every-session staple. Upper Body is no longer part of the A/B rotation — both machines now run every session. Updated the Schedule tab's A/B explainer cards and "How A/B works" note to match (A/B rotation is now Lower Body only).
+
+**Gym-layout reorganization 2026-07-10**: John does all his floor-based work in an upstairs area of his gym, then goes downstairs for machines — he wanted the app's sections to mirror that so he can do everything for one area in one trip. Removed **Ski Erg** (id 5, retired/unused) entirely at his request. Moved **Glute Bridge** (id 25), **Opposition Crunch** (id 26), and **Dead Bug** (id 27) out of Lower Body/Core & Stability and into the stretching section, since all three are floor-based rather than machine-based — same category as his existing stretches. Renamed that section from "Mobility & Stretching" to **"Mobility & Floor Work"** to reflect the broader mix of stretches and floor-based strength/stability work now grouped there. Core & Stability is now purely cable/machine work (Pallof Press, Pallof to Warrior Press only), matching its existing "(Machine-Based)" label. Lower Body dropped to 2 staples + 2 rotating (4 per session) now that Glute Bridge moved out.
 
 Workout days: Monday / Wednesday / Friday
 
