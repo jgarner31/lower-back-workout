@@ -27,13 +27,13 @@ Two tabs:
 - **Workout tab**: 22 exercises total (exercise IDs 0–23, with 2 and 10 retired/unused — see MRI update below), checkboxes, instructions, tips, per-exercise weight tracking, and YouTube video links. Progress bar tracks the session and only counts exercises visible for that day's Workout A/B variant (18 per session as of the 2026-07-07 MRI update). Reset button clears checkboxes, advances the workout counter, and bumps weight streaks.
 - **Schedule tab**: Mon/Wed/Fri weekly calendar, an A/B explainer card, and a single "Your Routine" info box (full 3-set routine every session, no phases).
 
-### 6 Exercise Sections (as of 2026-07-07 MRI update)
-1. Warm-Up (3 staple + 1 rotating) — Stationary Bike, Cat Stretch, Deep Core Activation, + Rowing Machine (Workout A) / Ski Erg (Workout B)
-2. Mobility & Stretching (3, unchanged) — Knee-to-Chest, Figure-4, Hip Flexor
-3. Core & Stability — Machine-Based (2) — Seated Ab Crunch Machine, Pallof Press
+### 6 Exercise Sections (as of 2026-07-10 PT update)
+1. Warm-Up (4, all staple) — Stationary Bike, Cat Stretch, Deep Core Activation, Ski Erg
+2. Mobility & Stretching (3) — Figure-4, Hip Flexor Stretch (Kneeling), Couch Stretch
+3. Core & Stability (3) — Opposition Crunch, Pallof to Warrior Press, Dead Bug
 4. Lower Body (3 staple + 2 rotating) — Leg Press, Seated Hamstring Curl, Glute Bridge, + Hip Abductor/Leg Extension (A) or Hip Adductor/Suitcase Carry (B)
-5. Upper Body (2 staple + 1 rotating) — Lat Pulldown, Seated Cable Row, + Chest Press Machine (A) or Standing Single-Arm Cable Row (B)
-6. Cool-Down (3, as of 2026-07-07 decompression addition) — Seated Hamstring Stretch, Child's Pose, 90/90 Decompression
+5. Upper Body (1, rotating only — no staples) — Chest Press Machine (A) or Standing Single-Arm Cable Row (B)
+6. Cool-Down (3) — Seated Hamstring Stretch, Somatic Forward Fold, 90/90 Decompression
 
 **Redesigned 2026-07-06**: Removed Bird Dog, Dead Bug, Glute Bridge, and Side Plank (floor/kneeling work aggravated John's knees; Side Plank also loaded his arthritic shoulder). Replaced with machine-based core work. Added Workout A/B rotation (derived from `workoutCount` parity — odd = A, even = B) so session length stays ~20 exercises while still cycling through more machine variety across the week. Added a "last weight used" input per strength exercise (`localStorage.weightData`, keyed by exercise id) with a streak counter that surfaces an "⬆️ Try adding weight" badge once the same weight has been logged 6 workouts in a row.
 
@@ -44,6 +44,17 @@ Two tabs:
 **Decompression addition 2026-07-07**: John asked about spinal decompression since compression (walking, stairs) is his main pain trigger. Added **90/90 Decompression** (exercise ID 24) to Cool-Down: lying on back with calves on a chair/bench, hips/knees at 90°, 5-10 min. Chosen over an inversion table because inversion increases lumbar lordosis (extension), which narrows the same foramina/facet joints already compromised in his MRI — the 90/90 position unloads the discs via flexion instead, with no shoulder or knee involvement. Also discussed his Chirp Halo TENS/EMS device for muscle guarding: recommended the device's "Pain Relief" preset (mixed TENS+EMS, 20 min) placed via the lower back pad, since pure TENS (via endorphin release) is what interrupts the guarding/spasm cycle, while EMS adds blood flow. Advised against placing it directly over the most symptomatic right-sided L4-L5 area at high intensity given his nerve sensitivity.
 
 **Cat-Cow modified, Glute Bridge restored 2026-07-10**: John reported the Cow (extension) half of Cat-Cow reproduces his pain — consistent with the facet arthritis/foraminal narrowing already driving the QL Ball Release and Back Extension removals. Renamed the exercise to **Cat Stretch** (exercise ID 1, unchanged) and rewrote the instructions to stop at neutral spine instead of arching into extension. Also restored **Glute Bridge** (new exercise ID 25) into Lower Body as a staple every session, per John's request — cued to lift only to a straight shoulders-to-knees line and avoid arching the lower back at the top, for the same extension-avoidance reason as the Cat Stretch change.
+
+**PT-directed update 2026-07-10**: John saw his PT, who evaluated his range of motion in person and directed removing 6 exercises: Rowing Machine, Knee-to-Chest Stretch, Seated Ab Crunch Machine, Lat Pulldown, Seated Cable Row, and Child's Pose (exercise IDs 4, 6, 9, 18, 19, 23 — all retired/unused, not renumbered). John supplied 5 replacement exercises from two Fitness 4 Back Pain YouTube videos: Pallof to Warrior Press, Opposition Crunch, Somatic Forward Fold, Couch Stretch, and Dead Bug. Placement logic:
+- **Pallof to Warrior Press** (id 11, same slot as the old Pallof Press) — upgraded in place rather than added as a duplicate, since it's a direct progression of the existing exercise (adds an overhead reach after the standard press-out).
+- **Opposition Crunch** (id 26) and **Dead Bug** (id 27) — added to Core & Stability, covering the ab/coordination stimulus lost when Ab Crunch Machine was removed.
+- **Couch Stretch** (id 28) — added to Mobility & Stretching in the Knee-to-Chest slot (deeper hip flexor stretch, PT's pick over the existing standard Hip Flexor Stretch which stays too).
+- **Somatic Forward Fold** (id 29) — added to Cool-Down in the Child's Pose slot (posterior chain release, better suited post-workout when muscles are warm).
+- **Ski Erg** (id 5) — promoted from a Workout-B-only rotator to an every-session staple, since Rowing Machine (its Workout-A counterpart) was removed and warm-up needed to stay a consistent length. Its `data-variant` was removed.
+
+**Known gap to flag**: Removing both Lat Pulldown and Seated Cable Row leaves Upper Body with zero staple exercises — it's now just one alternating machine per session (Chest Press on A, Standing Single-Arm Cable Row on B). None of the 5 PT-supplied exercises replace upper-body pulling volume. Worth asking John's PT whether that's intentional or whether more upper-body work should be added back once his ROM improves.
+
+I could not independently verify the exact 2 YouTube videos John watched (Claude in Chrome wasn't connected in this session), so the exercise instructions above are built from Fitness 4 Back Pain's published site content for Opposition Crunch and their general Pallof Press / Dead Bug material, plus standard technique sources for Couch Stretch and Somatic Forward Fold. Video links in the app use search queries rather than direct video IDs (consistent with every other exercise in the app) so John can confirm against the actual PT-referenced video.
 
 Workout days: Monday / Wednesday / Friday
 
