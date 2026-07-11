@@ -24,15 +24,15 @@ Railway watches the GitHub repo. To update the live app:
 
 ## The App Structure
 Two tabs:
-- **Workout tab**: 22 exercises total (exercise IDs 0–23, with 2 and 10 retired/unused — see MRI update below), checkboxes, instructions, tips, per-exercise weight tracking, and YouTube video links. Progress bar tracks the session and only counts exercises visible for that day's Workout A/B variant (18 per session as of the 2026-07-07 MRI update). Reset button clears checkboxes, advances the workout counter, and bumps weight streaks.
+- **Workout tab**: 23 exercises total (exercise IDs 0–31, with 2, 4, 6, 9, 10, 18, 19, 21, 23 retired/unused — see updates below), checkboxes, instructions, tips, per-exercise weight tracking, and YouTube video links. Progress bar tracks the session and only counts exercises visible for that day's Workout A/B variant (21 per session as of the 2026-07-10 second PT-driven update). Reset button clears checkboxes, advances the workout counter, and bumps weight streaks.
 - **Schedule tab**: Mon/Wed/Fri weekly calendar, an A/B explainer card, and a single "Your Routine" info box (full 3-set routine every session, no phases).
 
-### 6 Exercise Sections (as of 2026-07-10 PT update)
+### 6 Exercise Sections (as of 2026-07-10 second PT-driven update)
 1. Warm-Up (4, all staple) — Stationary Bike, Cat Stretch, Deep Core Activation, Ski Erg
 2. Mobility & Stretching (3) — Figure-4, Hip Flexor Stretch (Kneeling), Couch Stretch
-3. Core & Stability (3) — Opposition Crunch, Pallof to Warrior Press, Dead Bug
+3. Core & Stability (4) — Opposition Crunch, Pallof Press, Pallof to Warrior Press, Dead Bug
 4. Lower Body (3 staple + 2 rotating) — Leg Press, Seated Hamstring Curl, Glute Bridge, + Hip Abductor/Leg Extension (A) or Hip Adductor/Suitcase Carry (B)
-5. Upper Body (1, rotating only — no staples) — Chest Press Machine (A) or Standing Single-Arm Cable Row (B)
+5. Upper Body (2, all staple) — Chest Press Machine, Chest Fly Machine
 6. Cool-Down (3) — Seated Hamstring Stretch, Somatic Forward Fold, 90/90 Decompression
 
 **Redesigned 2026-07-06**: Removed Bird Dog, Dead Bug, Glute Bridge, and Side Plank (floor/kneeling work aggravated John's knees; Side Plank also loaded his arthritic shoulder). Replaced with machine-based core work. Added Workout A/B rotation (derived from `workoutCount` parity — odd = A, even = B) so session length stays ~20 exercises while still cycling through more machine variety across the week. Added a "last weight used" input per strength exercise (`localStorage.weightData`, keyed by exercise id) with a streak counter that surfaces an "⬆️ Try adding weight" badge once the same weight has been logged 6 workouts in a row.
@@ -52,9 +52,9 @@ Two tabs:
 - **Somatic Forward Fold** (id 29) — added to Cool-Down in the Child's Pose slot (posterior chain release, better suited post-workout when muscles are warm).
 - **Ski Erg** (id 5) — promoted from a Workout-B-only rotator to an every-session staple, since Rowing Machine (its Workout-A counterpart) was removed and warm-up needed to stay a consistent length. Its `data-variant` was removed.
 
-**Known gap to flag**: Removing both Lat Pulldown and Seated Cable Row leaves Upper Body with zero staple exercises — it's now just one alternating machine per session (Chest Press on A, Standing Single-Arm Cable Row on B). None of the 5 PT-supplied exercises replace upper-body pulling volume. Worth asking John's PT whether that's intentional or whether more upper-body work should be added back once his ROM improves.
-
 I could not independently verify the exact 2 YouTube videos John watched (Claude in Chrome wasn't connected in this session), so the exercise instructions above are built from Fitness 4 Back Pain's published site content for Opposition Crunch and their general Pallof Press / Dead Bug material, plus standard technique sources for Couch Stretch and Somatic Forward Fold. Video links in the app use search queries rather than direct video IDs (consistent with every other exercise in the app) so John can confirm against the actual PT-referenced video.
+
+**Pallof split + upper body gap filled 2026-07-10**: John asked to un-merge Pallof Press and Pallof to Warrior Press back into two separate exercises, since he sees them as training different things — Pallof Press resists side rotation, Pallof to Warrior Press (the overhead reach add-on) resists extension. Restored **Pallof Press** (id 11) to its original anti-rotation-only version and added **Pallof to Warrior Press** as a new separate card (id 30), reframed around resisting the lower back arching as the arms go overhead. Also addressed the thin Upper Body section flagged above: removed **Standing Single-Arm Cable Row** (id 21, retired/unused) and promoted **Chest Press Machine** (id 20) from a Workout-A-only exercise to an every-session staple, and added **Chest Fly Machine** (id 31) as a second every-session staple. Upper Body is no longer part of the A/B rotation — both machines now run every session. Updated the Schedule tab's A/B explainer cards and "How A/B works" note to match (A/B rotation is now Lower Body only).
 
 Workout days: Monday / Wednesday / Friday
 

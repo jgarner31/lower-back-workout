@@ -583,7 +583,7 @@
   <div class="progress-bar-wrap">
     <div class="progress-bar" id="progressBar"></div>
   </div>
-  <div class="progress-label" id="progressLabel">0 of 19 exercises complete</div>
+  <div class="progress-label" id="progressLabel">0 of 21 exercises complete</div>
   <button class="reset-btn" onclick="resetAll()">↺ Reset Workout (counts as done)</button>
 
   <br>
@@ -753,7 +753,7 @@
     <div class="section-header">
       <span class="section-icon">💪</span>
       <span class="section-title">Core & Stability (Machine-Based)</span>
-      <span class="section-count" id="count-core">0/3</span>
+      <span class="section-count" id="count-core">0/4</span>
     </div>
 
     <div class="exercise-card" id="ex-26" data-section="core">
@@ -779,7 +779,7 @@
     <div class="exercise-card" id="ex-11" data-section="core">
       <div class="card-top" onclick="toggleCard(11)">
         <div class="check-circle" onclick="toggleDone(event,11)">✓</div>
-        <span class="exercise-name">Pallof to Warrior Press</span>
+        <span class="exercise-name">Pallof Press</span>
         <span class="badge">2–3 sets · 10–12 reps · Each side</span>
         <span class="expand-icon">▼</span>
       </div>
@@ -789,16 +789,42 @@
           <li>Stand sideways to the machine, feet shoulder-width apart. Grab the handle with both hands and hold it at your chest, close to your sternum.</li>
           <li>Step far enough away from the machine that there is light tension on the cable.</li>
           <li>Brace your deep core (like you practiced in Deep Core Activation). Keep your hips square — do not let the cable pull you sideways or rotate your torso.</li>
-          <li>Slowly press your hands straight out in front of you until your arms are fully extended — this is the standard Pallof Press. Pause 1–2 seconds.</li>
-          <li><strong>Warrior Press:</strong> from the arms-extended position, slowly raise both hands overhead only as high as is comfortable for your shoulder, keeping your core braced and hips square the whole time.</li>
-          <li>Lower back to chest height with control. That is one rep. Complete all reps on one side, then turn around and repeat facing the other direction.</li>
+          <li>Slowly press your hands straight out in front of you until your arms are fully extended. Pause 1–2 seconds — feel your core resisting the rotation.</li>
+          <li>Slowly return your hands to your chest. That is one rep. Complete all reps on one side, then turn around and repeat facing the other direction.</li>
         </ol></div>
-        <div class="tip-box">Your PT's progression on the Pallof Press — the added overhead reach challenges your core to resist rotation AND extension at the same time. Keep the overhead range small and pain-free given your shoulder arthritis; the standard press-out alone is still a complete rep if overhead doesn't feel right that day.</div>
+        <div class="tip-box">Trains your core to resist rotation — protects your lumbar spine during everyday twisting (turning to reverse a car, reaching sideways, getting out of bed). Start very light — the challenge is staying perfectly still, not the weight.</div>
         <div class="weight-track">
           <label for="weight-11">Last weight used:</label>
           <input type="number" id="weight-11" class="weight-input" min="0" step="5" placeholder="lbs">
           <span class="weight-unit">lbs</span>
           <span class="weight-badge" id="weight-badge-11">⬆️ Try adding weight</span>
+        </div>
+        <a class="video-btn" href="https://www.youtube.com/results?search_query=paloff+press+cable+anti+rotation+core+lower+back+pain+how+to" target="_blank">▶ Watch Video</a>
+      </div>
+    </div>
+
+    <div class="exercise-card" id="ex-30" data-section="core">
+      <div class="card-top" onclick="toggleCard(30)">
+        <div class="check-circle" onclick="toggleDone(event,30)">✓</div>
+        <span class="exercise-name">Pallof to Warrior Press</span>
+        <span class="badge">2–3 sets · 8–10 reps · Each side</span>
+        <span class="expand-icon">▼</span>
+      </div>
+      <div class="card-body" id="body-30">
+        <div class="how-to"><strong>How to do it:</strong><ol>
+          <li>At a cable machine, set a D-handle at chest height.</li>
+          <li>Stand sideways to the machine, feet shoulder-width apart. Grab the handle with both hands and hold it at your chest, close to your sternum.</li>
+          <li>Step far enough away from the machine that there is light tension on the cable.</li>
+          <li>Brace your deep core. Press your hands straight out until arms are extended, keeping hips square.</li>
+          <li>From there, slowly raise both hands overhead only as high as is comfortable for your shoulder, resisting the urge to arch your lower back as your arms go up.</li>
+          <li>Lower back to chest height with control. That is one rep. Complete all reps on one side, then turn around and repeat facing the other direction.</li>
+        </ol></div>
+        <div class="tip-box">Where the standard Pallof Press trains your core to resist side rotation, the overhead reach here trains it to resist extension — keeping your ribs from flaring up and your lower back from arching as your arms go overhead. Keep the range small and pain-free given your shoulder arthritis.</div>
+        <div class="weight-track">
+          <label for="weight-30">Last weight used:</label>
+          <input type="number" id="weight-30" class="weight-input" min="0" step="5" placeholder="lbs">
+          <span class="weight-unit">lbs</span>
+          <span class="weight-badge" id="weight-badge-30">⬆️ Try adding weight</span>
         </div>
         <a class="video-btn" href="https://www.youtube.com/results?search_query=pallof+to+warrior+press+herniated+disc+core+exercise" target="_blank">▶ Watch Video</a>
       </div>
@@ -1013,15 +1039,14 @@
     <div class="section-header">
       <span class="section-icon">🏋️</span>
       <span class="section-title">Upper Body (Spinal Decompression)</span>
-      <span class="section-count" id="count-upper">0/1</span>
+      <span class="section-count" id="count-upper">0/2</span>
     </div>
 
 
-    <div class="exercise-card" id="ex-20" data-section="upper" data-variant="A">
+    <div class="exercise-card" id="ex-20" data-section="upper">
       <div class="card-top" onclick="toggleCard(20)">
         <div class="check-circle" onclick="toggleDone(event,20)">✓</div>
         <span class="exercise-name">Chest Press Machine</span>
-        <span class="variant-tag">Workout A</span>
         <span class="badge">3 sets · 12 reps · Light-moderate</span>
         <span class="expand-icon">▼</span>
       </div>
@@ -1044,31 +1069,29 @@
       </div>
     </div>
 
-    <div class="exercise-card" id="ex-21" data-section="upper" data-variant="B">
-      <div class="card-top" onclick="toggleCard(21)">
-        <div class="check-circle" onclick="toggleDone(event,21)">✓</div>
-        <span class="exercise-name">Standing Single-Arm Cable Row</span>
-        <span class="variant-tag">Workout B</span>
-        <span class="badge">3 sets · 10–12 reps · Each side</span>
+    <div class="exercise-card" id="ex-31" data-section="upper">
+      <div class="card-top" onclick="toggleCard(31)">
+        <div class="check-circle" onclick="toggleDone(event,31)">✓</div>
+        <span class="exercise-name">Chest Fly Machine</span>
+        <span class="badge">3 sets · 12 reps · Light-moderate</span>
         <span class="expand-icon">▼</span>
       </div>
-      <div class="card-body" id="body-21">
+      <div class="card-body" id="body-31">
         <div class="how-to"><strong>How to do it:</strong><ol>
-          <li>Set a D-handle at chest height on a cable stack.</li>
-          <li>Stand side-on to the machine, feet shoulder-width apart, knees soft.</li>
-          <li>Grab the handle with the arm farther from the machine.</li>
-          <li>Brace your core — resist the urge to let the cable rotate your torso.</li>
-          <li>Pull the handle to your ribs, squeezing your shoulder blade back, then slowly extend back out while staying square.</li>
-          <li>Complete all reps, then turn around and repeat with the other arm.</li>
+          <li>Sit with your back flat against the pad, elbows resting in the arm pads at chest height.</li>
+          <li>Set a light-moderate weight.</li>
+          <li>Slowly bring the pads/handles together in front of your chest in a hugging motion, keeping a slight bend in your elbows.</li>
+          <li>Pause briefly, then slowly return to the start position — don't let the weight stack slam or let your arms drift too far back.</li>
+          <li>Stop the range early if you feel any shoulder pinching, especially at the stretched-back position.</li>
         </ol></div>
-        <div class="tip-box">Does double duty — a back/pulling exercise AND an anti-rotation core exercise, since you have to actively resist the cable twisting your spine. Great way to get back strength and core stability together without extra floor work.</div>
+        <div class="tip-box">A supported, fixed-path way to train the chest without any of the shoulder stress of free-weight flys — the pads control the range so you can't overextend the shoulder joint. Pairs well with Chest Press for balanced upper body work.</div>
         <div class="weight-track">
-          <label for="weight-21">Last weight used:</label>
-          <input type="number" id="weight-21" class="weight-input" min="0" step="5" placeholder="lbs">
+          <label for="weight-31">Last weight used:</label>
+          <input type="number" id="weight-31" class="weight-input" min="0" step="5" placeholder="lbs">
           <span class="weight-unit">lbs</span>
-          <span class="weight-badge" id="weight-badge-21">⬆️ Try adding weight</span>
+          <span class="weight-badge" id="weight-badge-31">⬆️ Try adding weight</span>
         </div>
-        <a class="video-btn" href="https://www.youtube.com/results?search_query=standing+single+arm+cable+row+anti+rotation+core" target="_blank">▶ Watch Video</a>
+        <a class="video-btn" href="https://www.youtube.com/results?search_query=chest+fly+machine+proper+form+shoulder+friendly" target="_blank">▶ Watch Video</a>
       </div>
     </div>
   </section>
@@ -1172,15 +1195,15 @@
   <div class="ab-explainer">
     <div class="ab-card a-card">
       <h3>Workout A</h3>
-      <p>Hip Abductor · Leg Extension · Chest Press</p>
+      <p>Hip Abductor · Leg Extension</p>
     </div>
     <div class="ab-card b-card">
       <h3>Workout B</h3>
-      <p>Hip Adductor · Suitcase Carry · Standing Single-Arm Row</p>
+      <p>Hip Adductor · Suitcase Carry</p>
     </div>
   </div>
   <div class="note-box" style="margin-top:-8px;">
-    <strong>How A/B works:</strong> Warm-up, Stretching, Core, Lower Body staples (Leg Press, Hamstring Curl, Glute Bridge), and Cool-Down are done every session — that consistency is what protects your back. Only a few "bonus" machine exercises rotate between A and B automatically based on your workout count, so each muscle group still gets trained ~3x/week while sessions stay a similar length and you get more variety. Upper Body is currently just one alternating exercise per session (Chest Press or Standing Single-Arm Row) since Lat Pulldown and Seated Cable Row were removed per your PT.
+    <strong>How A/B works:</strong> Warm-up, Stretching, Core, Lower Body staples (Leg Press, Hamstring Curl, Glute Bridge), Upper Body (Chest Press, Chest Fly), and Cool-Down are done every session — that consistency is what protects your back. Only a couple "bonus" Lower Body machine exercises rotate between A and B automatically based on your workout count, so each muscle group still gets trained while sessions stay a similar length and you get more variety.
   </div>
 
   <!-- YOUR ROUTINE -->
@@ -1235,7 +1258,7 @@
 
   // ─── EXERCISE LOGIC ──────────────────────────────────────────────────────────
 
-  const MAX_ID  = 30;
+  const MAX_ID  = 32;
   const done     = new Array(MAX_ID).fill(false);
   const expanded = new Array(MAX_ID).fill(false);
 
@@ -1250,6 +1273,7 @@
     {id:28, section:'stretch',  variant:null},
     {id:26, section:'core',     variant:null},
     {id:11, section:'core',     variant:null},
+    {id:30, section:'core',     variant:null},
     {id:27, section:'core',     variant:null},
     {id:12, section:'lower',    variant:null},
     {id:13, section:'lower',    variant:null},
@@ -1258,15 +1282,15 @@
     {id:15, section:'lower',    variant:'A'},
     {id:16, section:'lower',    variant:'B'},
     {id:17, section:'lower',    variant:'B'},
-    {id:20, section:'upper',    variant:'A'},
-    {id:21, section:'upper',    variant:'B'},
+    {id:20, section:'upper',    variant:null},
+    {id:31, section:'upper',    variant:null},
     {id:22, section:'cooldown', variant:null},
     {id:29, section:'cooldown', variant:null},
     {id:24, section:'cooldown', variant:null},
   ];
 
   // Exercises that carry a weight/pin-number tracker
-  const WEIGHT_IDS = [11,12,13,14,15,16,17,20,21];
+  const WEIGHT_IDS = [11,12,13,14,15,16,17,20,30,31];
 
   function applyVariantVisibility() {
     const variant = getVariant(getWorkoutCount());
