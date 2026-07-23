@@ -324,6 +324,17 @@
   }
   .trx-intro strong { color: #7dd3fc; }
   .trx-card .badge { color: #a5f3fc; border-color: #0e7490; }
+  .strap-group {
+    background: #1a2a3a;
+    border: 1px solid #2563eb55;
+    border-left: 3px solid #38bdf8;
+    border-radius: 9px;
+    padding: 10px 12px;
+    margin: 16px 0 9px;
+  }
+  .strap-group h3 { color: #7dd3fc; font-size: 0.88rem; margin-bottom: 3px; }
+  .strap-group p { color: #bfdbfe; font-size: 0.78rem; line-height: 1.5; }
+  .strap-tag { color: #67e8f9; font-size: 0.7rem; font-weight: 700; white-space: nowrap; }
 
   .today-card {
     background: linear-gradient(135deg, #172554, #1e3a5f);
@@ -1204,25 +1215,25 @@
   <button class="reset-btn" onclick="finishTrxWorkout()">✓ Finish & Log TRX Workout</button>
   <button class="reset-btn" onclick="clearTrxWorkout()">↺ Clear TRX Checkmarks</button>
   <br>
-  <div class="trx-intro"><strong>Beginner TRX Full-Body Workout:</strong> Complete 2 rounds, resting 45–60 seconds between exercises. Start with a more upright body angle to reduce resistance. Check the anchor and straps before every set; stop for sharp, shooting, or radiating pain.</div>
+  <div class="trx-intro"><strong>Beginner TRX Full-Body Workout:</strong> Complete 2 rounds, resting 45–60 seconds between exercises. Work through each strap-length block in order so you only adjust between blocks. The handle heights are starting cues for an unmarked trainer—your anchor height can change them. Keep both straps even, test the anchor with body weight before every block, and stop for sharp, shooting, or radiating pain.</div>
   <section>
     <div class="section-header"><span class="section-icon">🟡</span><span class="section-title">TRX Workout</span><span class="section-count" id="trxCount">0/8</span></div>
 
-    <div class="exercise-card trx-card" data-trx-id="bicep-curl"><div class="card-top" onclick="toggleTrxCard('bicep-curl')"><div class="check-circle" onclick="toggleTrxDone(event, 'bicep-curl')">✓</div><span class="exercise-name">TRX Bicep Curl</span><span class="badge">2 sets · 10–12 reps</span><span class="expand-icon">▼</span></div><div class="card-body" id="trx-body-bicep-curl"><div class="how-to"><strong>How to do it:</strong><ol><li>Face the anchor, hold the handles with palms up, and lean back in a straight body line.</li><li>Keep your upper arms lifted and elbows high as you curl your hands toward your temples.</li><li>Slowly straighten your arms to return without letting your elbows drop.</li></ol></div><div class="tip-box">Start nearly upright; step your feet forward only when you can keep your body rigid and elbows high.</div><a class="video-btn" href="https://www.youtube.com/results?search_query=TRX+bicep+curl+proper+form" target="_blank" rel="noopener">▶ Watch Video</a></div></div>
+    <div class="exercise-card trx-card" data-trx-id="bicep-curl" data-strap="mid"><div class="card-top" onclick="toggleTrxCard('bicep-curl')"><div class="check-circle" onclick="toggleTrxDone(event, 'bicep-curl')">✓</div><span class="exercise-name">TRX Bicep Curl</span><span class="badge">2 sets · 10–12 reps</span><span class="expand-icon">▼</span></div><div class="card-body" id="trx-body-bicep-curl"><div class="how-to"><strong>How to do it:</strong><ol><li>Face the anchor, hold the handles with palms up, and lean back in a straight body line.</li><li>Keep your upper arms lifted and elbows high as you curl your hands toward your temples.</li><li>Slowly straighten your arms to return without letting your elbows drop.</li></ol></div><div class="tip-box">Start nearly upright; step your feet forward only when you can keep your body rigid and elbows high.</div><a class="video-btn" href="https://www.youtube.com/results?search_query=TRX+bicep+curl+proper+form" target="_blank" rel="noopener">▶ Watch Video</a></div></div>
 
-    <div class="exercise-card trx-card" data-trx-id="t-spine"><div class="card-top" onclick="toggleTrxCard('t-spine')"><div class="check-circle" onclick="toggleTrxDone(event, 't-spine')">✓</div><span class="exercise-name">T-Spine Rotations</span><span class="badge">2 sets · 6 reps · Each side</span><span class="expand-icon">▼</span></div><div class="card-body" id="trx-body-t-spine"><div class="how-to"><strong>How to do it:</strong><ol><li>Set straps mid-length. Hold both foot cradles with one hand and walk back until that arm is straight; use a staggered stance.</li><li>Keep the anchored shoulder blade stable, then slowly open your chest by leading with the free arm.</li><li>Return with control and repeat before changing sides.</li></ol></div><div class="tip-box">Rotate through the upper back while keeping hips level; do not pull with a bent anchored arm or force the range.</div><a class="video-btn" href="https://www.dvidshub.net/video/694439" target="_blank" rel="noopener">▶ Watch Video</a></div></div>
+    <div class="exercise-card trx-card" data-trx-id="t-spine" data-strap="mid"><div class="card-top" onclick="toggleTrxCard('t-spine')"><div class="check-circle" onclick="toggleTrxDone(event, 't-spine')">✓</div><span class="exercise-name">T-Spine Rotations</span><span class="badge">2 sets · 6 reps · Each side</span><span class="expand-icon">▼</span></div><div class="card-body" id="trx-body-t-spine"><div class="how-to"><strong>How to do it:</strong><ol><li>Set straps mid-length. Hold both foot cradles with one hand and walk back until that arm is straight; use a staggered stance.</li><li>Keep the anchored shoulder blade stable, then slowly open your chest by leading with the free arm.</li><li>Return with control and repeat before changing sides.</li></ol></div><div class="tip-box">Rotate through the upper back while keeping hips level; do not pull with a bent anchored arm or force the range.</div><a class="video-btn" href="https://www.dvidshub.net/video/694439" target="_blank" rel="noopener">▶ Watch Video</a></div></div>
 
-    <div class="exercise-card trx-card" data-trx-id="plank"><div class="card-top" onclick="toggleTrxCard('plank')"><div class="check-circle" onclick="toggleTrxDone(event, 'plank')">✓</div><span class="exercise-name">TRX Plank Hold</span><span class="badge">2 sets · 10–20 sec</span><span class="expand-icon">▼</span></div><div class="card-body" id="trx-body-plank"><div class="how-to"><strong>How to do it:</strong><ol><li>Place both feet in the foot cradles and set your forearms on the floor beneath your shoulders.</li><li>Lift into a straight line from ears to heels and gently brace your core and glutes.</li><li>Hold while breathing steadily, then lower with control before your low back starts to sag or arch.</li></ol></div><div class="tip-box">Begin with a 10-second hold. If this position is not pain-free, use a regular forearm plank first and progress to the straps later.</div><a class="video-btn" href="https://www.trxtraining.com/blogs/news/trx-weekly-exercise-trx-plank" target="_blank" rel="noopener">▶ Watch Video</a></div></div>
+    <div class="exercise-card trx-card" data-trx-id="plank" data-strap="mid-calf"><div class="card-top" onclick="toggleTrxCard('plank')"><div class="check-circle" onclick="toggleTrxDone(event, 'plank')">✓</div><span class="exercise-name">TRX Plank Hold</span><span class="badge">2 sets · 10–20 sec</span><span class="expand-icon">▼</span></div><div class="card-body" id="trx-body-plank"><div class="how-to"><strong>How to do it:</strong><ol><li>Place both feet in the foot cradles and set your forearms on the floor beneath your shoulders.</li><li>Lift into a straight line from ears to heels and gently brace your core and glutes.</li><li>Hold while breathing steadily, then lower with control before your low back starts to sag or arch.</li></ol></div><div class="tip-box">Begin with a 10-second hold. If this position is not pain-free, use a regular forearm plank first and progress to the straps later.</div><a class="video-btn" href="https://www.trxtraining.com/blogs/news/trx-weekly-exercise-trx-plank" target="_blank" rel="noopener">▶ Watch Video</a></div></div>
 
-    <div class="exercise-card trx-card" data-trx-id="squat"><div class="card-top" onclick="toggleTrxCard('squat')"><div class="check-circle" onclick="toggleTrxDone(event, 'squat')">✓</div><span class="exercise-name">TRX Squat</span><span class="badge">2 sets · 10–12 reps</span><span class="expand-icon">▼</span></div><div class="card-body" id="trx-body-squat"><div class="how-to"><strong>How to do it:</strong><ol><li>Hold the handles lightly, sit hips back and down, and keep your chest tall.</li><li>Keep knees tracking over toes, then drive through your whole foot to stand.</li></ol></div><div class="tip-box">Use the straps for balance, not to pull yourself up.</div><a class="video-btn" href="https://www.youtube.com/watch?v=oawE3Eo47RY" target="_blank" rel="noopener">▶ Watch Video</a></div></div>
+    <div class="exercise-card trx-card" data-trx-id="squat" data-strap="short"><div class="card-top" onclick="toggleTrxCard('squat')"><div class="check-circle" onclick="toggleTrxDone(event, 'squat')">✓</div><span class="exercise-name">TRX Squat</span><span class="badge">2 sets · 10–12 reps</span><span class="expand-icon">▼</span></div><div class="card-body" id="trx-body-squat"><div class="how-to"><strong>How to do it:</strong><ol><li>Hold the handles lightly, sit hips back and down, and keep your chest tall.</li><li>Keep knees tracking over toes, then drive through your whole foot to stand.</li></ol></div><div class="tip-box">Use the straps for balance, not to pull yourself up.</div><a class="video-btn" href="https://www.youtube.com/watch?v=oawE3Eo47RY" target="_blank" rel="noopener">▶ Watch Video</a></div></div>
 
-    <div class="exercise-card trx-card" data-trx-id="row"><div class="card-top" onclick="toggleTrxCard('row')"><div class="check-circle" onclick="toggleTrxDone(event, 'row')">✓</div><span class="exercise-name">TRX Low Row</span><span class="badge">2 sets · 8–10 reps</span><span class="expand-icon">▼</span></div><div class="card-body" id="trx-body-row"><div class="how-to"><strong>How to do it:</strong><ol><li>Face the anchor, lean back in a straight body line, and start with arms long.</li><li>Pull your chest toward the handles, driving elbows back and shoulder blades down and together.</li><li>Lower slowly without shrugging.</li></ol></div><div class="tip-box">Walk your feet closer to the anchor to make it easier.</div><a class="video-btn" href="https://www.youtube.com/watch?v=5RfolU_tO9k" target="_blank" rel="noopener">▶ Watch Video</a></div></div>
+    <div class="exercise-card trx-card" data-trx-id="row" data-strap="short"><div class="card-top" onclick="toggleTrxCard('row')"><div class="check-circle" onclick="toggleTrxDone(event, 'row')">✓</div><span class="exercise-name">TRX Low Row</span><span class="badge">2 sets · 8–10 reps</span><span class="expand-icon">▼</span></div><div class="card-body" id="trx-body-row"><div class="how-to"><strong>How to do it:</strong><ol><li>Face the anchor, lean back in a straight body line, and start with arms long.</li><li>Pull your chest toward the handles, driving elbows back and shoulder blades down and together.</li><li>Lower slowly without shrugging.</li></ol></div><div class="tip-box">Walk your feet closer to the anchor to make it easier.</div><a class="video-btn" href="https://www.youtube.com/watch?v=5RfolU_tO9k" target="_blank" rel="noopener">▶ Watch Video</a></div></div>
 
-    <div class="exercise-card trx-card" data-trx-id="chest-press"><div class="card-top" onclick="toggleTrxCard('chest-press')"><div class="check-circle" onclick="toggleTrxDone(event, 'chest-press')">✓</div><span class="exercise-name">TRX Chest Press</span><span class="badge">2 sets · 8–10 reps</span><span class="expand-icon">▼</span></div><div class="card-body" id="trx-body-chest-press"><div class="how-to"><strong>How to do it:</strong><ol><li>Face away from the anchor and lean forward in a firm plank.</li><li>Bend elbows to lower your chest between your hands, then press back without letting your hips sag.</li></ol></div><div class="tip-box">Start nearly upright and keep your shoulders away from your ears.</div><a class="video-btn" href="https://www.youtube.com/watch?v=i_45-JMoXg4" target="_blank" rel="noopener">▶ Watch Video</a></div></div>
+    <div class="exercise-card trx-card" data-trx-id="chest-press" data-strap="long"><div class="card-top" onclick="toggleTrxCard('chest-press')"><div class="check-circle" onclick="toggleTrxDone(event, 'chest-press')">✓</div><span class="exercise-name">TRX Chest Press</span><span class="badge">2 sets · 8–10 reps</span><span class="expand-icon">▼</span></div><div class="card-body" id="trx-body-chest-press"><div class="how-to"><strong>How to do it:</strong><ol><li>Face away from the anchor and lean forward in a firm plank.</li><li>Bend elbows to lower your chest between your hands, then press back without letting your hips sag.</li></ol></div><div class="tip-box">Start nearly upright and keep your shoulders away from your ears.</div><a class="video-btn" href="https://www.youtube.com/watch?v=i_45-JMoXg4" target="_blank" rel="noopener">▶ Watch Video</a></div></div>
 
-    <div class="exercise-card trx-card" data-trx-id="reverse-lunge"><div class="card-top" onclick="toggleTrxCard('reverse-lunge')"><div class="check-circle" onclick="toggleTrxDone(event, 'reverse-lunge')">✓</div><span class="exercise-name">Assisted TRX Reverse Lunge</span><span class="badge">2 sets · 6–8 reps · Each side</span><span class="expand-icon">▼</span></div><div class="card-body" id="trx-body-reverse-lunge"><div class="how-to"><strong>How to do it:</strong><ol><li>Face the anchor and use the handles for balance.</li><li>Step one foot back and lower straight down, keeping the front knee aligned over the foot.</li><li>Press through the front heel to return to standing.</li></ol></div><div class="tip-box">Keep most of the work in the front leg and use a small range at first.</div><a class="video-btn" href="https://www.youtube.com/watch?v=aQcV8Rcn8QE" target="_blank" rel="noopener">▶ Watch Video</a></div></div>
+    <div class="exercise-card trx-card" data-trx-id="reverse-lunge" data-strap="mid"><div class="card-top" onclick="toggleTrxCard('reverse-lunge')"><div class="check-circle" onclick="toggleTrxDone(event, 'reverse-lunge')">✓</div><span class="exercise-name">Assisted TRX Reverse Lunge</span><span class="badge">2 sets · 6–8 reps · Each side</span><span class="expand-icon">▼</span></div><div class="card-body" id="trx-body-reverse-lunge"><div class="how-to"><strong>How to do it:</strong><ol><li>Face the anchor and use the handles for balance.</li><li>Step one foot back and lower straight down, keeping the front knee aligned over the foot.</li><li>Press through the front heel to return to standing.</li></ol></div><div class="tip-box">Keep most of the work in the front leg and use a small range at first.</div><a class="video-btn" href="https://www.youtube.com/watch?v=aQcV8Rcn8QE" target="_blank" rel="noopener">▶ Watch Video</a></div></div>
 
-    <div class="exercise-card trx-card" data-trx-id="hip-hinge"><div class="card-top" onclick="toggleTrxCard('hip-hinge')"><div class="check-circle" onclick="toggleTrxDone(event, 'hip-hinge')">✓</div><span class="exercise-name">TRX Hip Hinge</span><span class="badge">2 sets · 10–12 reps</span><span class="expand-icon">▼</span></div><div class="card-body" id="trx-body-hip-hinge"><div class="how-to"><strong>How to do it:</strong><ol><li>Face the anchor with soft knees and long arms.</li><li>Push hips straight back while keeping a neutral, long spine.</li><li>Squeeze glutes to stand tall.</li></ol></div><div class="tip-box">This is not a squat—knees bend only slightly and the hips do the work.</div><a class="video-btn" href="https://www.youtube.com/watch?v=DXlboJ0tAgE" target="_blank" rel="noopener">▶ Watch Video</a></div></div>
+    <div class="exercise-card trx-card" data-trx-id="hip-hinge" data-strap="short"><div class="card-top" onclick="toggleTrxCard('hip-hinge')"><div class="check-circle" onclick="toggleTrxDone(event, 'hip-hinge')">✓</div><span class="exercise-name">TRX Hip Hinge</span><span class="badge">2 sets · 10–12 reps</span><span class="expand-icon">▼</span></div><div class="card-body" id="trx-body-hip-hinge"><div class="how-to"><strong>How to do it:</strong><ol><li>Face the anchor with soft knees and long arms.</li><li>Push hips straight back while keeping a neutral, long spine.</li><li>Squeeze glutes to stand tall.</li></ol></div><div class="tip-box">This is not a squat—knees bend only slightly and the hips do the work.</div><a class="video-btn" href="https://www.youtube.com/watch?v=DXlboJ0tAgE" target="_blank" rel="noopener">▶ Watch Video</a></div></div>
   </section>
 </div><!-- end tab-trx -->
 
@@ -1373,8 +1384,37 @@
 
   // ─── TRX WORKOUT ─────────────────────────────────────────────────────────────
   const TRX_IDS = ['bicep-curl', 't-spine', 'plank', 'squat', 'row', 'chest-press', 'reverse-lunge', 'hip-hinge'];
+  const TRX_STRAP_GROUPS = [
+    { id: 'short', label: '1. Short Straps', cue: 'Starting cue: stand beside the straps and set both handles around shoulder-to-chest height. Keep both sides even. Complete all three exercises before adjusting.' },
+    { id: 'mid', label: '2. Mid-Length Straps', cue: 'Starting cue: stand beside the straps and set the handles around waist-to-hip height. Keep light tension before each standing exercise.' },
+    { id: 'long', label: '3. Long Straps', cue: 'Starting cue: set the handles near mid-calf height. For the chest press, lengthen a little more if a strap rubs your neck or arms.' },
+    { id: 'mid-calf', label: '4. Mid-Calf Straps', cue: 'Starting cue: handles sit around the lower half of your kneecaps, with the foot cradles near your calves. This is the floor setup for the plank.' }
+  ];
   const trxDone = Object.fromEntries(TRX_IDS.map(id => [id, false]));
   const trxExpanded = Object.fromEntries(TRX_IDS.map(id => [id, false]));
+
+  function organizeTrxByStrapLength() {
+    const section = document.querySelector('#tab-trx section');
+    TRX_STRAP_GROUPS.forEach(group => {
+      const cards = [...section.querySelectorAll('[data-strap="' + group.id + '"]')];
+      if (!cards.length) return;
+      const heading = document.createElement('div');
+      heading.className = 'strap-group';
+      const title = document.createElement('h3');
+      title.textContent = group.label;
+      const cue = document.createElement('p');
+      cue.textContent = group.cue;
+      heading.append(title, cue);
+      section.append(heading, ...cards);
+      cards.forEach(card => {
+        const name = card.querySelector('.exercise-name');
+        const tag = document.createElement('span');
+        tag.className = 'strap-tag';
+        tag.textContent = group.label.replace(/^\d+\. /, '');
+        name.insertAdjacentElement('afterend', tag);
+      });
+    });
+  }
 
   function toggleTrxDone(e, id) {
     e.stopPropagation();
@@ -1609,6 +1649,7 @@
   updateProgress();
   updateSectionCounts();
   initWeightInputs();
+  organizeTrxByStrapLength();
   updateTrxProgress();
   updateTodayCard();
 </script>
