@@ -254,6 +254,12 @@
     flex-wrap: wrap;
   }
   .weight-track label { color: #cbd5e1; }
+  .weight-track[data-saved]::after {
+    content: attr(data-saved);
+    color: #4ade80;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
   .weight-input {
     width: 70px;
     background: #0f172a;
@@ -278,6 +284,15 @@
     font-weight: 700;
     margin-left: auto;
   }
+
+  .last-weight {
+    display: none;
+    color: #4ade80;
+    font-size: 0.72rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .last-weight.show { display: inline; }
 
   .video-btn {
     display: inline-flex;
@@ -309,6 +324,21 @@
   }
   .trx-intro strong { color: #7dd3fc; }
   .trx-card .badge { color: #a5f3fc; border-color: #0e7490; }
+
+  .today-card {
+    background: linear-gradient(135deg, #172554, #1e3a5f);
+    border: 1px solid #3b82f6;
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 18px;
+  }
+  .today-label { color: #7dd3fc; font-size: 0.76rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+  .today-title { color: #e0f2fe; font-size: 1.05rem; font-weight: 700; margin: 3px 0; }
+  .today-copy { color: #bfdbfe; font-size: 0.83rem; line-height: 1.5; }
+  .checkin-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 12px; padding-top: 10px; border-top: 1px solid #3b82f655; }
+  .checkin-row label { color: #bfdbfe; font-size: 0.78rem; }
+  .checkin-select { background: #0f172a; border: 1px solid #475569; border-radius: 7px; color: #e2e8f0; padding: 5px 8px; font-size: 0.78rem; }
+  .checkin-saved { color: #4ade80; font-size: 0.75rem; font-weight: 700; }
 
   .complete-banner {
     display: none;
@@ -504,6 +534,11 @@
     border-color: #3b82f6;
     color: #7dd3fc;
   }
+  .day-chip.trx {
+    background: #3b2f10;
+    border-color: #d97706;
+    color: #fde68a;
+  }
 
   .day-chip .day-name { display: block; font-size: 0.65rem; margin-bottom: 3px; opacity: 0.8; }
   .day-chip .day-icon { display: block; font-size: 1.1rem; }
@@ -593,6 +628,22 @@
   <button class="tab-btn" onclick="switchTab('schedule', event)">📅 Schedule</button>
 </div>
 
+<div class="today-card">
+  <div class="today-label" id="today-label">Today's plan</div>
+  <div class="today-title" id="today-title">Loading your schedule…</div>
+  <div class="today-copy" id="today-copy"></div>
+  <div class="checkin-row">
+    <label for="recovery-status">Next-morning back check:</label>
+    <select class="checkin-select" id="recovery-status" onchange="saveRecoveryStatus()">
+      <option value="">Not recorded</option>
+      <option value="better">Better</option>
+      <option value="same">Same / normal</option>
+      <option value="worse">Worse — make the next session lighter</option>
+    </select>
+    <span class="checkin-saved" id="recovery-saved"></span>
+  </div>
+</div>
+
 <!-- ===================== WORKOUT TAB ===================== -->
 <div class="tab-pane active" id="tab-workout">
 
@@ -600,7 +651,8 @@
     <div class="progress-bar" id="progressBar"></div>
   </div>
   <div class="progress-label" id="progressLabel">0 of 19 exercises complete</div>
-  <button class="reset-btn" onclick="resetAll()">↺ Reset Workout (counts as done)</button>
+  <button class="reset-btn" onclick="finishGymWorkout()">✓ Finish & Log Gym Workout</button>
+  <button class="reset-btn" onclick="clearGymWorkout()">↺ Clear Gym Checkmarks</button>
 
   <br>
 
@@ -1149,7 +1201,8 @@
 <div class="tab-pane" id="tab-trx">
   <div class="progress-bar-wrap"><div class="progress-bar" id="trxProgressBar"></div></div>
   <div class="progress-label" id="trxProgressLabel">0 of 8 exercises complete</div>
-  <button class="reset-btn" onclick="resetTrxWorkout()">↺ Reset TRX Workout</button>
+  <button class="reset-btn" onclick="finishTrxWorkout()">✓ Finish & Log TRX Workout</button>
+  <button class="reset-btn" onclick="clearTrxWorkout()">↺ Clear TRX Checkmarks</button>
   <br>
   <div class="trx-intro"><strong>Beginner TRX Full-Body Workout:</strong> Complete 2 rounds, resting 45–60 seconds between exercises. Start with a more upright body angle to reduce resistance. Check the anchor and straps before every set; stop for sharp, shooting, or radiating pain.</div>
   <section>
@@ -1178,16 +1231,16 @@
 <div class="tab-pane" id="tab-schedule">
 
   <div class="schedule-note">
-    <strong>Your Weekly Plan: Mon · Wed · Fri</strong><br>
-    Rest days between sessions are essential — that's when your back muscles actually recover and get stronger. Walking on rest days is great.
+    <strong>Your Weekly Plan: Gym Mon · Wed · Fri • TRX Tue · Thu</strong><br>
+    Keep the home TRX days controlled and technique-focused so you can recover for the next gym day. Saturday and Sunday are recovery days; an easy walk is optional.
   </div>
 
   <!-- Weekly strip -->
   <div class="week-strip">
     <div class="day-chip workout"><span class="day-name">MON</span><span class="day-icon">🏋️</span></div>
-    <div class="day-chip"><span class="day-name">TUE</span><span class="day-icon">🚶</span></div>
+    <div class="day-chip trx"><span class="day-name">TUE</span><span class="day-icon">🟡</span></div>
     <div class="day-chip workout"><span class="day-name">WED</span><span class="day-icon">🏋️</span></div>
-    <div class="day-chip"><span class="day-name">THU</span><span class="day-icon">🚶</span></div>
+    <div class="day-chip trx"><span class="day-name">THU</span><span class="day-icon">🟡</span></div>
     <div class="day-chip workout"><span class="day-name">FRI</span><span class="day-icon">🏋️</span></div>
     <div class="day-chip"><span class="day-name">SAT</span><span class="day-icon">😴</span></div>
     <div class="day-chip"><span class="day-name">SUN</span><span class="day-icon">😴</span></div>
@@ -1205,7 +1258,7 @@
     </div>
   </div>
   <div class="note-box" style="margin-top:-8px;">
-    <strong>How A/B works:</strong> Warm-up, Stretching, Core, the Lower Body staple (Leg Press), Upper Body (Chest Press, Chest Fly), and Cool-Down are done every session — that consistency is what protects your back. Lower Body machine exercises rotate between A and B automatically based on your workout count (Hamstring Curl now only shows on B days), so each muscle group still gets trained while sessions stay shorter and you get more variety.
+    <strong>How A/B works:</strong> The Gym workout is Monday, Wednesday, and Friday. Warm-up, mobility, core, Leg Press, upper body, and cool-down are done each gym day; lower-body machines rotate between A and B. Tuesday and Thursday are the separate, lighter TRX home workout.
   </div>
 
   <!-- YOUR ROUTINE -->
@@ -1343,7 +1396,7 @@
     document.getElementById('trxCount').textContent = complete + '/' + TRX_IDS.length;
   }
 
-  function resetTrxWorkout() {
+  function clearTrxWorkout() {
     TRX_IDS.forEach(id => {
       trxDone[id] = false;
       trxExpanded[id] = false;
@@ -1353,6 +1406,21 @@
       document.getElementById('trx-body-' + id).classList.remove('open');
     });
     updateTrxProgress();
+  }
+
+  function finishTrxWorkout() {
+    const complete = TRX_IDS.filter(id => trxDone[id]).length;
+    if (complete === 0) {
+      alert('Mark at least one TRX exercise complete before logging the workout.');
+      return;
+    }
+    if (!confirm('Log this TRX workout and clear today\'s checkmarks?')) return;
+    const trxCount = parseInt(localStorage.getItem('trxWorkoutCount') || '0', 10) + 1;
+    localStorage.setItem('trxWorkoutCount', String(trxCount));
+    localStorage.setItem('lastWorkoutType', 'TRX workout');
+    localStorage.setItem('lastWorkoutDate', new Date().toLocaleDateString());
+    clearTrxWorkout();
+    updateTodayCard();
   }
 
   function toggleDone(e, idx) {
@@ -1413,6 +1481,33 @@
     badge.style.display = (rec.streak || 0) >= 6 ? 'inline-flex' : 'none';
   }
 
+  function updateWeightSummary(id) {
+    const name = document.querySelector('#ex-' + id + ' .exercise-name');
+    if (!name) return;
+    let summary = document.getElementById('last-weight-' + id);
+    if (!summary) {
+      summary = document.createElement('span');
+      summary.id = 'last-weight-' + id;
+      summary.className = 'last-weight';
+      name.insertAdjacentElement('afterend', summary);
+    }
+    const rec = weightData[id] || {};
+    summary.textContent = rec.weight ? 'Last: ' + rec.weight + ' lb' : '';
+    summary.classList.toggle('show', Boolean(rec.weight));
+  }
+
+  function saveWeightInput(id, input) {
+    const rec = weightData[id] || { weight: '', streak: 0 };
+    if (String(input.value) !== String(rec.weight)) rec.streak = 0;
+    rec.weight = input.value;
+    weightData[id] = rec;
+    saveWeightData(weightData);
+    const track = input.closest('.weight-track');
+    if (track) track.dataset.saved = input.value ? 'Saved ✓' : '';
+    updateWeightBadge(id);
+    updateWeightSummary(id);
+  }
+
   function initWeightInputs() {
     WEIGHT_IDS.forEach(id => {
       const input = document.getElementById('weight-' + id);
@@ -1420,16 +1515,10 @@
       const rec = weightData[id] || { weight: '', streak: 0 };
       input.value = rec.weight || '';
       updateWeightBadge(id);
-      input.addEventListener('change', () => {
-        const rec = weightData[id] || { weight: '', streak: 0 };
-        if (String(input.value) !== String(rec.weight)) {
-          rec.streak = 0; // new weight — restart the streak toward the next reminder
-        }
-        rec.weight = input.value;
-        weightData[id] = rec;
-        saveWeightData(weightData);
-        updateWeightBadge(id);
-      });
+      const track = input.closest('.weight-track');
+      if (track) track.dataset.saved = rec.weight ? 'Saved ✓' : '';
+      updateWeightSummary(id);
+      input.addEventListener('input', () => saveWeightInput(id, input));
     });
   }
 
@@ -1445,18 +1534,39 @@
     WEIGHT_IDS.forEach(id => updateWeightBadge(id));
   }
 
-  // ─── RESET / LOG WORKOUT ─────────────────────────────────────────────────────
+  // ─── DAILY PLAN & RECOVERY CHECK-IN ──────────────────────────────────────────
 
-  function resetAll() {
-    // ── Weight streaks — count this session's completed exercises first ──
-    bumpWeightStreaks();
+  function saveRecoveryStatus() {
+    const value = document.getElementById('recovery-status').value;
+    localStorage.setItem('recoveryStatus', value);
+    document.getElementById('recovery-saved').textContent = value ? 'Saved ✓' : '';
+  }
 
-    // ── Count this workout ──
-    const oldCount = getWorkoutCount();
-    const newCount = oldCount + 1;
-    saveWorkoutCount(newCount);
+  function updateTodayCard() {
+    const day = new Date().getDay();
+    const plans = {
+      0: ['Sunday · Recovery', 'Rest day. An easy walk is optional.'],
+      1: ['Monday · Gym Workout', 'Complete Gym Workout ' + getVariant(getWorkoutCount()) + '.'],
+      2: ['Tuesday · TRX at Home', 'Complete the TRX workout at a controlled, technique-focused pace.'],
+      3: ['Wednesday · Gym Workout', 'Complete Gym Workout ' + getVariant(getWorkoutCount()) + '.'],
+      4: ['Thursday · TRX at Home', 'Complete the TRX workout at a controlled, technique-focused pace.'],
+      5: ['Friday · Gym Workout', 'Complete Gym Workout ' + getVariant(getWorkoutCount()) + '.'],
+      6: ['Saturday · Recovery', 'Rest day. An easy walk is optional.']
+    };
+    const [title, copy] = plans[day];
+    const lastType = localStorage.getItem('lastWorkoutType');
+    const lastDate = localStorage.getItem('lastWorkoutDate');
+    document.getElementById('today-label').textContent = "Today's plan";
+    document.getElementById('today-title').textContent = title;
+    document.getElementById('today-copy').textContent = copy + (lastType ? ' Last logged: ' + lastType + ' on ' + lastDate + '.' : '');
+    const recovery = localStorage.getItem('recoveryStatus') || '';
+    document.getElementById('recovery-status').value = recovery;
+    document.getElementById('recovery-saved').textContent = recovery ? 'Saved ✓' : '';
+  }
 
-    // ── Clear checkboxes ──
+  // ─── RESET / LOG GYM WORKOUT ─────────────────────────────────────────────────
+
+  function clearGymWorkout() {
     done.fill(false);
     expanded.fill(false);
     for (let i = 0; i < MAX_ID; i++) {
@@ -1470,10 +1580,27 @@
       }
     }
 
+    updateProgress();
+    updateSectionCounts();
+  }
+
+  function finishGymWorkout() {
+    const complete = getVisibleIds().filter(id => done[id]).length;
+    if (complete === 0) {
+      alert('Mark at least one gym exercise complete before logging the workout.');
+      return;
+    }
+    if (!confirm('Log this gym workout and advance the A/B rotation?')) return;
+    bumpWeightStreaks();
+    saveWorkoutCount(getWorkoutCount() + 1);
+    localStorage.setItem('lastWorkoutType', 'Gym workout');
+    localStorage.setItem('lastWorkoutDate', new Date().toLocaleDateString());
+    clearGymWorkout();
     applyVariantVisibility();
     updateProgress();
     updateSectionCounts();
     updateWorkoutStats();
+    updateTodayCard();
   }
 
   // ─── INIT ────────────────────────────────────────────────────────────────────
@@ -1483,6 +1610,7 @@
   updateSectionCounts();
   initWeightInputs();
   updateTrxProgress();
+  updateTodayCard();
 </script>
 
 </body>
